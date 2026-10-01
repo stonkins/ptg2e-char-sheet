@@ -1,23 +1,175 @@
-<img name="attr_character_avatar" width="150">
-<img name="attr_character_token" width="100">
 
-<div>
-    <h2>Name</h2>
-    <div>
-        <input type ="text" name ="attr_character_name" title="@{name}" placeholder="Enter character name" value="@{character_name}">
+    <!-- 
+    <img name="attr_character_avatar" width="150">
+    <img name="attr_character_token" width="100">
+    -->
+    <div class="page-grid">
+
+        <div class="title-box">
+            <h1 class="title">
+                PART-TIME GODS: Second Edition
+            </h1>
+        </div>
+
+        <div class="bio">
+            <h2>BIO</h2>
+            <img name="attr_character_avatar" width="100%">
+
+            <h3>Name</h3>
+            <input type ="text" name ="attr_character_name" title="@{name}" placeholder="--Please enter name--" value="@{character_name}">
+
+            <h3>Age</h3>
+            <input type="number" name="attr_age" title=@{age} placeholder="--Plase enter age--" value="0">
+
+            <h3>Gender</h3>
+            <input type="text" name = attr_gender title="@{gender}" placeholder="--Please enter gender--" value="">
+
+            <h3>Ethnicity</h3>
+            <input type="text" name = attr_ethnicity title="@{ethnicity}" placeholder="--Please enter ethnicity--" value="">
+
+            <h3>Occupation</h3>
+            <input type="text" name="attr_occupation" title="@{occupation}" placeholder="Enter occupation here" value="">
+
+            <h3>Archetype</h3>
+            <select name="attr_archetype">
+                <option select>--Please select an Archetype--</option>
+                <option>The Caregiver</option>
+                <option>The Companion</option>
+                <option>The Dreamer</option>
+                <option>The Fool</option>
+                <option>The Hero</option>
+                <option>The Innocent</option>
+                <option>The Lover</option>
+                <option>The Rebel</option>
+                <option>The Sage</option>
+                <option>The Tyrant</option>
+                <option>The Visionary</option>
+                <option>The Wanderer</option>
+            </select>
+
+            <h3>Dominion</h3>
+            <fieldset class="repeating_inventory">
+                <div class="item_row">
+                    <input type="text" name="attr_item_name" placeholder="Enter New Domain" >
+                </div>
+            </fieldset>
+
+            <h3>Theology</h3>
+            <select name="attr_theology">
+                <option select>--Please select a Theology--</option>
+                <option>None</option>
+                <option>Ascendants</option>
+                <option>Cult of the Saints</option>
+                <option>Drifting Kingdoms</option>
+                <option>Kunitsukami</option>
+                <option>Masks of Jana</option>
+                <option>Order of Meskhenet</option>
+                <option>Pheonix Society</option>
+                <option>Puck-Eaters</option>
+                <option>Warlock's Fate</option>
+            </select>
+        </div>
+
+        <div class="stats">
+            <h2>STATS</h2>
+
+            <h3>Initiative</h3>
+            <input type="number" name="attr_initiative" value="@{speed} + @{intuition}" disabled>
+
+            <h3>Strength</h3>
+            <input type="number" name="attr_strength" value="@{athletics}+@{might}" disabled>
+
+            <h3>Movement</h3>
+            <input type="number" name="attr_movement" value="@{athletics}+@{speed}+5" disabled>
+
+            <div class="work_table">
+                <h3>Work Bonuses</h3>
+                <span>Free Time</span>
+                <input  type="number" name="attr_free_time" title="@{free_time}" value="0">
+                <span>Wealth</span>
+                <input  type="number" name="attr_wealth" title="@{wealth}" value="0">
+            </div>
+
+            <h3>Spark</h3>
+            <input  type="number" name="attr_wealth" title="@{wealth}" value="0">
+
+            <div class="fragments_table">
+                <h3>Fragments</h3>
+                <span>Total</span>
+                <input type="number" name="attr_fragments" value="@{total_fragments} * 3" disabled>
+                <span>Remaining</span>
+                <input type="number" name="attr_fragments_remaining" title="@{fragments_remaining}" value="@{total_fragments}">
+            </div>
+        </div>
+        
+
+        <div class="skills">
+            <h2>SKILLS</h2>
+
+            <span>Athletics</span>
+            <input  type="number" name="attr_athletics" title="@{athletics}" value="0">
+
+            <span>Crafts</span>
+            <input type="number" name="attr_crafts" title="@{crafts}" value="0">
+
+            <span>Deception</span>
+            <input type="number" name="attr_deception" title="@{deception}" value="0">
+
+            <span>Discipline</span>
+            <input type="number" name="attr_discipline" title="@{dicipline}" value="0">
+
+            <span>Empathy</span>
+            <input type="number" name="attr_empathy" title="@{empathy}" value="0">
+
+            <span>Fighting</span>
+            <input type="number" name="attr_fighting" title="@{fighting}" value="0">
+
+            <span>Fortitude</span>
+            <input type="number" name="attr_fortitude" title="@{fortitude}" value="0">
+
+            <span>Influence</span>
+            <input type="number" name="attr_influence" title="@{influence}" value="0">
+
+            <span>Intuition</span>
+            <input type="number" name="attr_intuition" title="@{intuition}" value="0">
+
+            <span>Knowledge</span>
+            <input type="number" name="attr_knowledge" title="@{knowledge}" value="0">
+
+            <span>Marksman</span>
+            <input type="number" name="attr_marksman" title="@{marksman}" value="0">
+
+            <span>Medicine</span>
+            <input type="number" name="attr_medicine" title="@{medicine}" value="0">
+
+            <span>Might</span>
+            <input type="number" name="attr_might" title="@{might}" value="0">
+
+            <span>Perception</span>
+            <input type="number" name="attr_perception" title="@{perception}" value="0">
+
+            <span>Perform</span>
+            <input type="number" name="attr_perform" title="@{perform}" value="0">
+
+            <span>Speed</span>
+            <input type="number" name="attr_speed" title="@{speed}" value="0">
+
+            <span>Stealth</span>
+            <input type="number" name="attr_stealth" title="@{stealth}" value="0">
+
+            <span>Survival</span>
+            <input type="number" name="attr_survival" title="@{survival}" value="0">
+
+            <span>Tech</span>
+            <input type="number" name="attr_tech" title="@{tech}" value="0">
+
+            <span>Travel</span>
+            <input type="number" name="attr_travel" title="@{travel}" value="0">
+        </div>
     </div>
 
-    <h2>Occupation</h2>
-    <div>
-        <input type="text" name="attr_occupation" title="@{occupation}" placeholder="Enter occupation here" value="">
-    </div>
 
-    <h2>Archetype</h2>
-    <div>
-        <input type ="text" name ="attr_archetype" title="@{archetype}" placeholder="Enter archetype here" value="">
-    </div>
-
-    <h2>Spark</h2>
+        <h2>Spark</h2>
     <div>
         <input type="number" name="attr_spark" title="@{spark}" value="0">
     </div>
@@ -28,96 +180,7 @@
     </div>
 
     <details>
-        <div>
-            <p>
-                <span>Athletics</span>
-                <input type="number" name="attr_athletics" title="@{athletics}" value="0">
-
-            </p>
-            <p>
-                <span>Crafts</span>
-                <input type="number" name="attr_crafts" title="@{crafts}" value="0">
-            </p>
-            <p>
-                <span>Deception</span>
-                <input type="number" name="attr_deception" title="@{deception}" value="0">
-            </p>
-            <p>
-                <span>Discipline</span>
-                <input type="number" name="attr_discipline" title="@{dicipline}" value="0">
-            </p>
-            <p>
-                <span>Empathy</span>
-                <input type="number" name="attr_empathy" title="@{empathy}" value="0">
-            </p>
-            <p>
-                <span>Fighting</span>
-                    <input type="number" name="attr_fighting" title="@{fighting}" value="0">
-            </p>
-            <p>
-                <span>Fortitude</span>
-                <input type="number" name="attr_fortitude" title="@{fortitude}" value="0">
-            </p>
-            <p>
-                <span>Influence</span>
-                <input type="number" name="attr_influence" title="@{influence}" value="0">
-            </p>
-            <p>
-                <span>Intuition</span>
-                <input type="number" name="attr_intuition" title="@{intuition}" value="0">
-            </p>
-            <p>
-                <span>Knowledge</span>
-                <input type="number" name="attr_knowledge" title="@{knowledge}" value="0">
-            </p>
-            <p>
-                <span>Marksman</span>
-                <input type="number" name="attr_marksman" title="@{marksman}" value="0">
-            </p>
-            <p>
-                <span>Medicine</span>
-                <input type="number" name="attr_medicine" title="@{medicine}" value="0">
-            </p>
-            <p>
-                <span>Might</span>
-                <input type="number" name="attr_might" title="@{might}" value="0">
-            </p>
-            <p>
-                <span>Perception</span>
-                <input type="number" name="attr_perception" title="@{perception}" value="0">
-            </p>
-            <p>
-                <span>Perform</span>
-                <input type="number" name="attr_perform" title="@{perform}" value="0">
-            </p>
-            <p>
-                <span>Speed</span>
-                <input type="number" name="attr_speed" title="@{speed}" value="0">
-            </p>
-            <p>
-                <span>Stealth</span>
-                <input type="number" name="attr_stealth" title="@{stealth}" value="0">
-            </p>
-            <p>
-                <span>Survival</span>
-                <input type="number" name="attr_survival" title="@{survival}" value="0">
-            </p>
-            <p>
-                <span>Tech</span>
-                <input type="number" name="attr_tech" title="@{tech}" value="0">
-            </p>
-            <p>
-                <span>Travel</span>
-                <input type="number" name="attr_travel" title="@{travel}" value="0">
-            </p>
-        </div>
-        <summary>
-            <h2>Skills</h2>
-        </summary>
-    </details>
-
-    <details>
-        <div>
+        <div class="stat-box">
         <p>
             <span>Aegis</span>
             <input type="number" name="attr_aegis" title="@{aegis}" value="0">
@@ -186,14 +249,16 @@
         
     </div>
 
-</div>
-
-<div>
-    <h2>Dice Roller</h2>
-    <div>
-        <button type="roll" name="roll_attack" value="/roll 5d10">Attack</button>
-        <br>
+    <div class = "outer">
+        <h2>Dice Roller</h2>
+        <div>
+            <button type="roll" name="roll_attack" value="/roll 5d10">Attack</button>
+            <br>
+        </div>
     </div>
-</div>
+
+
+
+
 
 
