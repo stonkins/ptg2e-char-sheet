@@ -1,0 +1,199 @@
+<img name="attr_character_avatar" width="150">
+<img name="attr_character_token" width="100">
+
+<div>
+    <h2>Name</h2>
+    <div>
+        <input type ="text" name ="attr_character_name" title="@{name}" placeholder="Enter character name" value="@{character_name}">
+    </div>
+
+    <h2>Occupation</h2>
+    <div>
+        <input type="text" name="attr_occupation" title="@{occupation}" placeholder="Enter occupation here" value="">
+    </div>
+
+    <h2>Archetype</h2>
+    <div>
+        <input type ="text" name ="attr_archetype" title="@{archetype}" placeholder="Enter archetype here" value="">
+    </div>
+
+    <h2>Spark</h2>
+    <div>
+        <input type="number" name="attr_spark" title="@{spark}" value="0">
+    </div>
+
+    <h2>Fragment</h2>
+    <div>
+        <input type = "number" name="attr_max_fragments" title="@{max_fragments}" value="3 * @{spark}">
+    </div>
+
+    <details>
+        <div>
+            <p>
+                <span>Athletics</span>
+                <input type="number" name="attr_athletics" title="@{athletics}" value="0">
+
+            </p>
+            <p>
+                <span>Crafts</span>
+                <input type="number" name="attr_crafts" title="@{crafts}" value="0">
+            </p>
+            <p>
+                <span>Deception</span>
+                <input type="number" name="attr_deception" title="@{deception}" value="0">
+            </p>
+            <p>
+                <span>Discipline</span>
+                <input type="number" name="attr_discipline" title="@{dicipline}" value="0">
+            </p>
+            <p>
+                <span>Empathy</span>
+                <input type="number" name="attr_empathy" title="@{empathy}" value="0">
+            </p>
+            <p>
+                <span>Fighting</span>
+                    <input type="number" name="attr_fighting" title="@{fighting}" value="0">
+            </p>
+            <p>
+                <span>Fortitude</span>
+                <input type="number" name="attr_fortitude" title="@{fortitude}" value="0">
+            </p>
+            <p>
+                <span>Influence</span>
+                <input type="number" name="attr_influence" title="@{influence}" value="0">
+            </p>
+            <p>
+                <span>Intuition</span>
+                <input type="number" name="attr_intuition" title="@{intuition}" value="0">
+            </p>
+            <p>
+                <span>Knowledge</span>
+                <input type="number" name="attr_knowledge" title="@{knowledge}" value="0">
+            </p>
+            <p>
+                <span>Marksman</span>
+                <input type="number" name="attr_marksman" title="@{marksman}" value="0">
+            </p>
+            <p>
+                <span>Medicine</span>
+                <input type="number" name="attr_medicine" title="@{medicine}" value="0">
+            </p>
+            <p>
+                <span>Might</span>
+                <input type="number" name="attr_might" title="@{might}" value="0">
+            </p>
+            <p>
+                <span>Perception</span>
+                <input type="number" name="attr_perception" title="@{perception}" value="0">
+            </p>
+            <p>
+                <span>Perform</span>
+                <input type="number" name="attr_perform" title="@{perform}" value="0">
+            </p>
+            <p>
+                <span>Speed</span>
+                <input type="number" name="attr_speed" title="@{speed}" value="0">
+            </p>
+            <p>
+                <span>Stealth</span>
+                <input type="number" name="attr_stealth" title="@{stealth}" value="0">
+            </p>
+            <p>
+                <span>Survival</span>
+                <input type="number" name="attr_survival" title="@{survival}" value="0">
+            </p>
+            <p>
+                <span>Tech</span>
+                <input type="number" name="attr_tech" title="@{tech}" value="0">
+            </p>
+            <p>
+                <span>Travel</span>
+                <input type="number" name="attr_travel" title="@{travel}" value="0">
+            </p>
+        </div>
+        <summary>
+            <h2>Skills</h2>
+        </summary>
+    </details>
+
+    <details>
+        <div>
+        <p>
+            <span>Aegis</span>
+            <input type="number" name="attr_aegis" title="@{aegis}" value="0">
+        </p>
+        <p>
+            <span>Beckon</span>
+            <input type="number" name="attr_beckon" title="@{beckon}" value="0">
+        </p>
+        <p>
+            <span>Journey</span>
+            <input type="number" name="attr_journey" title="@{journey}" value="0">
+        </p>
+        <p>
+            <span>Minion</span>
+            <input type="number" name="attr_minion" title="@{minion}" value="0">
+        </p>
+        <p>
+            <span>Puppetry</span>
+            <input type="number" name="attr_puppetry" title="@{puppetry}" value="0">
+        </p>
+        <p>
+            <span>Oracle</span>
+            <input type="number" name="attr_oracle" title="@{oracle}" value="0">
+        </p>
+        <p>
+            <span>Ruin</span>
+            <input type="number" name="attr_ruin" title="@{ruin}" value="0">
+        </p>
+        <p>
+            <span>Shaping</span>
+            <input type="number" name="attr_shaping" title="@{shaping}" value="0">
+        </p>
+        <p>
+            <span>Soul</span>
+            <input type="number" name="attr_soul" title="@{soul}" value="0">
+        </p>
+    </div>
+        <summary>
+            <h2>Manifestations</h2>
+        </summary>
+    </details>
+    
+
+    <h2>Health and Psyche</h2>
+    <div>
+        <p>
+            <span>Max Health</span>
+            <input type = "number" name="attr_max_health" title="@{max_health}" value="5 + @{fortitude}">
+        </p>
+        <p>
+            <span>Max Psyche</span>
+            <input type = "number" name="attr_max_psyche" title="@{max_psyche}" value="5 + @{discipline}">
+        </p>
+    </div>
+
+    <h2>XP</h2>
+    <div>
+        <p>
+            <span>XP Gained</span>
+            <input type="number" name="attr_xp_gained" title="@{xp_gained}" value="0">
+        </p>
+        <p>
+            <span>XP Spent</span>
+            <input type="number" name="attr_xp_spent" title="@{xp_spent}" value="0">
+        </p>
+        
+    </div>
+
+</div>
+
+<div>
+    <h2>Dice Roller</h2>
+    <div>
+        <button type="roll" name="roll_attack" value="/roll 5d10">Attack</button>
+        <br>
+    </div>
+</div>
+
+
