@@ -1,0 +1,204 @@
+<div class="page">
+
+    <div class="title">
+        <h1>PART-TIME GODS: Second Edition</h1>
+    </div>
+
+    <div class="char_details">
+        <h2>BIO</h2>
+
+        <img name="attr_character_avatar" width="100%">
+
+        <h3>Name:</h3>
+        <input type ="text" name ="attr_character_name" title="@{name}" placeholder="--Please enter name--" value="@{character_name}">
+
+        <h3>Age:</h3>
+        <input type="number" name="attr_age" title=@{age} placeholder="--Plase enter age--" value="0">
+
+        <h3>Gender:</h3>
+        <input type="text" name = attr_gender title="@{gender}" placeholder="--Please enter gender--" value="">
+
+        <h3>Ethnicity:</h3>
+        <input type="text" name = attr_ethnicity title="@{ethnicity}" placeholder="--Please enter ethnicity--" value="">
+
+        <h3>Occupation:</h3>
+        <input type="text" name="attr_occupation" title="@{occupation}" placeholder="Enter occupation here" value="">
+
+        <h3>Archetype:</h3>
+        <select name="attr_archetype">
+            <option select>--Please select an Archetype--</option>
+            <option>The Caregiver</option>
+            <option>The Companion</option>
+            <option>The Dreamer</option>
+            <option>The Fool</option>
+            <option>The Hero</option>
+            <option>The Innocent</option>
+            <option>The Lover</option>
+            <option>The Rebel</option>
+            <option>The Sage</option>
+            <option>The Tyrant</option>
+            <option>The Visionary</option>
+            <option>The Wanderer</option>
+        </select>
+
+        <h3>Dominion:</h3>
+        <fieldset class="repeating_inventory">
+            <div class="item_row">
+                <input type="text" name="attr_item_name" placeholder="Enter New Domain" >
+            </div>
+        </fieldset>
+
+        <h3>Theology:</h3>
+        <select name="attr_theology">
+            <option select>--Please select a Theology--</option>
+            <option>None</option>
+            <option>Ascendants</option>
+            <option>Cult of the Saints</option>
+            <option>Drifting Kingdoms</option>
+            <option>Kunitsukami</option>
+            <option>Masks of Jana</option>
+            <option>Order of Meskhenet</option>
+            <option>Pheonix Society</option>
+            <option>Puck-Eaters</option>
+            <option>Warlock's Fate</option>
+        </select>
+    </div>
+    
+    <div class="skills">
+        <h2>SKILLS</h2>
+
+        <h3>Athletics: </h3>
+        <input  type="number" name="attr_athletics" title="@{athletics}" value="0">
+
+        <h3>Crafts: </h3>
+        <input type="number" name="attr_crafts" title="@{crafts}" value="0">
+
+        <h3>Deception:</h3>
+        <input type="number" name="attr_deception" title="@{deception}" value="0">
+
+        <h3>Discipline: </h3>
+        <input type="number" name="attr_discipline" title="@{dicipline}" value="0">
+
+        <h3>Empathy: </h3>
+        <input type="number" name="attr_empathy" title="@{empathy}" value="0">
+
+        <h3>Fighting: </h3>
+        <input type="number" name="attr_fighting" title="@{fighting}" value="0">
+
+        <h3>Fortitude: </h3>
+        <input type="number" name="attr_fortitude" title="@{fortitude}" value="0">
+
+        <h3>Influence: </h3>
+        <input type="number" name="attr_influence" title="@{influence}" value="0">
+
+        <h3>Intuition: </h3>
+        <input type="number" name="attr_intuition" title="@{intuition}" value="0">
+
+        <h3>Knowledge: </h3>
+        <input type="number" name="attr_knowledge" title="@{knowledge}" value="0">
+
+        <h3>Marksman: </h3>
+        <input type="number" name="attr_marksman" title="@{marksman}" value="0">
+
+        <h3>Medicine: </h3>
+        <input type="number" name="attr_medicine" title="@{medicine}" value="0">
+
+        <h3>Might: </h3>
+        <input type="number" name="attr_might" title="@{might}" value="0">
+
+        <h3>Perception: </h3>
+        <input type="number" name="attr_perception" title="@{perception}" value="0">
+
+        <h3>Perform: </h3>
+        <input type="number" name="attr_perform" title="@{perform}" value="0">
+
+        <h3>Speed: </h3>
+        <input type="number" name="attr_speed" title="@{speed}" value="0">
+
+        <h3>Stealth: </h3>
+        <input type="number" name="attr_stealth" title="@{stealth}" value="0">
+
+        <h3>Survival: </h3>
+        <input type="number" name="attr_survival" title="@{survival}" value="0">
+
+        <h3>Tech: </h3>
+        <input type="number" name="attr_tech" title="@{tech}" value="0">
+
+        <h3>Travel: </h3>
+        <input type="number" name="attr_travel" title="@{travel}" value="0">
+
+    </div>
+
+    <div class="stats">
+        <h2>STATS</h2>
+
+        <h3>Initiative: </h3>
+        <input type="number" name="attr_initiative" value="(@{speed} + @{intuition})" disabled>
+
+        <h3>Strength: </h3>
+        <input type="number" name="attr_strength" value="(@{athletics}+@{might})" disabled>
+
+        <h3>Movement: </h3>
+        <input type="number" name="attr_movement" value="(@{athletics}+@{speed}+5)" disabled>
+
+        <div class="section"></div>
+
+        <div class="work_table">
+            <h3>Work Bonuses</h3>
+            <span>Free Time: </span>
+            <input type="number" name="attr_free_time" title="@{free_time}" value="0">
+            <span>Wealth: </span>
+            <input type="number" name="attr_wealth" title="@{wealth}" value="0">
+        </div>
+
+        <div class="section"></div>
+
+        <div class="spark_and_fragments">
+            <div class="spark_table">
+                <h3>Spark: </h3>
+                <input  type="number" name="attr_spark" title="@{spark}" value="0">
+            </div>
+
+            <div class="fragments_table">
+                <h3>Fragments</h3>
+                <span>Total</span>
+                <input type="number" name="attr_fragments" value="(@{spark} * 3)" disabled>
+                <span>Remaining</span>
+                <input type="number" name="attr_fragments_remaining" title="@{fragments_remaining}" value="@{total_fragments}">
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="manifest">
+        <h2>Manifestations</h2>
+
+        <h3>Aegis</h3>
+        <input type="number" name="attr_aegis" title="@{aegis}" value="0">
+
+        <h3>Beckon</h3>
+        <input type="number" name="attr_beckon" title="@{beckon}" value="0">
+
+        <h3>Journey</h3>
+        <input type="number" name="attr_journey" title="@{journey}" value="0">
+
+        <h3>Minion</h3>
+        <input type="number" name="attr_minion" title="@{minion}" value="0">
+
+        <h3>Puppetry</h3>
+        <input type="number" name="attr_puppetry" title="@{puppetry}" value="0">
+
+        <h3>Oracle</h3>
+        <input type="number" name="attr_oracle" title="@{oracle}" value="0">
+
+        <h3>Ruin</h3>
+        <input type="number" name="attr_ruin" title="@{ruin}" value="0">
+
+        <h3>Shaping</h3>
+        <input type="number" name="attr_shaping" title="@{shaping}" value="0">
+
+        <h3>Soul</h3>
+        <input type="number" name="attr_soul" title="@{soul}" value="0">
+    </div>
+
+</div>
