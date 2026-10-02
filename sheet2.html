@@ -4,6 +4,115 @@
         <h1>PART-TIME GODS: Second Edition</h1>
     </div>
 
+    <div class="tracks">
+
+        <div class="track_block">
+            <div class="track_header">
+                <h2>HEALTH</h2>
+                <span class="track_max">MAX: 
+                    <input type="number" name="attr_max_health" title="@{max_health}" value="(@{fortitude} + 5)" disabled />
+                </span>
+            </div>
+
+            <div class="track_row">
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_health_1" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_health_2" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_health_3" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_health_4" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_health_5" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_health_6" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_health_7" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_health_8" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_health_9" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_health_10" />
+                    <span class="box_mark"></span>
+                </label>
+            </div>
+        </div>
+        
+
+        <div class="track_block">
+            <div class="track_header">
+                <h2>PSYCHE</h2>
+                <span class="track_max">MAX: 
+                    <input type="number" name="attr_max_psyche" title="@{max_psyche}" value="(@{discipline} + 5)" disabled />
+                </span>
+            </div>
+
+            <div class="track_row">
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_psyche_1" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_psyche_2" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_psyche_3" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_psyche_4" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_psyche_5" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_psyche_6" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_psyche_7" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_psyche_8" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_psyche_9" />
+                    <span class="box_mark"></span>
+                </label>
+                <label class="strike_box">
+                    <input type="checkbox" name="attr_psyche_10" />
+                    <span class="box_mark"></span>
+                </label>
+            </div>
+        </div>
+
+    </div>
+
     <div class="char_details">
         <h2>BIO</h2>
 
@@ -223,8 +332,9 @@
                     <!--<input type="text" name="attr_specialty_target" placeholder="--Specialty Target (e.g. Athletics)"/>-->
                     <select name="attr_specialty_target">
                     <option value="" disabled selected>--Choose Target--</option>
-
+                        <!-- <optgroup> is currently non-functional ion Roll20. Using dummy <options> instead.-->
                     <optgroup label="Skills">
+                        <option value="" disabled>SKILLS:</option>
                         <option value="athletics">Athletics</option>
                         <option value="crafts">Crafts</option>
                         <option value="deception">Deception</option>
@@ -247,6 +357,7 @@
                         <option value="travel">Travel</option>
                     </optgroup>
                     <optgroup label="Manifestations">
+                        <option value="" disabled>MANIFESTATIONS:</option>
                         <option value="aegis">Aegis</option>
                         <option value="beckon">Beckon</option>
                         <option value="journey">Journey</option>

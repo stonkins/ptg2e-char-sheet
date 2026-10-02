@@ -61,11 +61,14 @@ input:disabled {
     display: grid;
     grid-template-areas: 
         "title  title   title"
+        "tracks tracks  tracks"
         "bio    skills  stats"
         "bio    manifest xp"
-        "bio    special   special";
+        "bio    special   special"
+        ".  .   .";
     grid-template-columns: 250px auto auto;
-    grid-template-rows: auto minmax(0, max-content) minmax(0, max-content);
+    grid-template-rows: auto auto auto auto auto auto;
+    /*auto auto minmax(0, max-content) minmax(0, max-content) minmax(0, max-content) auto;*/
     justify-content: start;
     gap: 10px;
     width: fit-content;
@@ -73,7 +76,9 @@ input:disabled {
     background-color: transparent;
 }
 
-.title { grid-area: title;
+.title { 
+    grid-area: title;
+    grid-column: 1 / -1; /* Guarantees full width across top */
     font-size: 48px;
     line-height: 64px;
     text-align: center;
@@ -86,6 +91,117 @@ input:disabled {
     margin: 0;
 }
 
+.tracks {
+    grid-area: tracks;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    box-sizing: content-box;
+}
+.track_block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    border: outset;
+    border-color: var(--border-color, gray);
+    padding: 6px 10px;
+    background-color: var(--bg-color, transparent);
+    box-sizing: border-box;
+}
+.track_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 220px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    border-right: 1px solid var(--border-color, gray);
+    padding-right: 12px;
+}
+.track_header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+.track_max {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.track_max input[type="number"] {
+    width: 45px;
+    text-align: center;
+}
+.track_row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    align-items: center;
+    padding: 0;
+}
+label.strike_box {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+label.strike_box input[type="checkbox"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+label.strike_box .box_mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--border-color);
+    background-color: var(--input-bg);
+    border-radius: 3px;
+    box-sizing: border-box;
+    z-index: 1;
+    pointer-events: none;
+}
+label.strike_box:hover .box_mark {
+    border-color: var(--text-color);
+}
+label.strike_box input[type="checkbox"]:checked + .box_mark::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background-color: #d9534f;
+    transform: translateY(-50%) rotate(45deg);
+}
+label.strike_box input[type="checkbox"]:checked + .box_mark::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background-color: #d9534f;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
 .char_details { grid-area: bio;
     display: grid;
     grid-template-columns: 1fr;
@@ -95,7 +211,6 @@ input:disabled {
     padding: .5rem;
     box-sizing: border-box;
     align-self: start; 
-    justify-self: start;
 }
 .char_details img {
     max-width: fit-content;
@@ -131,7 +246,7 @@ input:disabled {
     border-style: outset;
     border-color: var(--border-color);
     padding: .5rem;
-    align-self: start; 
+    align-self: stretch; 
     justify-self: start;
     column-gap: 1rem;
     row-gap: .5rem;
@@ -241,7 +356,7 @@ input:disabled {
     border-color: var(--border-color, gray);
     padding: .5rem;
 
-    align-self: start;
+    align-self: stretch;
     justify-content: space-around;
     justify-self: start;
     column-gap: 1rem;
@@ -294,9 +409,9 @@ input:disabled {
     border-style: outset;
     border-color: var(--border-color, gray);
     padding: 0.5rem;
-    box-sizing: border-box;
+    box-sizing: content-box;
     width: 100%;
-    align-self: flex-start;
+    align-self: start;
 }
 .special h2 {
     text-align: center;
@@ -323,6 +438,6 @@ input:disabled {
     width: 100%;
 }
 .specialty_row input[type="number"] {
-    width: 55px;
-    text-align: center;
+    display: flex;
+    justify-content: flex-end;
 }
