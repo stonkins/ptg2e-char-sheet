@@ -161,9 +161,9 @@
 
             <div class="fragments_table">
                 <h3>Fragments</h3>
-                <span>Total</span>
+                <span>Total: </span>
                 <input type="number" name="attr_fragments" value="(@{spark} * 3)" disabled>
-                <span>Remaining</span>
+                <span>Remaining: </span>
                 <input type="number" name="attr_fragments_remaining" title="@{fragments_remaining}" value="@{total_fragments}">
             </div>
         </div>
@@ -171,7 +171,7 @@
     </div>
 
     <div class="manifest">
-        <h2>Manifestations</h2>
+        <h2>MANIFESTATIONS</h2>
 
         <h3>Aegis</h3>
         <input type="number" name="attr_aegis" title="@{aegis}" value="0">
@@ -212,6 +212,56 @@
 
         <h3>Remaining XP</h3>
         <input type="number" name="attr_remaining_xp" title="@{remaining_xp}" value="(@{total_xp} - @{spent_xp})" disabled>
+    </div>
+
+    <div class="special">
+        <h2>SPECIALTIES</h2>
+        
+        <fieldset class="repeating_specialty">
+            <div class="specialty_row">
+                <input type="text" name="attr_specialty_name" placeholder="--Specialty Name--"/>
+                    <!--<input type="text" name="attr_specialty_target" placeholder="--Specialty Target (e.g. Athletics)"/>-->
+                    <select name="attr_specialty_target">
+                    <option value="" disabled selected>--Choose Target--</option>
+
+                    <optgroup label="Skills">
+                        <option value="athletics">Athletics</option>
+                        <option value="crafts">Crafts</option>
+                        <option value="deception">Deception</option>
+                        <option value="discipline">Discipline</option>
+                        <option value="empathy">Empathy</option>
+                        <option value="fighting">Fighting</option>
+                        <option value="fortitude">Fortitude</option>
+                        <option value="influence">Influence</option>
+                        <option value="intuition">Intuition</option>
+                        <option value="knowledge">Knowledge</option>
+                        <option value="marksman">Marksman</option>
+                        <option value="medicine">Medicine</option>
+                        <option value="might">Might</option>
+                        <option value="perception">Perception</option>
+                        <option value="perform">Perform</option>
+                        <option value="speed">Speed</option>
+                        <option value="stealth">Stealth</option>
+                        <option value="survival">Survival</option>
+                        <option value="tech">Tech</option>
+                        <option value="travel">Travel</option>
+                    </optgroup>
+                    <optgroup label="Manifestations">
+                        <option value="aegis">Aegis</option>
+                        <option value="beckon">Beckon</option>
+                        <option value="journey">Journey</option>
+                        <option value="minion">Minion</option>
+                        <option value="oracle">Oracle</option>
+                        <option value="puppetry">Puppetry</option>
+                        <option value="ruin">Ruin</option>
+                        <option value="shaping">Shaping</option>
+                        <option value="soul">Soul</option>
+                    </optgroup>
+                    </select>
+                <input type="number" name="attr_specialty_modifier" value="1"/>
+            </div>
+        </fieldset>
+
     </div>
 
 </div>

@@ -4,7 +4,7 @@
 
 h1, h2 {
     font-weight: bolder;
-    font-family: 'Sedgwick Ave Display', Arial
+    font-family: 'Sedgwick Ave Display', Arial;
 }
 h3 {
     font-weight: bolder;
@@ -22,11 +22,11 @@ h3 {
     --input-bg: #ffffff;
     --input-text: #000000;
     
-    background-color: var(--bg-color); /* This fills the entire window */
+    background-color: var(--bg-color);
 }
 
 .sheet-darkmode .charsheet {
-    --bg-color: #1f1f1f;         /* Dark grey background */
+    --bg-color: #1f1f1f;        /* Dark grey background */
     --text-color: #e0e0e0;       /* Off-white text */
     --border-color: #555555;     /* Darker borders */
     --input-bg: #2c2c2c;         /* Dark inputs */
@@ -45,13 +45,13 @@ select,
 option {
     background-color: var(--input-bg);
     color: var(--input-text);
-    border: 1px solid var(--border-color); /* Optional: ensures borders match the theme */
+    border: 1px solid var(--border-color);
 }
 
 input:disabled {
-    background-color: var(--bg-color); /* Blends it in with the sheet background */
+    background-color: var(--bg-color);
     color: var(--text-color);
-    border: 1px dashed var(--border-color); /* Gives a visual cue that it cannot be edited */
+    border: 1px dashed var(--border-color);
 }
 
 /* End Dark Mode formatting */
@@ -60,10 +60,10 @@ input:disabled {
 .page {
     display: grid;
     grid-template-areas: 
-        "title  title   title"
-        "bio    skills  stats"
-        "bio    manifest xp"
-        "bio    special   special";
+        "title   title   title"
+        "bio     skills  stats"
+        "bio     manifest xp"
+        "bio     special   special";
     grid-template-columns: 250px auto auto;
     grid-template-rows: auto minmax(0, max-content) minmax(0, max-content);
     justify-content: start;
@@ -234,13 +234,12 @@ input:disabled {
     text-align: center;
 }
 
-.manifest {grid-area: manifest;
+.manifest { grid-area: manifest;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     border-style: outset;
     border-color: var(--border-color, gray);
     padding: .5rem;
-
     align-self: start;
     justify-content: space-around;
     justify-self: start;
@@ -266,7 +265,7 @@ input:disabled {
     padding: .5rem;
     width: 100%;
     align-self: stretch; 
-    align-content:flex-start;
+    align-content: flex-start;
     justify-self: start;
     column-gap: 1rem;
     row-gap: .5rem;
@@ -277,7 +276,7 @@ input:disabled {
     text-align: center;
     text-decoration: underline;
     text-decoration-style: double;
-    margin: 0 0 5px 0
+    margin: 0 0 5px 0;
 }
 .xp h3 {
     text-align: right;
@@ -286,6 +285,7 @@ input:disabled {
     justify-self: center;
 }
 
+/* Specialties Section (Unified Clean Grid Layout) */
 .special { 
     grid-area: special;
     display: flex;
@@ -319,7 +319,7 @@ input:disabled {
     line-height: 28px;
     padding: 2px 6px;
     box-sizing: border-box;
-    padding: 0.5rem;
+    margin: 0;
     width: 100%;
 }
 .specialty_row input[type="number"] {
