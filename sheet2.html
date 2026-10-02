@@ -201,4 +201,17 @@
         <input type="number" name="attr_soul" title="@{soul}" value="0">
     </div>
 
+    <div class="xp">
+        <h2>XP</h2>
+
+        <h3>Total XP Gained</h3>
+        <input type="number" name="attr_total_xp" title="@{total_xp}" value="0">
+
+        <h3>XP Spent</h3>
+        <input type="number" name="attr_spent_xp" title="@{spent_xp}" value="0">
+
+        <h3>Remaining XP</h3>
+        <input type="number" name="attr_remaining_xp" title="@{remaining_xp}" value="(@{total_xp} - @{spent_xp})" disabled>
+    </div>
+
 </div>
