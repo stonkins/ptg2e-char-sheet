@@ -4,6 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Sedgwick+Ave+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
 h1, h2 {
     font-weight: bolder;
@@ -161,7 +163,9 @@ h1, h2, h3, span {
 
 .page2 {
     display: grid;
-    grid-template-areas: "blessings curses";
+    grid-template-areas: 
+        "blessings curses"
+        "truths truths";
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 10px;
     width: 100%;
@@ -171,13 +175,76 @@ h1, h2, h3, span {
 /* ==========================================================================
    6. PAGE 1: HEADER & TRACKS
    ========================================================================== */
-.title { 
+.title {
     grid-area: title;
-    font-size: 48px;
-    line-height: 64px;
+}
+
+.title h1,
+.title span { 
+    font-family: 'Cinzel Decorative', cursive, serif !important;
+    font-size: 64px !important;
+    line-height: 68px !important;
+    font-weight: 900 !important;
+    
+    text-transform: uppercase;
     text-align: center;
-    text-decoration: underline double var(--text-color);
-    padding: 10px;
+    letter-spacing: 2px;
+    margin: 10px 0;
+
+    /* 1. Smooth Atmospheric Gradient: Icy sky blue top -> Deep cosmic indigo bottom */
+    background: linear-gradient(
+        180deg, 
+        #a5f3fc 0%,    /* Icy sky-blue highlight */
+        #3b82f6 10%,   /* Vibrant royal blue */
+        #1d4ed8 30%,   /* Deep sapphire */
+        #090d16 100%   /* Midnight indigo base */
+    );
+    
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* 2. Recreates the crisp white keyline border around the text + solid black offset shadow */
+    filter: drop-shadow(1px  1px 0px #ffffff) 
+            drop-shadow(-1px -1px 0px #ffffff) 
+            drop-shadow(1px -1px 0px #ffffff) 
+            drop-shadow(-1px  1px 0px #ffffff) 
+            drop-shadow(3px  3px 0px #000000);
+            
+    box-sizing: border-box;
+}
+
+.title h2 {
+    font-family: 'Cinzel Decorative', cursive, serif !important;
+    font-size: 26px !important;
+    line-height: 30px !important;
+    font-weight: 900 !important;
+    
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 6px; /* Wider tracking gives a stamped/engraved crest look */
+    margin: 4px 0 10px 0;
+
+    /* Multi-stop Polished Steel / Chrome Gradient with Horizon Reflection */
+    background: linear-gradient(
+        180deg, 
+        #ffffff 0%, 
+        #e2e8f0 25%, 
+        #8a94a6 48%, 
+        #20252d 50%, 
+        #6e7888 52%, 
+        #ffffff 80%, 
+        #4a5260 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* High-contrast rim highlights and drop shadow */
+    filter: drop-shadow(0px 0px 1px #ffffff) 
+            drop-shadow(2px 2px 0px #000000) 
+            drop-shadow(-1px -1px 0px #000000);
+
     box-sizing: border-box;
 }
 
@@ -203,7 +270,7 @@ h1, h2, h3, span {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 220px;
+    width: 175px;
     border-right: 1px solid var(--border-color);
     padding-right: 12px;
     flex-shrink: 0;
@@ -664,6 +731,146 @@ button[type="roll"].curse_chat_btn:hover {
 }
 
 /* ==========================================================================
+   TRUTHS PANEL CONTAINER
+   ========================================================================== */
+.truths {
+    grid-area: truths;
+    background: #ffffff;
+    border: 3px solid #000000;
+    /* Organic hand-cut paper corner radii */
+    border-radius: 2px 255px 3px 25px / 255px 5px 225px 5px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 0px #000000;
+    position: relative;
+}
+
+.sheet-darkmode .truths_container {
+    background: #121212;
+    border-color: #f1f5f9;
+    box-shadow: 5px 5px 0px #334155;
+}
+
+.panel_subtext {
+    font-size: 11px;
+    font-style: italic;
+    margin: -4px 0 12px 0;
+    color: #555555;
+}
+
+.sheet-darkmode .panel_subtext {
+    color: #94a3b8;
+}
+
+/* ==========================================================================
+   REPEATING TRUTH CARDS (MANIFESTO CLIPPINGS)
+   ========================================================================== */
+.truth_card {
+    position: relative;
+    background: #f8fafc;
+    border: 2px solid #000000;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    box-shadow: 3px 3px 0px #000000;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.truth_card:focus-within {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px #000000;
+}
+
+.sheet-darkmode .truth_card {
+    background: #1e293b;
+    border-color: #cbd5e1;
+    box-shadow: 3px 3px 0px #475569;
+}
+
+.sheet-darkmode .truth_card:focus-within {
+    box-shadow: 4px 4px 0px #64748b;
+}
+
+/* ==========================================================================
+   TRUTH CARD HEADER & NAME
+   ========================================================================== */
+.truth_header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.quote_icon,
+.quote_icon_end {
+    font-family: 'Cinzel Decorative', Georgia, serif;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 0.8;
+    color: #000000;
+    user-select: none;
+}
+
+.sheet-darkmode .quote_icon,
+.sheet-darkmode .quote_icon_end {
+    color: #f1f5f9;
+}
+
+.truth_title_input {
+    width: 100%;
+    font-family: 'Cinzel Decorative', serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    border: none !important;
+    border-bottom: 2px dashed #000000 !important;
+    background: transparent !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: var(--text-color, #000000) !important;
+    padding: 2px 4px !important;
+    border-radius: 0 !important;
+}
+
+.sheet-darkmode .truth_title_input {
+    color: #f1f5f9 !important;
+    -webkit-text-fill-color: #f1f5f9 !important;
+    border-bottom-color: #cbd5e1 !important;
+}
+
+/* ==========================================================================
+   TRUTH QUOTE TEXTAREA
+   ========================================================================== */
+.truth_body {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.truth_quote_textarea {
+    width: 100%;
+    min-height: 52px;
+    height: 52px;
+    font-family: 'Special Elite', 'Courier New', monospace !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    background: transparent !important;
+    border: none !important;
+    color: #1e293b !important;
+    -webkit-text-fill-color: var(--text-color, #1e293b) !important;
+    resize: vertical;
+    box-sizing: border-box;
+    padding: 4px !important;
+}
+
+.sheet-darkmode .truth_quote_textarea {
+    color: #e2e8f0 !important;
+    -webkit-text-fill-color: #e2e8f0 !important;
+}
+
+.quote_icon_end {
+    align-self: flex-end;
+}
+
+/* ==========================================================================
    12. REPEATING SECTION EDIT CONTROLS FIX (BLESSINGS & CURSES)
    ========================================================================== */
 
@@ -855,4 +1062,29 @@ input.settings_toggle_checkbox:checked ~ .settings_menu_panel {
     font-family: 'Atkinson Hyperlegible', Arial, sans-serif !important;
     letter-spacing: 0.03em !important;
     line-height: 1.4 !important;
+}
+
+/* ==========================================================================
+   16. UNDIM DISABLED INPUTS
+   ========================================================================== */
+input:disabled,
+textarea:disabled,
+select:disabled {
+    /* Stop default element transparency */
+    opacity: 1 !important;
+    
+    /* Dynamically inherit active text color (Light vs. Dark) */
+    color: var(--text-color, currentColor) !important;
+    -webkit-text-fill-color: var(--text-color, currentColor) !important;
+    
+    background-color: transparent;
+    cursor: default;
+}
+
+/* Roll20 Native Dark Mode Class Hook */
+.sheet-darkmode input:disabled,
+.sheet-darkmode textarea:disabled,
+.sheet-darkmode select:disabled {
+    color: var(--text-color, #e2e8f0) !important;
+    -webkit-text-fill-color: var(--text-color, #e2e8f0) !important;
 }

@@ -46,7 +46,8 @@
        1. SHEET HEADER / TITLE
        ========================================================================== -->
     <div class="title">
-        <h1>PART-TIME GODS: Second Edition</h1>
+        <h1>PART-TIME GODS</h1>
+        <h2>Second Edition</h2>
     </div>
 
     <!-- ==========================================================================
@@ -74,6 +75,11 @@
                 <label class="strike_box"><input type="checkbox" name="attr_health_8" /><span class="box_mark"></span></label>
                 <label class="strike_box"><input type="checkbox" name="attr_health_9" /><span class="box_mark"></span></label>
                 <label class="strike_box"><input type="checkbox" name="attr_health_10" /><span class="box_mark"></span></label>
+                <label class="strike_box"><input type="checkbox" name="attr_health_11" /><span class="box_mark"></span></label>
+                <label class="strike_box"><input type="checkbox" name="attr_health_12" /><span class="box_mark"></span></label>
+                <label class="strike_box"><input type="checkbox" name="attr_health_13" /><span class="box_mark"></span></label>
+                <label class="strike_box"><input type="checkbox" name="attr_health_14" /><span class="box_mark"></span></label>
+                <label class="strike_box"><input type="checkbox" name="attr_health_15" /><span class="box_mark"></span></label>
             </div>
         </div>
         
@@ -97,6 +103,11 @@
                 <label class="strike_box"><input type="checkbox" name="attr_psyche_8" /><span class="box_mark"></span></label>
                 <label class="strike_box"><input type="checkbox" name="attr_psyche_9" /><span class="box_mark"></span></label>
                 <label class="strike_box"><input type="checkbox" name="attr_psyche_10" /><span class="box_mark"></span></label>
+                <label class="strike_box"><input type="checkbox" name="attr_psyche_11" /><span class="box_mark"></span></label>
+                <label class="strike_box"><input type="checkbox" name="attr_psyche_12" /><span class="box_mark"></span></label>
+                <label class="strike_box"><input type="checkbox" name="attr_psyche_13" /><span class="box_mark"></span></label>
+                <label class="strike_box"><input type="checkbox" name="attr_psyche_14" /><span class="box_mark"></span></label>
+                <label class="strike_box"><input type="checkbox" name="attr_psyche_15" /><span class="box_mark"></span></label>
             </div>
         </div>
 
@@ -268,7 +279,7 @@
             <div class="fragments_table">
                 <h3>Fragments</h3>
                 <span>Total: </span>
-                <input type="number" name="attr_fragments" value="(@{spark} * 3)" disabled />
+                <input type="number" name="attr_fragments" title="@{total_fragments}" value="(@{spark} * 3)" disabled />
                 <span>Remaining: </span>
                 <input type="number" name="attr_fragments_remaining" title="@{fragments_remaining}" value="@{total_fragments}" />
             </div>
@@ -517,6 +528,27 @@
 
                 <!-- Collapsible Text Area -->
                 <textarea class="curse_desc" name="attr_curse_desc" placeholder="--Curse Text--"></textarea>
+            </div>
+        </fieldset>
+    </div>
+
+    <!-- ==========================================================================
+       11. TRUTHS (REPEATING SECTION)
+       ========================================================================== -->
+    <div class="zine_panel truths_container">
+        <div class="zine_header">Divine Truths</div>
+    
+        <fieldset class="repeating_truths">
+            <div class="truth_card">
+                <div class="truth_header">
+                    <span class="quote_icon">“</span>
+                    <input type="text" name="attr_truth_name" class="truth_title_input" placeholder="Truth Name / Aspect" />
+                </div>
+            
+                <div class="truth_body">
+                    <textarea name="attr_truth_text" class="truth_quote_textarea" placeholder="State your divine truth..."></textarea>
+                    <span class="quote_icon_end">”</span>
+                </div>
             </div>
         </fieldset>
     </div>
