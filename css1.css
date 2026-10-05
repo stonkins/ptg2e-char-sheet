@@ -1,0 +1,1602 @@
+/* ==========================================================================
+   1. FONTS & DUAL-THEME VARIABLES (LIGHT & DARK ACCORDING TO SPARK)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel+Decorative:wght@400;700;900&family=Sedgwick+Ave+Display&family=Special+Elite&display=swap');
+
+/* Default Light Palette */
+.charsheet {
+    --bg-color: #f7f4ea;
+    --text-color: #1a1a1a;
+    --border-color: #262626;
+    --input-bg: #ffffff;
+    --input-text: #000000;
+    --card-bg: #fdfaf3;
+    --accent-gold: #1a1a1a;
+    --radiant-gold: #ca8a04;
+    --spark-diamond: #ca8a04;
+    --spark-star: #ffffff;
+    --font-active-inputs: 'Architects Daughter', cursive, sans-serif;
+    
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Dark Palette */
+.sheet-darkmode .charsheet {
+    --bg-color: #161514;
+    --text-color: #f5f5f4;
+    --border-color: #57534e;
+    --input-bg: #242220;
+    --input-text: #ffffff;
+    --card-bg: #1c1a19;
+    --accent-gold: #f59e0b;
+    --radiant-gold: #fde047;
+    --spark-diamond: #fde047;
+    --spark-star: #161514;
+    --font-active-inputs: 'Architects Daughter', cursive, sans-serif;
+    
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.sheet-darkmode ::placeholder {
+    color: #a8a29e !important;
+    opacity: 0.8 !important;
+}
+
+.sheet-darkmode select option {
+    background-color: #242220 !important;
+    color: #ffffff !important;
+}
+.sheet-darkmode select optgroup {
+    background-color: #1c1a19 !important;
+    color: #fde047 !important;
+}
+
+/* ==========================================================================
+   2. TAB CONTROLLER & STRUCTURAL SWITCHING (3 TABS)
+   ========================================================================== */
+input.tab_watcher { display: none !important; }
+
+.tab_frontline, .tab_soul, .tab_bonds { display: none; width: 100%; box-sizing: border-box; }
+
+.charsheet:has(input[name="attr_active_tab"][value="frontline"]:checked) .tab_frontline {
+    display: flex; flex-direction: column; gap: 12px;
+}
+.charsheet:has(input[name="attr_active_tab"][value="soul"]:checked) .tab_soul {
+    display: flex; flex-direction: column; gap: 16px;
+}
+.charsheet:has(input[name="attr_active_tab"][value="bonds"]:checked) .tab_bonds {
+    display: flex; flex-direction: column; gap: 16px;
+}
+
+/* ==========================================================================
+   3. SETTINGS MENU & FONT OVERRIDES
+   ========================================================================== */
+.sheet_settings_wrapper { 
+    position: absolute; top: 10px; right: 10px; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end; 
+}
+input.settings_toggle_checkbox {
+    display: none !important; position: absolute !important; opacity: 0 !important; width: 0 !important; height: 0 !important; pointer-events: none !important;
+}
+
+.settings_cog_btn {
+    display: flex !important; align-items: center !important; justify-content: center !important; 
+    width: 28px !important; height: 28px !important; background: #1e1e1e !important; color: #ffffff !important; 
+    border: 2px solid #000000 !important; border-radius: 4px !important; font-size: 18px !important; line-height: 1 !important; 
+    padding: 0 !important; cursor: pointer !important; user-select: none !important; overflow: hidden !important; 
+    transition: transform 0.2s ease, background-color 0.2s ease !important;
+}
+.settings_cog_btn:hover { background: #333333 !important; transform: rotate(30deg); }
+
+.settings_menu_panel {
+    display: none; position: absolute; top: 34px; right: 0; width: 220px; background: #1c1a19; color: #f5f5f4; 
+    border: 2px solid #57534e; padding: 12px; box-shadow: 4px 4px 0px #000000; z-index: 1001;
+}
+input.settings_toggle_checkbox:checked ~ .settings_menu_panel { display: block; }
+
+.settings_menu_header h3 { margin: 0 0 8px 0; font-size: 13px; letter-spacing: 1px; border-bottom: 1px solid #444444; padding-bottom: 4px; color: #f5f5f4; font-family: Arial, sans-serif; }
+.settings_section_title { display: block; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #a8a29e; margin-bottom: 6px; font-family: Arial, sans-serif; }
+.font_radio_label { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-family: Arial, sans-serif; font-size: 12px; color: #f5f5f4; cursor: pointer; }
+.font_radio_label input[type="radio"] { cursor: pointer; margin: 0; }
+
+.sheet_settings_wrapper:has(input[name="attr_font_mode"][value="standard"]:checked) ~ .sheet_core_wrapper,
+.sheet_settings_wrapper:has(input[name="attr_font_mode"][value="standard"]:checked) ~ .sheet_core_wrapper * {
+    font-family: Arial, Helvetica, sans-serif !important; letter-spacing: 0.02em !important; line-height: 1.35 !important;
+}
+.sheet_settings_wrapper:has(input[name="attr_font_mode"][value="dyslexic"]:checked) ~ .sheet_core_wrapper,
+.sheet_settings_wrapper:has(input[name="attr_font_mode"][value="dyslexic"]:checked) ~ .sheet_core_wrapper * {
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif !important; letter-spacing: 0.03em !important; line-height: 1.4 !important;
+}
+
+/* ==========================================================================
+   4. GLOBAL RESETS & STYLING UTILITIES
+   ========================================================================== */
+h1, h2 { font-family: 'Sedgwick Ave Display', Arial, sans-serif; font-weight: bolder; margin: 0; }
+h3 { font-family: Arial, sans-serif; font-weight: bolder; margin: 0; }
+
+.charsheet input[type="text"],
+.charsheet input[type="number"],
+.charsheet select,
+.charsheet textarea {
+    margin: 0; box-sizing: border-box; background-color: var(--input-bg); color: var(--input-text);
+    border: 1px solid var(--border-color); font-family: var(--font-active-inputs); font-size: 13px;
+}
+
+/* Universal Spinner Stripping */
+.no_spin_input::-webkit-outer-spin-button,
+.no_spin_input::-webkit-inner-spin-button,
+.level_input::-webkit-outer-spin-button,
+.level_input::-webkit-inner-spin-button,
+.res_cell_inp::-webkit-outer-spin-button,
+.res_cell_inp::-webkit-inner-spin-button,
+.custom_mod_pill input::-webkit-outer-spin-button,
+.custom_mod_pill input::-webkit-inner-spin-button { 
+    -webkit-appearance: none !important; margin: 0 !important; 
+}
+.no_spin_input,
+.level_input[type="number"],
+.res_cell_inp[type="number"],
+.custom_mod_pill input[type="number"] { 
+    -webkit-appearance: none !important; appearance: textfield !important; -moz-appearance: textfield !important; 
+}
+
+.level_select {
+    appearance: none !important; -webkit-appearance: none !important;
+    width: 28px !important; height: 22px !important; border: none !important; background: transparent !important;
+    text-align: center; text-align-last: center; font-weight: bold; color: inherit !important; cursor: pointer; padding: 0 !important;
+}
+
+.ink-box { border: 2.5px solid var(--border-color) !important; border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; position: relative; transition: border-radius 0.25s ease, border-color 0.25s ease; }
+.ink-box-alt { border: 2.5px solid var(--border-color) !important; border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px !important; position: relative; transition: border-radius 0.25s ease, border-color 0.25s ease; }
+.zine-shadow { box-shadow: 4px 4px 0px var(--border-color) !important; transition: box-shadow 0.25s ease; }
+
+/* Header Progression (.label-tape) */
+.label-tape {
+    display: inline-block !important; background-color: var(--text-color) !important; color: var(--bg-color) !important;
+    padding: 3px 12px !important; transform: rotate(-1.2deg) skew(-2deg) !important; border-radius: 1px !important;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.3) !important; transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   AUTO-EXPANDING GRID MIRROR TECHNIQUE
+   ========================================================================== */
+.auto_expand_wrapper {
+    display: grid; width: 100%; min-height: 44px; align-items: stretch; position: relative;
+}
+.truth_title_wrapper { min-height: 22px !important; }
+
+.auto_expand_mirror, .auto_expand_textarea {
+    grid-area: 1 / 1 / 2 / 2;
+    font-family: inherit; font-size: inherit; font-weight: inherit;
+    padding: 4px 6px; margin: 0; box-sizing: border-box;
+    white-space: pre-wrap; word-break: break-word; line-height: inherit;
+}
+.auto_expand_mirror {
+    visibility: hidden; pointer-events: none;
+}
+.auto_expand_textarea {
+    resize: none !important; overflow: hidden !important; 
+    background: transparent !important; border: none !important; height: 100% !important;
+}
+
+/* Fallback */
+.user_resize_text {
+    resize: vertical !important; field-sizing: content !important; box-sizing: border-box; width: 100%;
+}
+
+/* ==========================================================================
+   HIGH-CONTRAST CHAT ICONS (VISIBLE AT ALL SPARK LEVELS)
+   ========================================================================== */
+button[type="roll"].blessing_chat_btn::before, 
+button[type="roll"].curse_chat_btn::before, 
+button[type="roll"].truth_chat_btn::before,
+button[type="roll"].bond_chat_btn::before,
+button[type="roll"].vassal_chat_btn::before,
+button[type="roll"].weapon_chat_btn::before { content: '' !important; display: none !important; }
+
+button[type="roll"].blessing_chat_btn, 
+button[type="roll"].curse_chat_btn, 
+button[type="roll"].truth_chat_btn,
+button[type="roll"].bond_chat_btn,
+button[type="roll"].vassal_chat_btn,
+button[type="roll"].weapon_chat_btn {
+    width: 24px !important; height: 24px !important; margin: 0 !important; padding: 0 !important;
+    background: #ffffff !important; color: #000000 !important; border: 2px solid #000000 !important; border-radius: 4px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-family: 'pictos' !important; font-size: 15px !important; font-weight: 900 !important;
+    flex-shrink: 0; box-shadow: 1px 1px 0 rgba(0,0,0,0.3); transition: all 0.15s ease;
+}
+
+/* Dark Mode: Radiant Golden Amber Button with Jet Black Glyph */
+.sheet-darkmode button[type="roll"].blessing_chat_btn, 
+.sheet-darkmode button[type="roll"].curse_chat_btn, 
+.sheet-darkmode button[type="roll"].truth_chat_btn, 
+.sheet-darkmode button[type="roll"].bond_chat_btn, 
+.sheet-darkmode button[type="roll"].vassal_chat_btn,
+.sheet-darkmode button[type="roll"].weapon_chat_btn {
+    background: #f59e0b !important; color: #000000 !important; border: 2px solid #fde047 !important;
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.7) !important;
+}
+.sheet-darkmode button[type="roll"].blessing_chat_btn:hover, 
+.sheet-darkmode button[type="roll"].curse_chat_btn:hover, 
+.sheet-darkmode button[type="roll"].truth_chat_btn:hover, 
+.sheet-darkmode button[type="roll"].bond_chat_btn:hover, 
+.sheet-darkmode button[type="roll"].vassal_chat_btn:hover,
+.sheet-darkmode button[type="roll"].weapon_chat_btn:hover {
+    background: #fde047 !important; color: #000000 !important; box-shadow: 0 0 12px #fde047 !important;
+}
+
+/* UI Dice Font Icon */
+.d10_icon { font-family: 'dicefontd10' !important; font-size: 16px; font-weight: normal; margin-right: 4px; line-height: 1; }
+
+
+/* ==========================================================================
+   5. SHEET BRANDING & PHYSICAL FOLDER TABS
+   ========================================================================== */
+.sheet_branding_bar {
+    display: flex; align-items: center; justify-content: space-between; padding: 4px 10px 8px 10px; width: 100%; box-sizing: border-box;
+}
+.header_title_group h1 {
+    font-family: 'Cinzel Decorative', serif !important; font-size: 38px !important; line-height: 42px !important;
+    background: linear-gradient(180deg, #a5f3fc 0%, #3b82f6 40%, #090d16 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(1px 1px 0px #ffffff) drop-shadow(2px 2px 0px #000000);
+}
+.header_title_group h2 {
+    font-family: 'Cinzel Decorative', serif !important; font-size: 18px !important; letter-spacing: 4px; color: var(--text-color);
+}
+
+.sheet_folder_tabs {
+    display: flex; gap: 0; align-items: flex-end; justify-content: flex-end; margin-right: 14px; margin-left: auto; position: relative; z-index: 5;
+}
+.tab_folder_btn {
+    position: relative; cursor: pointer; margin: 0;
+}
+.tab_folder_btn input[type="radio"] {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; z-index: 10;
+}
+.tab_folder_label {
+    display: inline-flex; align-items: center; padding: 8px 16px; font-family: 'Special Elite', monospace; font-size: 11px; font-weight: bold;
+    letter-spacing: 0.5px; background: #dedbd0; color: #444444; border: 2.5px solid var(--border-color); border-bottom: none;
+    border-radius: 6px 6px 0 0; box-shadow: 2px -2px 0px rgba(0,0,0,0.15); transition: all 0.2s ease; user-select: none;
+}
+.tab_folder_btn:not(:first-child) .tab_folder_label {
+    margin-left: -2.5px;
+}
+.sheet-darkmode .tab_folder_label { background: #262422; color: #a8a29e; border-color: #57534e; }
+.tab_folder_btn:hover .tab_folder_label { transform: translateY(-2px); color: var(--text-color); }
+.tab_folder_btn input[type="radio"]:checked + .tab_folder_label {
+    background: var(--bg-color); color: var(--text-color); border-bottom: 3px solid var(--bg-color); margin-bottom: -3px; z-index: 12;
+    box-shadow: 0 -3px 0 var(--border-color);
+}
+.sheet-darkmode .tab_folder_btn input[type="radio"]:checked + .tab_folder_label {
+    color: #fde047; border-color: #a16207;
+}
+
+.sheet_main_folder {
+    background: var(--bg-color); border: 2.5px solid var(--border-color); border-radius: 0 12px 12px 12px !important;
+    padding: 14px; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 2;
+}
+
+.persistent_header { display: flex; flex-direction: column; gap: 10px; width: 100%; box-sizing: border-box; }
+.header_identity_row { display: flex; width: 100%; }
+.name_pill {
+    display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.04); border: 1.5px solid var(--border-color); border-radius: 3px; padding: 4px 10px; width: 100%; box-sizing: border-box;
+}
+.sheet-darkmode .name_pill { background: rgba(255,255,255,0.03); }
+.pill_tag { font-family: 'Special Elite', monospace; font-size: 12px; font-weight: bold; color: var(--text-color); }
+.header_name_mortal, .header_name_divine {
+    flex: 1 1 0; min-width: 0; border: none !important; background: transparent !important; font-weight: bold; font-size: 18px !important; height: 26px;
+}
+.divine_name_lbl, .header_name_divine { display: none !important; }
+
+/* ==========================================================================
+   6. CENTERED DIVINE SPARK ALTAR
+   ========================================================================== */
+.altar_shrine {
+    background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 3px; padding: 12px 14px; box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; text-align: center;
+}
+.altar_header_label {
+    display: flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Cinzel Decorative', serif; font-size: 15px; font-weight: bold; letter-spacing: 2px; margin-bottom: 10px; color: var(--text-color);
+}
+.altar_braziers_row {
+    display: flex; align-items: flex-start; justify-content: center; flex-wrap: wrap; gap: 24px; margin: 0 auto; width: 100%;
+}
+
+.brazier_station {
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 6px; width: 72px; flex: 0 0 72px; box-sizing: border-box;
+}
+.astrolabe_btn {
+    position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; margin: 0 auto; padding: 0; background: transparent; border: none; text-decoration: none; width: 100%;
+}
+.astrolabe_btn input[type="radio"].spark_tier_input {
+    position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; cursor: pointer; z-index: 10;
+}
+
+.astrolabe_frame {
+    display: flex; align-items: center; justify-content: center; position: relative; width: 44px; height: 44px; margin: 0 auto;
+}
+.astrolabe_ring {
+    position: absolute; inset: 0; margin: auto; width: 40px; height: 40px; border-radius: 50%; border: 1.5px dashed var(--border-color); box-sizing: border-box; transition: all 0.25s ease;
+}
+
+.astrolabe_diamond_glyph {
+    position: absolute; inset: 0; margin: auto; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    font-size: 26px; line-height: 1; color: var(--spark-diamond); transition: all 0.25s ease;
+}
+.astrolabe_star_glyph {
+    position: absolute; inset: 0; margin: auto; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; line-height: 1; color: var(--spark-star); z-index: 2; transition: all 0.25s ease;
+}
+
+.brazier_rank {
+    display: block; width: 100%; font-family: 'Special Elite', monospace; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; text-align: center; margin-top: 4px; color: var(--text-color);
+}
+
+.fragment_triad {
+    display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: center !important;
+    gap: 8px !important; width: 100% !important; height: 16px !important; background: transparent !important;
+    border: none !important; margin: 2px auto 0 auto !important; padding: 0 !important;
+}
+
+.shard_box {
+    position: relative; width: 12px; height: 12px; cursor: pointer; margin: 0; padding: 0; display: flex; align-items: center; justify-content: center; flex: 0 0 12px;
+}
+.shard_box input[type="checkbox"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; padding: 0; cursor: pointer; z-index: 5; }
+.shard_mark {
+    display: block; width: 8px; height: 8px; border-radius: 50%; background: #78716c; border: 1px solid #57534e; box-sizing: border-box; transition: all 0.15s ease; margin: 0 auto;
+}
+.shard_box input[type="checkbox"]:checked + .shard_mark {
+    background: #f59e0b; border-color: #fef08a; box-shadow: 0 0 6px #f59e0b, 0 0 10px rgba(245, 158, 11, 0.7);
+}
+
+/* Progressive Spark Visibility */
+/* Start by hiding all higher tier braziers & fragments */
+.brazier_2, .brazier_3, .brazier_4, .brazier_5 { display: none !important; }
+.brazier_1 .fragment_triad, .brazier_2 .fragment_triad, .brazier_3 .fragment_triad, .brazier_4 .fragment_triad, .brazier_5 .fragment_triad { display: none !important; }
+
+/* Show the next brazier in line to allow clicking up */
+.charsheet:has(input[name="attr_spark"][value="1"]:checked) .brazier_1,
+.charsheet:has(input[name="attr_spark"][value="1"]:checked) .brazier_2 { display: flex !important; }
+
+.charsheet:has(input[name="attr_spark"][value="2"]:checked) .brazier_1,
+.charsheet:has(input[name="attr_spark"][value="2"]:checked) .brazier_2,
+.charsheet:has(input[name="attr_spark"][value="2"]:checked) .brazier_3 { display: flex !important; }
+
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_1,
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_2,
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_3,
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_4 { display: flex !important; }
+
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_1,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_2,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_3,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_4,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_5 { display: flex !important; }
+
+.charsheet:has(input[name="attr_spark"][value="5"]:checked) .brazier_station { display: flex !important; }
+
+/* Show Fragments only for CURRENT AND PREVIOUS Sparks */
+.charsheet:has(input[name="attr_spark"][value="1"]:checked) .brazier_1 .fragment_triad { display: flex !important; }
+
+.charsheet:has(input[name="attr_spark"][value="2"]:checked) .brazier_1 .fragment_triad,
+.charsheet:has(input[name="attr_spark"][value="2"]:checked) .brazier_2 .fragment_triad { display: flex !important; }
+
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_1 .fragment_triad,
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_2 .fragment_triad,
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_3 .fragment_triad { display: flex !important; }
+
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_1 .fragment_triad,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_2 .fragment_triad,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_3 .fragment_triad,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_4 .fragment_triad { display: flex !important; }
+
+.charsheet:has(input[name="attr_spark"][value="5"]:checked) .fragment_triad { display: flex !important; }
+
+/* Active Glyphs */
+.charsheet:has(input[name="attr_spark"][value="1"]:checked) .brazier_1 .astrolabe_diamond_glyph,
+.charsheet:has(input[name="attr_spark"][value="2"]:checked) .brazier_1 .astrolabe_diamond_glyph,
+.charsheet:has(input[name="attr_spark"][value="2"]:checked) .brazier_2 .astrolabe_diamond_glyph,
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_1 .astrolabe_diamond_glyph,
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_2 .astrolabe_diamond_glyph,
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_3 .astrolabe_diamond_glyph,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_1 .astrolabe_diamond_glyph,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_2 .astrolabe_diamond_glyph,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_3 .astrolabe_diamond_glyph,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_4 .astrolabe_diamond_glyph,
+.charsheet:has(input[name="attr_spark"][value="5"]:checked) .brazier_station .astrolabe_diamond_glyph {
+    color: #f59e0b !important; text-shadow: 0 0 8px #f59e0b, 0 0 16px #fde047 !important;
+}
+
+/* Dull the "Next" Ascending Spark */
+.charsheet:has(input[name="attr_spark"][value="1"]:checked) .brazier_2 .astrolabe_btn,
+.charsheet:has(input[name="attr_spark"][value="2"]:checked) .brazier_3 .astrolabe_btn,
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_4 .astrolabe_btn,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_5 .astrolabe_btn {
+    opacity: 0.35; filter: grayscale(100%); cursor: pointer;
+}
+
+
+/* ==========================================================================
+   7. HEALTH, PSYCHE & CONDITIONS (CONTAINED GRID)
+   ========================================================================== */
+.cap_watcher { display: none !important; }
+
+.header_survival_row { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; width: 100%; box-sizing: border-box; }
+.track_block {
+    display: flex; align-items: center; gap: 10px; border: 1.5px solid var(--border-color); padding: 6px 10px; border-radius: 3px; background: rgba(0,0,0,0.02); flex: 1 1 310px;
+}
+.sheet-darkmode .track_block { background: rgba(255,255,255,0.03); }
+.track_header {
+    display: flex; align-items: center; width: 80px; border-right: 1px solid var(--border-color); padding-right: 8px; flex-shrink: 0;
+}
+.track_header h2 { font-size: 15px; color: var(--text-color); }
+
+.track_row {
+    display: grid !important; grid-template-columns: repeat(10, 18px) !important; grid-template-rows: repeat(2, 18px) !important; gap: 4px !important; width: fit-content !important;
+}
+label.strike_box {
+    position: relative; width: 18px; height: 18px; cursor: pointer; margin: 0; flex-shrink: 0;
+}
+label.strike_box input[type="checkbox"] {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; margin: 0; z-index: 2; cursor: pointer;
+}
+label.strike_box .box_mark {
+    display: block; width: 18px; height: 18px; border: 1.5px solid var(--border-color); background: var(--input-bg); border-radius: 2px; box-sizing: border-box; position: relative;
+}
+
+label.strike_box input[type="checkbox"]:checked + .box_mark::before,
+label.strike_box input[type="checkbox"]:checked + .box_mark::after {
+    content: ''; position: absolute; top: 50%; left: 10%; width: 80%; height: 2.5px; background: #dc2626; border-radius: 1px;
+}
+.sheet-darkmode label.strike_box input[type="checkbox"]:checked + .box_mark::before,
+.sheet-darkmode label.strike_box input[type="checkbox"]:checked + .box_mark::after {
+    background: #ef4444 !important;
+}
+label.strike_box input[type="checkbox"]:checked + .box_mark::before { transform: translateY(-50%) rotate(45deg); }
+label.strike_box input[type="checkbox"]:checked + .box_mark::after { transform: translateY(-50%) rotate(-45deg); }
+
+/* Hide Boxes Above Current Cap */
+.charsheet:has(input.hp_cap_watcher[value="1"]) .hp_track_row .strike_box:nth-child(n+2),
+.charsheet:has(input.hp_cap_watcher[value="2"]) .hp_track_row .strike_box:nth-child(n+3),
+.charsheet:has(input.hp_cap_watcher[value="3"]) .hp_track_row .strike_box:nth-child(n+4),
+.charsheet:has(input.hp_cap_watcher[value="4"]) .hp_track_row .strike_box:nth-child(n+5),
+.charsheet:has(input.hp_cap_watcher[value="5"]) .hp_track_row .strike_box:nth-child(n+6),
+.charsheet:has(input.hp_cap_watcher[value="6"]) .hp_track_row .strike_box:nth-child(n+7),
+.charsheet:has(input.hp_cap_watcher[value="7"]) .hp_track_row .strike_box:nth-child(n+8),
+.charsheet:has(input.hp_cap_watcher[value="8"]) .hp_track_row .strike_box:nth-child(n+9),
+.charsheet:has(input.hp_cap_watcher[value="9"]) .hp_track_row .strike_box:nth-child(n+10),
+.charsheet:has(input.hp_cap_watcher[value="10"]) .hp_track_row .strike_box:nth-child(n+11),
+.charsheet:has(input.hp_cap_watcher[value="11"]) .hp_track_row .strike_box:nth-child(n+12),
+.charsheet:has(input.hp_cap_watcher[value="12"]) .hp_track_row .strike_box:nth-child(n+13),
+.charsheet:has(input.hp_cap_watcher[value="13"]) .hp_track_row .strike_box:nth-child(n+14),
+.charsheet:has(input.hp_cap_watcher[value="14"]) .hp_track_row .strike_box:nth-child(n+15),
+.charsheet:has(input.hp_cap_watcher[value="15"]) .hp_track_row .strike_box:nth-child(n+16),
+.charsheet:has(input.hp_cap_watcher[value="16"]) .hp_track_row .strike_box:nth-child(n+17),
+.charsheet:has(input.hp_cap_watcher[value="17"]) .hp_track_row .strike_box:nth-child(n+18),
+.charsheet:has(input.hp_cap_watcher[value="18"]) .hp_track_row .strike_box:nth-child(n+19),
+.charsheet:has(input.hp_cap_watcher[value="19"]) .hp_track_row .strike_box:nth-child(n+20),
+.charsheet:has(input.psy_cap_watcher[value="1"]) .psy_track_row .strike_box:nth-child(n+2),
+.charsheet:has(input.psy_cap_watcher[value="2"]) .psy_track_row .strike_box:nth-child(n+3),
+.charsheet:has(input.psy_cap_watcher[value="3"]) .psy_track_row .strike_box:nth-child(n+4),
+.charsheet:has(input.psy_cap_watcher[value="4"]) .psy_track_row .strike_box:nth-child(n+5),
+.charsheet:has(input.psy_cap_watcher[value="5"]) .psy_track_row .strike_box:nth-child(n+6),
+.charsheet:has(input.psy_cap_watcher[value="6"]) .psy_track_row .strike_box:nth-child(n+7),
+.charsheet:has(input.psy_cap_watcher[value="7"]) .psy_track_row .strike_box:nth-child(n+8),
+.charsheet:has(input.psy_cap_watcher[value="8"]) .psy_track_row .strike_box:nth-child(n+9),
+.charsheet:has(input.psy_cap_watcher[value="9"]) .psy_track_row .strike_box:nth-child(n+10),
+.charsheet:has(input.psy_cap_watcher[value="10"]) .psy_track_row .strike_box:nth-child(n+11),
+.charsheet:has(input.psy_cap_watcher[value="11"]) .psy_track_row .strike_box:nth-child(n+12),
+.charsheet:has(input.psy_cap_watcher[value="12"]) .psy_track_row .strike_box:nth-child(n+13),
+.charsheet:has(input.psy_cap_watcher[value="13"]) .psy_track_row .strike_box:nth-child(n+14),
+.charsheet:has(input.psy_cap_watcher[value="14"]) .psy_track_row .strike_box:nth-child(n+15),
+.charsheet:has(input.psy_cap_watcher[value="15"]) .psy_track_row .strike_box:nth-child(n+16),
+.charsheet:has(input.psy_cap_watcher[value="16"]) .psy_track_row .strike_box:nth-child(n+17),
+.charsheet:has(input.psy_cap_watcher[value="17"]) .psy_track_row .strike_box:nth-child(n+18),
+.charsheet:has(input.psy_cap_watcher[value="18"]) .psy_track_row .strike_box:nth-child(n+19),
+.charsheet:has(input.psy_cap_watcher[value="19"]) .psy_track_row .strike_box:nth-child(n+20) {
+    display: none !important;
+}
+
+/* Conditions Dock: Fully Responsive Grid with Explicit Card Integrity */
+.conditions_dock {
+    display: flex; flex-direction: column; gap: 6px; border: 1.5px solid var(--border-color); 
+    padding: 6px 10px; border-radius: 3px; background: rgba(0,0,0,0.02); flex: 2 1 420px;
+}
+.sheet-darkmode .conditions_dock { background: rgba(255,255,255,0.03); }
+.dock_title { font-family: 'Special Elite', monospace; font-size: 12px; font-weight: bold; color: var(--text-color); }
+
+.conditions_dock .repcontainer { 
+    display: grid !important; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important; gap: 8px !important; width: 100% !important;
+}
+.condition_pill_card {
+    position: relative; background: var(--input-bg); border: 1.5px solid var(--border-color); 
+    border-radius: 4px; padding: 5px 6px; box-sizing: border-box; width: 100%; overflow: hidden;
+}
+
+/* Strict Top Row Grid to prevent squishing Name or LVL inputs */
+.cond_top_row { 
+    display: grid !important; grid-template-columns: 18px 1fr 45px !important; align-items: center !important; gap: 4px !important; width: 100% !important;
+}
+
+/* The expanding icon */
+.cond_expand_btn {
+    display: flex; align-items: center; justify-content: center; width: 16px; height: 16px; margin: 0;
+    border: 1px solid var(--border-color); border-radius: 2px; background: transparent; font-size: 8px; color: var(--text-color); pointer-events: none;
+}
+.cond_expand_btn::after { content: '▼'; }
+.cond_expand_toggle_master:checked ~ .cond_top_row .cond_expand_btn::after { content: '▲'; }
+
+/* The master toggle sits over the top row left corner */
+.cond_expand_toggle_master {
+    position: absolute !important; top: 4px !important; left: 6px !important; width: 18px !important; height: 18px !important;
+    opacity: 0 !important; cursor: pointer !important; z-index: 10; margin: 0;
+}
+
+.condition_pill_card:has(input.cond_expand_toggle_master:checked) .cond_desc_body {
+    display: block !important;
+}
+
+.condition_name_input {
+    width: 100% !important; height: 22px !important; border: none !important;
+    border-bottom: 1px dashed var(--border-color) !important; background: transparent !important; 
+    font-size: 11px !important; font-weight: bold; color: var(--text-color) !important; padding: 0 4px !important; box-sizing: border-box;
+}
+
+.cond_lvl_badge {
+    display: flex !important; align-items: center !important; justify-content: center !important; gap: 2px !important; border: 1px solid var(--border-color) !important;
+    border-radius: 3px !important; padding: 1px 4px !important; background: rgba(0,0,0,0.03) !important; flex-shrink: 0 !important; white-space: nowrap !important;
+}
+.cond_lvl_tag { font-size: 9px; font-weight: 900; color: var(--text-color); }
+.condition_level_input {
+    width: 14px !important; height: 16px !important; border: none !important; background: transparent !important;
+    text-align: center; font-size: 11px !important; font-weight: 900; color: var(--text-color) !important; padding: 0 !important;
+}
+.cond_desc_body { display: none; margin-top: 5px; border-top: 1px dashed var(--border-color); padding-top: 5px; width: 100%; box-sizing: border-box; }
+.cond_desc_textarea { font-size: 10px; color: var(--text-color) !important; }
+
+/* ==========================================================================
+   8. EXERCISE POWER (SINGLE-LINE DUAL SELECTOR)
+   ========================================================================== */
+.stunt_console {
+    padding: 10px 14px; position: relative; background: var(--card-bg); margin-bottom: 2px;
+}
+.stunt_console_toggle {
+    position: absolute; top: 0; left: 0; width: 100%; height: 38px; opacity: 0; cursor: pointer; z-index: 10; margin: 0;
+}
+.stunt_console_header {
+    display: flex; align-items: center; justify-content: space-between; border-bottom: 1.5px solid var(--border-color); padding-bottom: 6px; margin-bottom: 10px;
+}
+.stunt_accordion_btn::after { content: '▲'; font-size: 12px; color: var(--text-color); font-weight: 900; }
+.stunt_console_toggle:not(:checked) ~ .stunt_console_header .stunt_accordion_btn::after { content: '▼'; }
+.stunt_console_toggle:not(:checked) ~ .stunt_console_body { display: none !important; }
+.stunt_console_toggle:not(:checked) ~ .stunt_console_header { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.stunt_console_body {
+    display: flex; flex-direction: column; gap: 8px;
+}
+
+/* Row 1: Single-Line Equation Row (Left is Trait 1, Right is Trait 2) */
+.trait_picker_row {
+    display: flex !important; align-items: center !important; justify-content: space-between !important; 
+    gap: 6px !important; flex-wrap: nowrap !important; width: 100% !important; box-sizing: border-box !important;
+}
+.trait_select_box {
+    display: flex; align-items: center; gap: 4px; background: var(--input-bg); border: 1.5px solid var(--border-color); 
+    border-radius: 4px; padding: 2px 6px; flex: 1 1 0 !important; min-width: 0 !important;
+}
+.stunt_field_tag {
+    font-family: 'Special Elite', monospace; font-size: 10px; font-weight: 900; color: var(--text-color); white-space: nowrap; flex-shrink: 0;
+}
+.stunt_trait_select {
+    flex: 1 1 0; min-width: 0; border: none !important; background: transparent !important; 
+    font-weight: bold; font-size: 11px !important; color: var(--text-color) !important; height: 24px !important; padding: 0 !important;
+}
+.trait_val_badge {
+    width: 22px !important; height: 22px !important; border-radius: 3px; 
+    background: rgba(0,0,0,0.06); font-weight: 900; font-size: 11px; color: var(--text-color); border: 1px solid var(--border-color); flex-shrink: 0;
+    text-align: center; padding: 0 !important;
+}
+.sheet-darkmode .trait_val_badge { background: rgba(255,255,255,0.08); }
+.stunt_math_sym {
+    font-size: 15px; font-weight: 900; color: var(--text-color); flex-shrink: 0;
+}
+.base_pool_box {
+    display: flex; align-items: center; gap: 4px; background: var(--input-bg); border: 1.5px solid var(--border-color); border-radius: 4px; padding: 2px 8px; flex-shrink: 0;
+}
+.pool_pill { display: inline-flex; align-items: baseline; gap: 2px; }
+.pool_val { font-size: 15px; font-weight: 900; color: var(--text-color); }
+.pool_unit { font-size: 10px; font-weight: bold; color: var(--text-color); opacity: 0.8; }
+
+/* Row 2: Detected Specialties & Blessings (No Phantom None) */
+.detected_mods_row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.detected_col {
+    display: flex; flex-direction: column; gap: 4px; background: var(--input-bg); border: 1px dashed var(--border-color); border-radius: 4px; padding: 5px 8px;
+}
+.detected_group_title {
+    font-family: 'Special Elite', monospace; font-size: 10px; font-weight: bold; color: var(--text-color);
+}
+.detected_pills_wrap {
+    display: flex; flex-wrap: wrap; gap: 6px; align-items: center; min-height: 22px;
+}
+
+/* Strictly hide toggle pills unless matched by the worker [value="1"] */
+.detected_toggle_pill { display: none !important; }
+
+.detected_pills_wrap:has(input.has_spec_1_watch[value="1"]) .pill_spec_1,
+.detected_pills_wrap:has(input.has_spec_2_watch[value="1"]) .pill_spec_2,
+.detected_pills_wrap:has(input.has_bless_1_watch[value="1"]) .pill_bless_1,
+.detected_pills_wrap:has(input.has_bless_2_watch[value="1"]) .pill_bless_2 {
+    display: inline-flex !important; align-items: center; gap: 6px; background: rgba(0,0,0,0.04); border: 1.5px solid var(--border-color); border-radius: 12px; padding: 2px 8px; cursor: pointer; user-select: none; transition: all 0.15s ease;
+}
+
+.detected_toggle_pill input[type="checkbox"] {
+    position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+}
+.pill_marker {
+    display: inline-block; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--border-color); background: transparent; transition: all 0.15s ease;
+}
+.pill_label { font-size: 10px; font-weight: bold; color: var(--text-color); }
+
+.detected_toggle_pill:has(input[type="checkbox"]:checked) {
+    background: #1c1917 !important; border-color: #ca8a04 !important; box-shadow: 0 0 6px rgba(202, 138, 4, 0.4);
+}
+.sheet-darkmode .detected_toggle_pill:has(input[type="checkbox"]:checked) {
+    background: #27201b !important; border-color: #fde047 !important;
+}
+.detected_toggle_pill:has(input[type="checkbox"]:checked) .pill_marker {
+    background: #f59e0b; border-color: #fde047; box-shadow: 0 0 6px #f59e0b;
+}
+.detected_toggle_pill:has(input[type="checkbox"]:checked) .pill_label { color: #fde047 !important; }
+
+.none_detected_msg { font-size: 10px; font-style: italic; opacity: 0.6; color: var(--text-color); }
+.detected_pills_wrap:has(input.any_spec_watch[value="1"]) .none_detected_msg,
+.detected_pills_wrap:has(input.any_bless_watch[value="1"]) .none_detected_msg { display: none !important; }
+
+/* Row 3: Action Bar */
+.action_bar_row {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1.5px solid var(--border-color); padding-top: 6px;
+}
+.custom_mods_dock { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+
+.custom_mod_pill {
+    display: inline-flex; align-items: center; gap: 4px; background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 3px; padding: 2px 6px; height: 26px; box-sizing: border-box;
+}
+.mod_tag { font-family: 'Special Elite', monospace; font-size: 10px; font-weight: bold; color: var(--text-color); }
+.custom_mod_pill input { width: 28px !important; height: 20px !important; border: none !important; background: transparent !important; text-align: center; font-weight: 900; font-size: 12px; color: var(--text-color) !important; padding: 0 !important; }
+
+.total_pool_roll_dock { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.total_pool_badge {
+    display: inline-flex; align-items: baseline; gap: 4px; background: var(--input-bg); border: 2px solid var(--border-color); border-radius: 4px; padding: 3px 8px;
+}
+.total_pool_tag { font-family: 'Special Elite', monospace; font-size: 11px; font-weight: 900; color: var(--text-color); }
+.total_pool_val { font-size: 17px; font-weight: 900; color: var(--text-color); }
+.total_pool_unit { font-size: 10px; font-weight: bold; color: var(--text-color); opacity: 0.8; }
+
+.stunt_roll_btn {
+    background: linear-gradient(135deg, #1c1917 0%, #292524 100%) !important; color: #fde047 !important; border: 2px solid #ca8a04 !important;
+    border-radius: 4px !important; font-family: 'Cinzel Decorative', serif !important; font-size: 12px !important; font-weight: 900 !important;
+    letter-spacing: 1px; padding: 5px 14px !important; cursor: pointer !important; box-shadow: 2px 2px 0px rgba(0,0,0,0.3) !important;
+    transition: all 0.15s ease !important;
+}
+.stunt_roll_btn:hover {
+    transform: translateY(-1px) !important; box-shadow: 3px 3px 6px rgba(202, 138, 4, 0.4) !important; border-color: #fde047 !important;
+}
+
+/* ==========================================================================
+   9. TAB 1: CLEAN NON-OVERLAPPING 3-COLUMN LAYOUT & PROMINENT RESERVES
+   ========================================================================== */
+.skills_manifest_traits_grid {
+    display: grid !important; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr) minmax(0, 1.25fr) !important; 
+    gap: 12px !important; width: 100% !important; box-sizing: border-box !important; align-items: start !important;
+}
+.skills, .manifest, .stats { 
+    padding: 10px; position: relative; background: var(--card-bg); width: 100%; box-sizing: border-box; min-width: 0; 
+}
+.skills h2, .manifest h2, .stats h2 { text-align: center; margin-bottom: 8px; }
+
+.skills { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 8px; }
+.skills h2 { grid-column: 1 / -1; }
+
+/* Tightened Manifestations */
+.manifest .mani_list { display: flex; flex-direction: column; gap: 4px; }
+.mani_item {
+    display: flex; align-items: center; justify-content: space-between; gap: 4px; font-size: 11px; font-weight: bold;
+    color: var(--text-color); border: 1px solid var(--border-color); border-radius: 3px; padding: 1px 6px; background: var(--input-bg); height: 22px;
+}
+.mani_item input {
+    width: 26px !important; text-align: center; height: 18px; border: none !important; font-weight: bold; background: transparent !important; padding: 0 !important;
+}
+
+.skill_item {
+    display: flex; align-items: center; justify-content: space-between; gap: 4px; font-size: 11px; font-weight: bold;
+    color: var(--text-color); border: 1px solid var(--border-color); border-radius: 3px; padding: 2px 5px; background: var(--input-bg);
+}
+.skill_item input {
+    width: 28px !important; text-align: center; height: 22px; border: none !important; font-weight: bold; background: transparent !important; padding: 0 !important;
+}
+
+.stats { display: flex; flex-direction: column; gap: 6px; }
+.traits_grid { display: grid; grid-template-columns: auto 40px; gap: 4px; align-items: center; color: var(--text-color); font-weight: bold; font-size: 11px; }
+.traits_grid input { text-align: center; font-weight: bold; padding: 0 !important; height: 22px; border: 1px solid var(--border-color) !important; background: var(--input-bg) !important; }
+.section_divider { border-bottom: 1px dashed var(--border-color); margin: 2px 0; }
+
+/* Prominent, Clean Reserves Ledger */
+.reserves_container { display: flex; flex-direction: column; gap: 6px; width: 100%; margin-top: 2px; }
+.reserves_title { font-family: 'Special Elite', monospace; font-size: 11px; text-transform: uppercase; color: var(--text-color); margin: 0; }
+.reserves_table_grid {
+    display: grid; grid-template-columns: auto 40px 40px 42px; gap: 4px; align-items: center; width: 100%;
+}
+.res_th { font-family: 'Special Elite', monospace; font-size: 10px; font-weight: 900; text-align: center; color: var(--text-color); opacity: 0.85; }
+.res_lbl { font-size: 11px; font-weight: bold; color: var(--text-color); }
+
+.res_cell_inp {
+    height: 26px !important; text-align: center !important; font-weight: 900 !important; font-size: 13px !important;
+    border: 1.5px solid var(--border-color) !important; border-radius: 3px !important;
+    background: var(--input-bg) !important; color: var(--text-color) !important; padding: 0 !important;
+}
+.res_work_bonus { border-style: dashed !important; border-color: #ca8a04 !important; }
+.sheet-darkmode .res_work_bonus { border-color: #fde047 !important; color: #fde047 !important; }
+
+/* Combat Deck (50/50 Deck) */
+.combat_deck_grid {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; width: 100%; box-sizing: border-box;
+}
+.special, .weapons {
+    padding: 10px; display: flex; flex-direction: column; gap: 6px; position: relative; box-sizing: border-box; background: var(--card-bg);
+}
+.special h2, .weapons h2 { text-align: center; margin-bottom: 6px; }
+
+.specialty_card {
+    display: flex; flex-direction: column; gap: 6px; background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 3px; padding: 6px 8px; margin-bottom: 6px;
+}
+.spec_name_inp { width: 100% !important; font-weight: bold; height: 24px; font-size: 12px !important; }
+.spec_sub_row { display: flex; align-items: center; gap: 6px; }
+.spec_target_select { flex: 1 1 0; min-width: 0; font-size: 11px !important; height: 28px !important; }
+.spec_mod_lbl { font-size: 16px !important; font-weight: 900; color: var(--text-color); }
+
+/* Prominently Enlarged Modifier Input */
+.spec_mod_inp { 
+    width: 48px !important; height: 30px !important; text-align: center !important; font-weight: 900 !important; font-size: 16px !important; 
+    border: 2px solid var(--border-color) !important; border-radius: 3px !important; background: var(--input-bg) !important; padding: 0 !important;
+}
+
+/* Inventory Cards with Chat Button */
+.inventory_card {
+    display: flex; flex-direction: column; gap: 4px; background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 3px; padding: 5px 6px; margin-bottom: 6px;
+}
+.inv_top_row { display: flex; align-items: center; gap: 6px; }
+.inv_type_select { width: 75px !important; font-size: 11px !important; height: 24px !important; }
+.weapon_name { flex: 1 1 0; min-width: 0; font-weight: bold; height: 24px; }
+.weapon_lbl { font-size: 10px; font-weight: bold; color: var(--text-color); }
+.weapon_num { width: 34px !important; height: 24px; text-align: center; font-weight: bold; padding: 0 !important; }
+.weapon_notes { width: 100% !important; font-size: 11px !important; height: 22px; }
+
+.inventory_card:has(select[name="attr_inventory_type"] option[value="relic"]:checked) {
+    border: 1.5px solid #ca8a04 !important; box-shadow: 0 0 8px rgba(202, 138, 4, 0.35) !important;
+}
+.inventory_card:has(select[name="attr_inventory_type"] option[value="relic"]:checked) .weapon_name {
+    color: var(--text-color) !important; font-family: 'Cinzel Decorative', serif !important;
+}
+.sheet-darkmode .inventory_card:has(select[name="attr_inventory_type"] option[value="relic"]:checked) .weapon_name {
+    color: #fde047 !important;
+}
+
+/* ==========================================================================
+   10. TAB 2: DOSSIER, TRUTHS, BLESSINGS, CURSES & POTENTIAL ACTS
+   ========================================================================== */
+.bio_dossier { padding: 12px; position: relative; width: 100%; box-sizing: border-box; background: var(--card-bg); }
+.bio_dossier h2 { text-align: center; margin-bottom: 8px; }
+.bio_dossier_content { display: flex; gap: 16px; flex-wrap: wrap; }
+.bio_avatar_frame {
+    width: 140px; height: 160px; border: 2px solid var(--border-color); border-radius: 2px; overflow: hidden; flex-shrink: 0; background: #e5e5e5;
+}
+.sheet-darkmode .bio_avatar_frame { background: #242220; }
+.bio_avatar_frame img { width: 100%; height: 100%; object-fit: cover; }
+.bio_identity_stack { display: flex; flex-direction: column; gap: 8px; flex: 1 1 300px; }
+
+.field_prefix { font-family: 'Special Elite', monospace; font-size: 10px; font-weight: bold; opacity: 0.8; display: block; margin-bottom: 2px; color: var(--text-color); }
+.mortal_name_field input {
+    font-size: 20px !important; font-weight: bold !important; border: none !important; border-bottom: 2px solid var(--border-color) !important; background: transparent !important; width: 100%; color: var(--text-color) !important;
+}
+.divine_title_input {
+    font-size: 14px !important; font-weight: bold; font-style: italic; border: none !important; border-bottom: 1.5px dashed var(--border-color) !important; background: transparent !important; width: 100%; color: var(--text-color) !important;
+}
+.sheet-darkmode .divine_title_input { color: #f59e0b !important; }
+
+.domain_row { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+.domain_bullet { font-size: 11px; opacity: 0.7; color: var(--text-color); }
+.domain_title_input {
+    font-size: 12px !important; font-style: italic; border: none !important; border-bottom: 1px dashed var(--border-color) !important; background: transparent !important; width: 100%; color: var(--text-color) !important;
+}
+.mortal_traits_grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding-top: 6px; border-top: 1px solid var(--border-color);
+}
+.bio_trait { display: flex; flex-direction: column; gap: 2px; }
+.trait_lbl { font-size: 10px; font-weight: bold; opacity: 0.8; color: var(--text-color); }
+
+/* TRUTHS (WITH WORKING GRID MIRROR AUTO-SCALING) */
+.truths { padding: 12px; position: relative; background: var(--card-bg); }
+.truths h2 { text-align: center; margin-bottom: 8px; }
+.truths .repcontainer {
+    display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; gap: 12px !important;
+}
+.truth_card {
+    position: relative; background: var(--input-bg); border: 2px solid var(--border-color); padding: 8px 10px; box-shadow: 3px 3px 0 var(--border-color); box-sizing: border-box;
+}
+.truth_header { display: flex; align-items: flex-start; gap: 4px; padding-right: 32px; }
+.quote_icon, .quote_icon_end { font-family: 'Cinzel Decorative', serif; font-size: 20px; font-weight: 900; color: var(--text-color); flex-shrink: 0; }
+.truth_title_wrapper { flex: 1 1 0; border-bottom: 1.5px dashed var(--border-color); }
+.truth_title_input { font-weight: bold; color: var(--text-color) !important; font-size: 12px !important; }
+.truth_body { display: none; padding-top: 6px; }
+.truth_quote_textarea { font-family: 'Special Elite', monospace !important; font-size: 11px; color: var(--text-color) !important; }
+
+/* Blessings & Curses */
+.blessings_curses_split {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; width: 100%; box-sizing: border-box;
+}
+.blessing, .curse {
+    padding: 10px; width: 100%; min-width: 0; box-sizing: border-box; overflow: hidden; position: relative; background: var(--card-bg);
+}
+.blessing h2, .curse h2 { text-align: center; margin-bottom: 8px; }
+
+.blessing_item, .curse_item {
+    position: relative; border: 1.5px solid var(--border-color); margin-bottom: 6px; padding: 6px 34px 6px 6px; width: 100%; box-sizing: border-box; background: var(--input-bg);
+}
+.blessing_header, .curse_header { display: flex; gap: 6px; align-items: center; width: 100%; }
+.blessing_header input[type="text"], .curse_header input[type="text"] {
+    flex: 1 1 0; border: none; background: transparent; font-weight: bold; color: var(--text-color) !important; font-size: 12px;
+}
+
+.blessing_desc, .curse_desc { display: none; width: 100%; margin-top: 6px; border-top: 1px dashed var(--border-color); padding-top: 4px; }
+.blessing_inner_params { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+.bless_lbl { font-size: 10px; font-weight: bold; color: var(--text-color); }
+
+/* Blessings Dropdown Selector */
+.blessing_target_select {
+    flex: 1 1 0; font-size: 11px !important; height: 22px !important; border: 1px solid var(--border-color) !important; background: var(--input-bg) !important; color: var(--text-color) !important;
+}
+.blessing_bonus { width: 34px !important; height: 22px !important; text-align: center; font-weight: bold; padding: 0 !important; }
+.blessing_desc_textarea, .curse_desc_textarea { font-size: 11px; color: var(--text-color) !important; }
+
+/* Legendary Acts & Potential Acts Tracker */
+.legendary_acts_dock { padding: 12px; width: 100%; box-sizing: border-box; position: relative; background: var(--card-bg); }
+.legendary_acts_header_bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+
+.act_communion_seals { display: flex; align-items: center; gap: 6px; }
+.act_seals_tag { font-family: 'Special Elite', monospace; font-size: 10px; font-weight: 900; color: var(--text-color); }
+
+.act_seal_token {
+    position: relative; display: inline-flex; align-items: center; gap: 3px; border: 1.5px solid #ca8a04; 
+    border-radius: 4px; padding: 2px 6px; cursor: pointer; background: var(--input-bg); user-select: none; transition: all 0.2s ease;
+}
+.act_seal_token input[type="checkbox"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; cursor: pointer; z-index: 5; }
+.seal_sigil { font-size: 11px; color: #ca8a04; transition: all 0.2s ease; }
+.seal_num { font-family: 'Cinzel Decorative', serif; font-size: 10px; font-weight: 900; color: var(--text-color); }
+
+/* Expended/Burned State */
+.act_seal_token:has(input[type="checkbox"]:checked) {
+    background: #1c1917 !important; border-color: #57534e !important; opacity: 0.6; filter: grayscale(100%);
+}
+.act_seal_token:has(input[type="checkbox"]:checked) .seal_sigil { color: #737373 !important; text-decoration: line-through; }
+.act_seal_token:has(input[type="checkbox"]:checked) .seal_num { color: #a3a3a3 !important; text-decoration: line-through; }
+
+/* Progressive Visibility by Spark Level */
+.act_seal_2, .act_seal_3, .act_seal_4, .act_seal_5 { display: none !important; }
+.charsheet:has(input[name="attr_spark"][value="2"]:checked) .act_seal_2,
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .act_seal_2,
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .act_seal_3,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .act_seal_2,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .act_seal_3,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .act_seal_4,
+.charsheet:has(input[name="attr_spark"][value="5"]:checked) .act_seal_token { display: inline-flex !important; }
+
+.act_card {
+    border: 1px dashed #78716c; border-radius: 2px; padding: 8px 10px; margin-bottom: 8px; background: var(--input-bg); box-shadow: 2px 2px 0 rgba(0,0,0,0.15); transition: all 0.25s ease;
+}
+.act_headline_row { display: flex; gap: 8px; margin-bottom: 6px; }
+.act_title_input {
+    flex: 2 1 0; font-family: 'Special Elite', monospace !important; font-weight: bold; font-size: 13px; border: none !important; border-bottom: 1.5px solid var(--border-color) !important; background: transparent !important; color: var(--text-color) !important;
+}
+.act_domain_input {
+    flex: 1 1 0; font-family: 'Special Elite', monospace !important; font-size: 11px; font-style: italic; border: none !important; border-bottom: 1px dashed var(--border-color) !important; background: transparent !important; color: var(--text-color) !important; opacity: 0.8;
+}
+.saga_body_text {
+    font-size: clamp(11px, 1.2vw, 13px); font-family: var(--font-active-inputs) !important; color: var(--text-color) !important;
+}
+
+/* ==========================================================================
+   11. TAB 3: BONDS & DEVOTION (DEDICATED ARCHIVE)
+   ========================================================================== */
+.vassals, .bonds { padding: 12px; width: 100%; box-sizing: border-box; position: relative; background: var(--card-bg); }
+.vassals h2, .bonds_header_title { text-align: center; margin-bottom: 4px; }
+.bonds_header_title { display: flex; justify-content: space-between; align-items: center; }
+
+/* Repcontainer Flex Structure */
+.vassals .repcontainer, .bonds .repcontainer {
+    display: flex !important; flex-direction: column !important; gap: 12px !important; width: 100% !important;
+}
+
+/* Severed Bonds Automatically Drop to the Bottom */
+.bonds .repitem {
+    order: 1; transition: order 0.2s ease;
+}
+.bonds .repitem:has(input.sever_toggle:checked) {
+    order: 999 !important;
+}
+
+.vassal_card, .bond_card {
+    position: relative; width: 100% !important; box-sizing: border-box !important; border-radius: 3px; padding: 8px 10px;
+    background: var(--input-bg); border: 2px solid var(--border-color); box-shadow: 3px 3px 0 var(--border-color); color: var(--text-color);
+}
+.divine_seal { position: absolute; top: 4px; left: 5px; font-size: 11px; color: var(--text-color); }
+.sheet-darkmode .divine_seal { color: #fde047; }
+
+.card_row { display: flex; align-items: center; gap: 6px; width: 100%; box-sizing: border-box; }
+.top_row { padding-right: 34px; }
+.sub_row { flex-wrap: wrap; margin-top: 4px; }
+
+.vassal_name_input, .bond_name_input {
+    flex: 1.2 1 120px; border: none !important; background: transparent !important; font-weight: bold; font-size: 13px !important;
+    border-bottom: 1.5px solid var(--border-color) !important; color: var(--text-color) !important;
+}
+.relation_field_wrap { display: flex; align-items: center; gap: 4px; flex: 1.2 1 120px; }
+.relation_label { font-size: 10px; font-weight: bold; font-family: 'Special Elite', monospace; white-space: nowrap; color: var(--text-color); }
+.vassal_relation_input, .bond_relation_input {
+    flex: 1 1 0; border: none !important; border-bottom: 1px dashed var(--border-color) !important; background: transparent !important; font-size: 11px; color: var(--text-color) !important;
+}
+.scope_select { width: 115px !important; font-size: 11px; height: 24px !important; background: var(--input-bg); color: var(--text-color); border: 1px solid var(--border-color); }
+.relationship_input { flex: 1.4 1 130px !important; font-size: 11px; height: 24px !important; background: var(--input-bg); color: var(--text-color); border: 1px solid var(--border-color); }
+
+/* Badges */
+.grid_badge, .score_badge {
+    display: inline-flex; align-items: center; gap: 4px; background: var(--card-bg); border: 1px solid var(--border-color); padding: 0 5px; border-radius: 3px; height: 24px; flex-shrink: 0; color: var(--text-color);
+}
+.grid_badge { min-width: 85px; }
+.badge_label, .score_label { font-size: 9px; font-weight: 800; color: var(--text-color); }
+.location_input { width: 55px !important; height: 20px !important; border: none !important; background: transparent !important; text-align: center; font-weight: bold; color: inherit !important; text-transform: uppercase; }
+.level_input { width: 24px !important; height: 20px !important; border: none !important; background: transparent !important; text-align: center; font-weight: bold; color: inherit !important; padding: 0 !important; }
+
+/* Strain Trackers */
+.strain_tracker {
+    display: inline-flex !important; align-items: center !important; gap: 3px !important; width: fit-content !important; flex: 0 0 auto !important;
+    background: rgba(0,0,0,0.05); border: 1px solid var(--border-color); border-radius: 12px; padding: 0 5px !important; height: 24px !important; box-sizing: border-box !important; color: var(--text-color);
+}
+.sheet-darkmode .strain_tracker { background: #262422; }
+.strain_label { font-size: 9px; font-weight: 800; margin-right: 2px; }
+
+.strain_clear {
+    position: relative !important; width: 14px !important; height: 14px !important; flex: 0 0 14px !important; cursor: pointer !important; margin: 0 !important; display: inline-flex !important; align-items: center !important; justify-content: center !important;
+}
+.strain_clear input { position: absolute !important; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; cursor: pointer; z-index: 2; }
+.clear_btn_cross { font-size: 10px; font-weight: 900; line-height: 1; color: var(--text-color); opacity: 0.6; }
+.strain_clear:hover .clear_btn_cross { opacity: 1; color: #dc2626; }
+
+/* Solar Strain (Vassals) */
+.strain_star_pip {
+    position: relative !important; width: 14px !important; height: 14px !important; flex: 0 0 14px !important; cursor: pointer !important; margin: 0 !important; display: inline-flex !important; align-items: center !important; justify-content: center !important;
+}
+.strain_star_pip input { position: absolute !important; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; cursor: pointer; z-index: 2; }
+.solar_pip_glyph { font-size: 13px; line-height: 1; color: #78716c; font-weight: 900; transition: all 0.15s ease; }
+
+/* Crimson Blood Droplets (Bonds) */
+.strain_drop_pip {
+    position: relative !important; width: 14px !important; height: 14px !important; flex: 0 0 14px !important; cursor: pointer !important; margin: 0 !important; display: inline-flex !important; align-items: center !important; justify-content: center !important;
+}
+.strain_drop_pip input { position: absolute !important; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; cursor: pointer; z-index: 2; }
+
+.blood_pip_glyph {
+    display: inline-block; width: 8px; height: 8px; background: #78716c; 
+    border-radius: 0 50% 50% 50%; transform: rotate(45deg); opacity: 0.35; transition: all 0.15s ease; margin-bottom: 2px;
+}
+
+/* ==========================================================================
+   STRAIN LEVEL CAPPING (BOUND TO BOND & VASSAL LEVEL)
+   ========================================================================== */
+.bond_card:has(select[name="attr_bond_level"] option[value="1"]:checked) .pip_2,
+.bond_card:has(select[name="attr_bond_level"] option[value="1"]:checked) .pip_3,
+.bond_card:has(select[name="attr_bond_level"] option[value="1"]:checked) .pip_4,
+.bond_card:has(select[name="attr_bond_level"] option[value="1"]:checked) .pip_5,
+.vassal_card:has(select[name="attr_vassal_level"] option[value="1"]:checked) .pip_2,
+.vassal_card:has(select[name="attr_vassal_level"] option[value="1"]:checked) .pip_3,
+.vassal_card:has(select[name="attr_vassal_level"] option[value="1"]:checked) .pip_4,
+.vassal_card:has(select[name="attr_vassal_level"] option[value="1"]:checked) .pip_5 { display: none !important; }
+
+.bond_card:has(select[name="attr_bond_level"] option[value="2"]:checked) .pip_3,
+.bond_card:has(select[name="attr_bond_level"] option[value="2"]:checked) .pip_4,
+.bond_card:has(select[name="attr_bond_level"] option[value="2"]:checked) .pip_5,
+.vassal_card:has(select[name="attr_vassal_level"] option[value="2"]:checked) .pip_3,
+.vassal_card:has(select[name="attr_vassal_level"] option[value="2"]:checked) .pip_4,
+.vassal_card:has(select[name="attr_vassal_level"] option[value="2"]:checked) .pip_5 { display: none !important; }
+
+.bond_card:has(select[name="attr_bond_level"] option[value="3"]:checked) .pip_4,
+.bond_card:has(select[name="attr_bond_level"] option[value="3"]:checked) .pip_5,
+.vassal_card:has(select[name="attr_vassal_level"] option[value="3"]:checked) .pip_4,
+.vassal_card:has(select[name="attr_vassal_level"] option[value="3"]:checked) .pip_5 { display: none !important; }
+
+.bond_card:has(select[name="attr_bond_level"] option[value="4"]:checked) .pip_5,
+.vassal_card:has(select[name="attr_vassal_level"] option[value="4"]:checked) .pip_5 { display: none !important; }
+
+/* Fill Preceding Vassal Star Pips */
+.divine_strain:has(input[value="1"]:checked) .pip_1 .solar_pip_glyph,
+.divine_strain:has(input[value="2"]:checked) .pip_1 .solar_pip_glyph,
+.divine_strain:has(input[value="2"]:checked) .pip_2 .solar_pip_glyph,
+.divine_strain:has(input[value="3"]:checked) .pip_1 .solar_pip_glyph,
+.divine_strain:has(input[value="3"]:checked) .pip_2 .solar_pip_glyph,
+.divine_strain:has(input[value="3"]:checked) .pip_3 .solar_pip_glyph,
+.divine_strain:has(input[value="4"]:checked) .pip_1 .solar_pip_glyph,
+.divine_strain:has(input[value="4"]:checked) .pip_2 .solar_pip_glyph,
+.divine_strain:has(input[value="4"]:checked) .pip_3 .solar_pip_glyph,
+.divine_strain:has(input[value="4"]:checked) .pip_4 .solar_pip_glyph,
+.divine_strain:has(input[value="5"]:checked) .solar_pip_glyph {
+    color: #fde047 !important; text-shadow: 0 0 6px #f59e0b, 0 0 10px #fde047 !important;
+}
+
+/* Fill Preceding Blood Droplet Pips (Glowing Crimson) */
+.bond_strain_tracker:has(input[value="1"]:checked) .pip_1 .blood_pip_glyph,
+.bond_strain_tracker:has(input[value="2"]:checked) .pip_1 .blood_pip_glyph,
+.bond_strain_tracker:has(input[value="2"]:checked) .pip_2 .blood_pip_glyph,
+.bond_strain_tracker:has(input[value="3"]:checked) .pip_1 .blood_pip_glyph,
+.bond_strain_tracker:has(input[value="3"]:checked) .pip_2 .blood_pip_glyph,
+.bond_strain_tracker:has(input[value="3"]:checked) .pip_3 .blood_pip_glyph,
+.bond_strain_tracker:has(input[value="4"]:checked) .pip_1 .blood_pip_glyph,
+.bond_strain_tracker:has(input[value="4"]:checked) .pip_2 .blood_pip_glyph,
+.bond_strain_tracker:has(input[value="4"]:checked) .pip_3 .blood_pip_glyph,
+.bond_strain_tracker:has(input[value="4"]:checked) .pip_4 .blood_pip_glyph,
+.bond_strain_tracker:has(input[value="5"]:checked) .blood_pip_glyph {
+    background: #dc2626 !important; opacity: 1 !important; 
+    box-shadow: 0 0 6px #ef4444, 0 0 10px rgba(220, 38, 38, 0.8) !important;
+}
+
+/* Sequential Clicking Constraints */
+.strain_star_pip, .strain_drop_pip { pointer-events: none; opacity: 0.35; }
+.strain_clear { pointer-events: auto !important; opacity: 1 !important; }
+
+.strain_tracker:has(input[value="0"]:checked) .pip_1 { pointer-events: auto !important; opacity: 1 !important; }
+.strain_tracker:has(input[value="1"]:checked) .pip_1,
+.strain_tracker:has(input[value="1"]:checked) .pip_2 { pointer-events: auto !important; opacity: 1 !important; }
+.strain_tracker:has(input[value="2"]:checked) .pip_1,
+.strain_tracker:has(input[value="2"]:checked) .pip_2,
+.strain_tracker:has(input[value="2"]:checked) .pip_3 { pointer-events: auto !important; opacity: 1 !important; }
+.strain_tracker:has(input[value="3"]:checked) .pip_1,
+.strain_tracker:has(input[value="3"]:checked) .pip_2,
+.strain_tracker:has(input[value="3"]:checked) .pip_3,
+.strain_tracker:has(input[value="3"]:checked) .pip_4 { pointer-events: auto !important; opacity: 1 !important; }
+.strain_tracker:has(input[value="4"]:checked) .pip_1,
+.strain_tracker:has(input[value="4"]:checked) .pip_2,
+.strain_tracker:has(input[value="4"]:checked) .pip_3,
+.strain_tracker:has(input[value="4"]:checked) .pip_4,
+.strain_tracker:has(input[value="4"]:checked) .pip_5 { pointer-events: auto !important; opacity: 1 !important; }
+.strain_tracker:has(input[value="5"]:checked) .strain_star_pip,
+.strain_tracker:has(input[value="5"]:checked) .strain_drop_pip { pointer-events: auto !important; opacity: 1 !important; }
+
+.vassal_body, .bond_body { display: none; padding-top: 6px; width: 100%; }
+.vassal_desc_textarea, .bond_desc_textarea { font-size: 11px; color: var(--text-color) !important; }
+
+/* Sever / Restore Toggle */
+.sever_bond_toggle { position: relative; cursor: pointer; margin-left: auto; flex-shrink: 0; z-index: 25; }
+.sever_bond_toggle input.sever_toggle { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 50; }
+.sever_btn_label { display: inline-block; font-family: 'Special Elite', monospace; font-size: 10px; font-weight: bold; border-radius: 3px; padding: 2px 6px; }
+.sever_active_text { color: #b91c1c; background: rgba(185, 28, 28, 0.12); border: 1.5px solid #b91c1c; font-weight: 900; }
+.sheet-darkmode .sever_active_text { color: #ef4444; background: rgba(239, 68, 68, 0.18); border-color: #ef4444; }
+.sever_restore_text { display: none; color: #ffffff; background: #15803d; border: 1.5px solid #166534; font-weight: 900; }
+
+/* SEVERED STAMP ISOLATION (CARD TEXT ONLY IS MUTED; RUBBER STAMP REMAINS VIVID) */
+.bond_card:has(input.sever_toggle:checked) {
+    background: #e7e5e4 !important; border: 2px dashed #78716c !important; box-shadow: 2px 2px 0 #a8a29e !important;
+}
+.sheet-darkmode .bond_card:has(input.sever_toggle:checked) {
+    background: #181716 !important; border-color: #57534e !important;
+}
+
+.bond_card:has(input.sever_toggle:checked) .card_row,
+.bond_card:has(input.sever_toggle:checked) .bond_body {
+    filter: grayscale(90%) opacity(0.65);
+}
+.bond_card:has(input.sever_toggle:checked) .card_row *:not(.sever_bond_toggle):not(.sever_bond_toggle *) {
+    pointer-events: none;
+}
+.bond_card:has(input.sever_toggle:checked) .sever_active_text { display: none !important; }
+.bond_card:has(input.sever_toggle:checked) .sever_restore_text { display: inline-block !important; }
+
+/* Vibrant High-Saturation Crimson Rubber Stamp */
+.bond_card:has(input.sever_toggle:checked)::after {
+    content: "SEVERED"; position: absolute; top: 25%; left: 10%; width: 80%; text-align: center; font-family: 'Special Elite', monospace;
+    font-size: 36px; font-weight: 900; letter-spacing: 10px; color: #dc2626 !important; border: 5px solid #dc2626 !important; border-radius: 6px; padding: 4px 10px;
+    transform: rotate(-10deg); text-shadow: 1px 1px 0 #7f1d1d; box-shadow: inset 0 0 0 3px #dc2626, 0 0 16px rgba(220, 38, 38, 0.6) !important;
+    background: rgba(254, 226, 226, 0.98) !important; z-index: 20; pointer-events: none !important;
+}
+.sheet-darkmode .bond_card:has(input.sever_toggle:checked)::after {
+    background: rgba(30, 10, 10, 0.98) !important; color: #ef4444 !important; border-color: #ef4444 !important;
+    box-shadow: inset 0 0 0 3px #ef4444, 0 0 16px rgba(239, 68, 68, 0.8) !important; text-shadow: 1px 1px 0 #450a0a;
+}
+
+/* Clean Bonds Max Display */
+.bonds_max_calc { display: flex; align-items: center; gap: 4px; }
+.bonds_max_tag { font-family: 'Special Elite', monospace; font-size: 11px; font-weight: 900; color: var(--text-color); }
+.bonds_max_display {
+    width: 28px !important; height: 20px !important; border: none !important; background: transparent !important; 
+    font-weight: 900 !important; font-size: 14px !important; color: var(--text-color) !important; text-align: center !important; padding: 0 !important;
+}
+
+/* ==========================================================================
+   12. TIER 4 & 5 APOTHEOSIS PROGRESSION
+   ========================================================================== */
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) {
+    --border-color: #ca8a04;
+    --font-active-inputs: 'Cinzel Decorative', serif;
+}
+.sheet-darkmode.charsheet:has(input[name="attr_spark"][value="4"]:checked) {
+    --bg-color: #12100e;
+    --border-color: #eab308;
+    --card-bg: #1a1714;
+}
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .mortal_name_lbl,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .header_name_mortal { display: none !important; }
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .divine_name_lbl,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .header_name_divine {
+    display: inline-block !important; font-family: 'Cinzel Decorative', serif !important; color: var(--text-color) !important;
+}
+.sheet-darkmode.charsheet:has(input[name="attr_spark"][value="4"]:checked) .header_name_divine {
+    color: #fde047 !important;
+}
+
+.charsheet:has(input[name="attr_spark"][value="5"]:checked) {
+    --border-color: #ca8a04;
+    --font-active-inputs: 'Cinzel Decorative', serif;
+}
+.charsheet:has(input[name="attr_spark"][value="5"]:checked):not(.sheet-darkmode) {
+    --bg-color: #fcfbf7;
+    --text-color: #1c1917;
+    --card-bg: #ffffff;
+    --input-bg: #fafaf9;
+}
+.sheet-darkmode .charsheet:has(input[name="attr_spark"][value="5"]:checked) {
+    --bg-color: #0c0b0a;
+    --text-color: #fef9c3;
+    --border-color: #fde047;
+    --input-bg: #1c1a19;
+    --input-text: #fef08a;
+    --card-bg: #141312;
+}
+.charsheet:has(input[name="attr_spark"][value="5"]:checked) .mortal_name_lbl,
+.charsheet:has(input[name="attr_spark"][value="5"]:checked) .header_name_mortal { display: none !important; }
+.charsheet:has(input[name="attr_spark"][value="5"]:checked) .divine_name_lbl,
+.charsheet:has(input[name="attr_spark"][value="5"]:checked) .header_name_divine {
+    display: inline-block !important; font-family: 'Cinzel Decorative', serif !important; color: var(--text-color) !important; letter-spacing: 2px;
+}
+.sheet-darkmode.charsheet:has(input[name="attr_spark"][value="5"]:checked) .header_name_divine {
+    color: #fde047 !important;
+}
+.charsheet:has(input[name="attr_spark"][value="5"]:checked) .altar_shrine {
+    border-color: #eab308 !important; box-shadow: 0 0 20px rgba(234, 179, 8, 0.4) !important;
+}
+
+/* ==========================================================================
+   13. REPEATING CONTROLS & REORDER HANDLES ACROSS ALL SECTIONS
+   ========================================================================== */
+.repcontainer { position: relative; }
+
+.repcontrol {
+    margin-top: 6px !important; display: flex !important; gap: 6px !important; justify-content: flex-end !important; align-items: center !important;
+}
+.repcontrol .btn {
+    font-family: 'Special Elite', monospace !important; font-size: 11px !important; font-weight: bold !important;
+    padding: 3px 10px !important; border-radius: 3px !important; border: 1.5px solid var(--border-color) !important;
+    background: var(--input-bg) !important; color: var(--text-color) !important; box-shadow: 1px 1px 0 rgba(0,0,0,0.15);
+    cursor: pointer !important;
+}
+.repcontrol .btn:hover { background: rgba(128,128,128,0.2) !important; }
+
+/* Edit Mode Reordering & Clean Deletion Across All Sections */
+.repcontainer.editmode .repitem {
+    position: relative !important; padding-left: 28px !important; box-sizing: border-box !important;
+}
+.repcontainer.editmode .repcontrol_move {
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    position: absolute !important; left: 4px !important; top: 8px !important; width: 20px !important; height: 20px !important;
+    cursor: grab !important; z-index: 100 !important; opacity: 1 !important;
+}
+
+.repcontainer.editmode .repcontrol_del {
+    display: inline-flex !important; align-items: center !important; justify-content: center !important;
+    position: absolute !important; right: 34px !important; top: 6px !important; width: 20px !important; height: 20px !important;
+    background: #dc2626 !important; color: #ffffff !important; border: 1px solid #7f1d1d !important; border-radius: 3px !important;
+    font-size: 11px !important; font-weight: 900 !important; cursor: pointer !important; z-index: 100 !important; line-height: 1 !important;
+}
+.repcontainer.editmode .repcontrol_del::after { content: '✕'; color: #ffffff !important; }
+
+/* General Accordion Behaviors for non-Condition sections */
+.charsheet input.expand_toggle_master:not(.cond_expand_toggle) {
+    appearance: none !important; -webkit-appearance: none !important;
+    position: absolute !important; top: 6px !important; right: 6px !important;
+    width: 22px !important; height: 22px !important; opacity: 0 !important; cursor: pointer !important; z-index: 30 !important;
+}
+.charsheet .expand_button_overlay {
+    position: absolute !important; top: 6px !important; right: 6px !important;
+    width: 22px !important; height: 22px !important; z-index: 28 !important; pointer-events: none !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    font-size: 10px !important; background: rgba(128,128,128,0.2) !important; border: 1px solid var(--border-color) !important; border-radius: 3px !important; color: var(--text-color) !important;
+}
+.charsheet input.expand_toggle_master:hover + * .expand_button_overlay,
+.charsheet input.expand_toggle_master:hover + .expand_button_overlay { background: rgba(128,128,128,0.5) !important; }
+.expand_button_overlay::after { content: '▼'; }
+input.expand_toggle_master:checked + * .expand_button_overlay::after,
+input.expand_toggle_master:checked + .expand_button_overlay::after { content: '▲'; }
+
+input.expand_toggle_master:checked ~ .rep_desc_body,
+input.expand_toggle_master:checked ~ .blessing_desc,
+input.expand_toggle_master:checked ~ .curse_desc,
+input.expand_toggle_master:checked ~ .truth_body { display: block !important; }
+
+/* ==========================================================================
+   14. ROLL TEMPLATE (PTG THEMATIC CHAT CARDS)
+   ========================================================================== */
+.sheet-rolltemplate-ptg {
+    display: block; width: 100%; box-sizing: border-box; font-family: Arial, sans-serif;
+}
+.sheet-rolltemplate-ptg .sheet-ptg-card {
+    background: #fdfaf3; border: 2.5px solid #262626; border-radius: 0 8px 8px 8px; box-shadow: 4px 4px 0px #262626; margin: 4px 0; overflow: hidden;
+}
+.sheet-rolltemplate-ptg .sheet-ptg-header {
+    background: #262626; color: #fdfaf3; padding: 6px 10px; border-bottom: 1.5px solid #262626;
+}
+.sheet-rolltemplate-ptg .sheet-ptg-header h3 {
+    font-family: 'Sedgwick Ave Display', cursive; margin: 0; font-size: 18px; line-height: 1.1; letter-spacing: 1px; color: #fdfaf3;
+}
+.sheet-rolltemplate-ptg .sheet-ptg-subtitle {
+    display: block; font-family: 'Special Elite', monospace; font-size: 11px; font-weight: bold; color: #fde047; margin-top: 2px;
+}
+.sheet-rolltemplate-ptg .sheet-ptg-body { padding: 8px 10px; color: #1a1a1a; font-size: 13px; line-height: 1.4; }
+
+.sheet-rolltemplate-ptg .sheet-ptg-row { margin-bottom: 4px; display: flex; align-items: baseline; gap: 6px; }
+.sheet-rolltemplate-ptg .sheet-ptg-label { font-weight: 900; font-family: 'Special Elite', monospace; font-size: 11px; color: #854d0e; flex-shrink: 0; }
+.sheet-rolltemplate-ptg .sheet-ptg-value { font-weight: bold; }
+.sheet-rolltemplate-ptg .sheet-ptg-desc, .sheet-rolltemplate-ptg .sheet-ptg-quote { margin-top: 6px; padding-top: 6px; border-top: 1px dashed #a8a29e; white-space: pre-wrap; }
+.sheet-rolltemplate-ptg .sheet-ptg-quote { font-family: 'Special Elite', monospace; font-style: italic; font-size: 12px; }
+
+/* Custom Visual Dice Implementation */
+.sheet-rolltemplate-ptg .sheet-ptg-row-centered { display: flex; align-items: center; justify-content: center; width: 100%; border-top: 1px dashed #a8a29e; padding-top: 6px; margin-top: 6px; }
+.sheet-rolltemplate-ptg .sheet-ptg-dicelist { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+.sheet-rolltemplate-ptg .ptg-d10 { font-family: 'dicefontd10'; font-size: 26px; line-height: 1; font-weight: normal; }
+
+/* Light Mode Dice Colors */
+.sheet-rolltemplate-ptg .ptg-die-crit { color: #166534; text-shadow: 0 0 4px #4ade80; } /* 10s */
+.sheet-rolltemplate-ptg .ptg-die-success { color: #14532d; } /* 7-9 */
+.sheet-rolltemplate-ptg .ptg-die-normal { color: #78716c; opacity: 0.6; } /* 2-6 */
+.sheet-rolltemplate-ptg .ptg-die-fail { color: #b91c1c; font-weight: bold; } /* 1s */
+
+/* Success & Fail Blocks */
+.sheet-rolltemplate-ptg .sheet-ptg-result {
+    margin-top: 8px; padding: 6px; border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border: 2px solid;
+}
+.sheet-rolltemplate-ptg .sheet-ptg-success { background: #f0fdf4; border-color: #166534; color: #14532d; }
+.sheet-rolltemplate-ptg .sheet-ptg-fail { background: #f5f5f4; border-color: #78716c; color: #44403c; }
+.sheet-rolltemplate-ptg .sheet-ptg-critfail { background: #fef2f2; border-color: #b91c1c; color: #7f1d1d; }
+
+.sheet-rolltemplate-ptg .sheet-ptg-res-label { font-family: 'Special Elite', monospace; font-size: 12px; font-weight: 900; }
+.sheet-rolltemplate-ptg .sheet-ptg-res-val { font-family: 'Cinzel Decorative', serif; font-size: 24px; font-weight: 900; line-height: 1; margin-top: 2px; }
+.sheet-rolltemplate-ptg .sheet-ptg-res-sub { font-size: 11px; font-weight: bold; margin-top: 2px; }
+
+/* Inline Roll Dice Resets */
+.sheet-rolltemplate-ptg .inlinerollresult { 
+    background: transparent; 
+    border: none; 
+    padding: 0; 
+    font-weight: 900; 
+    color: inherit; 
+}
+.sheet-rolltemplate-ptg .inlinerollresult.fullcrit, 
+.sheet-rolltemplate-ptg .inlinerollresult.fullfail, 
+.sheet-rolltemplate-ptg .inlinerollresult.importanteroll { 
+    border: none; 
+    background: transparent; 
+    color: inherit; 
+}
+
+/* ==========================================================================
+   INITIATIVE BUTTON & INPUT OVERLAY
+   ========================================================================== */
+button[type="roll"].trait_roll_btn {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: var(--text-color) !important;
+    font-weight: bold !important;
+    font-size: 11px !important;
+    font-family: inherit !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    box-shadow: none !important;
+}
+button[type="roll"].trait_roll_btn:hover {
+    color: var(--radiant-gold) !important;
+    text-decoration: underline;
+}
+button[type="roll"].trait_roll_btn::before {
+    content: '' !important;
+    display: none !important;
+}
+
+.init_box_wrap {
+    position: relative;
+    width: 40px;
+    height: 22px;
+}
+.init_box_wrap input {
+    width: 100% !important;
+    cursor: pointer;
+}
+.init_box_wrap:hover input {
+    border-color: var(--radiant-gold) !important;
+}
+button[type="roll"].init_overlay_btn {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0 !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 5;
+}
+button[type="roll"].init_overlay_btn::before {
+    content: '' !important;
+    display: none !important;
+}
+
+/* ==========================================================================
+   VASSAL POOL BADGE ROLL OVERLAY
+   ========================================================================== */
+.pool_badge {
+    position: relative !important;
+    cursor: pointer !important;
+}
+.pool_badge:hover {
+    border-color: var(--radiant-gold) !important;
+}
+.pool_badge:hover .score_label {
+    color: var(--radiant-gold) !important;
+}
+.pool_badge .score_label,
+.pool_badge input {
+    pointer-events: none !important;
+}
+button[type="action"].badge_overlay_btn {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0 !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 10 !important;
+    background: transparent !important;
+    border: none !important;
+    pointer-events: auto !important;
+}
+
+/* ==========================================================================
+   MANIFESTATION MEASURES MODAL DIALOG
+   ========================================================================== */
+.stunt_header_actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal_open_btn {
+    position: relative;
+    cursor: pointer;
+    margin: 0;
+    user-select: none;
+}
+.modal_open_btn input.modal_toggle_input,
+.modal_close_btn input.modal_toggle_input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 5;
+    margin: 0;
+}
+.modal_open_label {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    border: 1.5px solid var(--border-color);
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+.modal_open_btn:hover .modal_open_label {
+    border-color: #ca8a04;
+    color: #ca8a04;
+}
+
+/* Modal Backdrop & State */
+.measures_modal_backdrop {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 5000;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.charsheet:has(input.modal_toggle_input:checked) .measures_modal_backdrop {
+    display: flex !important;
+}
+
+.measures_modal_dialog {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 540px;
+    padding: 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    z-index: 5001;
+}
+
+.modal_header_bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 6px;
+}
+.modal_title_group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.modal_title_group h3 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin: 0;
+    color: var(--text-color);
+}
+.modal_ornament {
+    color: #ca8a04;
+    font-size: 14px;
+}
+.modal_close_btn {
+    position: relative;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 14px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    background: var(--input-bg);
+    border-radius: 3px;
+}
+.modal_close_btn:hover {
+    background: #dc2626;
+    color: #ffffff;
+}
+
+.modal_explainer {
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    margin: 0;
+    color: var(--text-color);
+    opacity: 0.85;
+}
+
+.measures_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+.measure_card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: var(--input-bg);
+    border: 1.5px solid var(--border-color);
+    padding: 6px 8px;
+    border-radius: 3px;
+}
+.measure_title {
+    font-family: 'Special Elite', monospace;
+    font-size: 10px;
+    font-weight: 900;
+    color: var(--text-color);
+}
+.measure_select {
+    width: 100% !important;
+    font-size: 11px !important;
+    height: 24px !important;
+}
+
+.measure_intent_input {
+    width: 100% !important;
+    height: 28px !important;
+    font-size: 11px !important;
+    padding: 4px 6px !important;
+}
+
+.modal_footer_bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-top: 1.5px solid var(--border-color);
+    padding-top: 10px;
+    flex-wrap: wrap;
+}
+.cost_tally_pill {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    background: var(--input-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 4px;
+    padding: 3px 8px;
+}
+.cost_tag {
+    font-family: 'Special Elite', monospace;
+    font-size: 10px;
+    font-weight: 900;
+    color: var(--text-color);
+}
+.cost_val {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: #ca8a04;
+}
+.cost_unit {
+    font-size: 10px;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.modal_share_btn {
+    background: linear-gradient(135deg, #1c1917 0%, #292524 100%) !important;
+    color: #fde047 !important;
+    border: 2px solid #ca8a04 !important;
+    border-radius: 4px !important;
+    font-family: 'Cinzel Decorative', serif !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1px;
+    padding: 5px 12px !important;
+    cursor: pointer !important;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.3) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+.modal_share_btn:hover {
+    transform: translateY(-1px) !important;
+    border-color: #fde047 !important;
+}
+.modal_share_btn::before {
+    content: '' !important;
+    display: none !important;

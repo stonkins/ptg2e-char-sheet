@@ -1,0 +1,1566 @@
+<!-- ==========================================================================
+   TOP SETTINGS MENU & ACCESSIBILITY CONTROLS
+   ========================================================================== -->
+<div class="sheet_settings_wrapper">
+    <input type="checkbox" name="attr_toggle_settings_menu" id="toggle_settings_menu" class="settings_toggle_checkbox" />
+    <label for="toggle_settings_menu" class="settings_cog_btn" title="Sheet Settings">⚙</label>
+
+    <div class="settings_menu_panel ink-box zine-shadow">
+        <div class="settings_menu_header">
+            <h3>SETTINGS</h3>
+        </div>
+        <div class="settings_section">
+            <span class="settings_section_title">Font Readability:</span>
+            <label class="font_radio_label">
+                <input type="radio" name="attr_font_mode" value="default" checked />
+                <span>Theme Font (Default)</span>
+            </label>
+            <label class="font_radio_label">
+                <input type="radio" name="attr_font_mode" value="standard" />
+                <span>Standard Font (Arial)</span>
+            </label>
+            <label class="font_radio_label">
+                <input type="radio" name="attr_font_mode" value="dyslexic" />
+                <span>Dyslexia Font (Atkinson)</span>
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================================
+   GLOBAL SHEET CONTROLLER
+   ========================================================================== -->
+<input type="radio" name="attr_active_tab" value="frontline" class="tab_watcher tab_watch_frontline" checked />
+<input type="radio" name="attr_active_tab" value="soul" class="tab_watcher tab_watch_soul" />
+<input type="radio" name="attr_active_tab" value="bonds" class="tab_watcher tab_watch_bonds" />
+
+<input type="hidden" name="attr_health_cap" value="5" class="cap_watcher hp_cap_watcher" />
+<input type="hidden" name="attr_psyche_cap" value="5" class="cap_watcher psy_cap_watcher" />
+<input type="hidden" name="attr_health" value="5" />
+<input type="hidden" name="attr_health_max" value="5" />
+<input type="hidden" name="attr_psyche" value="5" />
+<input type="hidden" name="attr_psyche_max" value="5" />
+
+<div class="sheet_core_wrapper">
+
+    <!-- HEADER BRANDING BAR -->
+    <div class="sheet_branding_bar">
+        <div class="header_title_group">
+            <h1>PART-TIME GODS</h1>
+            <h2>Second Edition</h2>
+        </div>
+    </div>
+
+    <!-- PHYSICAL FOLDER TABS -->
+    <div class="sheet_folder_tabs">
+        <label class="tab_folder_btn">
+            <input type="radio" name="attr_active_tab" value="frontline" checked />
+            <span class="tab_folder_label">THE FRONTLINE</span>
+        </label>
+        <label class="tab_folder_btn">
+            <input type="radio" name="attr_active_tab" value="soul" />
+            <span class="tab_folder_label">HUMANITY &amp; GODHOOD</span>
+        </label>
+        <label class="tab_folder_btn">
+            <input type="radio" name="attr_active_tab" value="bonds" />
+            <span class="tab_folder_label">BONDS &amp; DEVOTION</span>
+        </label>
+    </div>
+
+    <div class="sheet_main_folder ink-box zine-shadow">
+
+        <!-- ==================================================================
+            PERSISTENT TOP: IDENTITY, SPARK ALTAR & SURVIVAL ENGINE
+            ================================================================== -->
+        <header class="persistent_header">
+
+            <!-- Identity Header -->
+            <div class="header_identity_row">
+                <div class="id_pill name_pill">
+                    <span class="pill_tag mortal_name_lbl">NAME:</span>
+                    <span class="pill_tag divine_name_lbl">DEITY:</span>
+                    <input type="text" name="attr_character_name" class="header_name_mortal" placeholder="Character Name" />
+                    <input type="text" name="attr_divine_title" class="header_name_divine" placeholder="Primary Divine Title" />
+                </div>
+            </div>
+
+            <!-- DIVINE SPARK ALTAR -->
+            <div class="altar_shrine">
+                <div class="altar_header_label">
+                    <span class="altar_ornament">✦</span>
+                    <span class="altar_heading_text">DIVINE SPARK</span>
+                    <span class="altar_ornament">✦</span>
+                </div>
+
+                <div class="altar_braziers_row">
+                    <!-- Astrolabe 1 -->
+                    <div class="brazier_station brazier_1">
+                        <label class="astrolabe_btn" title="Spark I">
+                            <input type="radio" name="attr_spark" value="1" class="spark_tier_input" checked />
+                            <div class="astrolabe_frame">
+                                <span class="astrolabe_ring"></span>
+                                <span class="astrolabe_diamond_glyph">◆</span>
+                                <span class="astrolabe_star_glyph">✧</span>
+                            </div>
+                            <span class="brazier_rank">SPARK I</span>
+                        </label>
+                        <div class="fragment_triad" title="Fragments for Spark I">
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_1" checked /><span class="shard_mark"></span></label>
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_2" checked /><span class="shard_mark"></span></label>
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_3" checked /><span class="shard_mark"></span></label>
+                        </div>
+                    </div>
+
+                    <!-- Astrolabe 2 -->
+                    <div class="brazier_station brazier_2">
+                        <label class="astrolabe_btn" title="Spark II">
+                            <input type="radio" name="attr_spark" value="2" class="spark_tier_input" />
+                            <div class="astrolabe_frame">
+                                <span class="astrolabe_ring"></span>
+                                <span class="astrolabe_diamond_glyph">◆</span>
+                                <span class="astrolabe_star_glyph">✧</span>
+                            </div>
+                            <span class="brazier_rank">SPARK II</span>
+                        </label>
+                        <div class="fragment_triad" title="Fragments for Spark II">
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_4" checked /><span class="shard_mark"></span></label>
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_5" checked /><span class="shard_mark"></span></label>
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_6" checked /><span class="shard_mark"></span></label>
+                        </div>
+                    </div>
+
+                    <!-- Astrolabe 3 -->
+                    <div class="brazier_station brazier_3">
+                        <label class="astrolabe_btn" title="Spark III">
+                            <input type="radio" name="attr_spark" value="3" class="spark_tier_input" />
+                            <div class="astrolabe_frame">
+                                <span class="astrolabe_ring"></span>
+                                <span class="astrolabe_diamond_glyph">◆</span>
+                                <span class="astrolabe_star_glyph">✧</span>
+                            </div>
+                            <span class="brazier_rank">SPARK III</span>
+                        </label>
+                        <div class="fragment_triad" title="Fragments for Spark III">
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_7" checked /><span class="shard_mark"></span></label>
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_8" checked /><span class="shard_mark"></span></label>
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_9" checked /><span class="shard_mark"></span></label>
+                        </div>
+                    </div>
+
+                    <!-- Astrolabe 4 -->
+                    <div class="brazier_station brazier_4">
+                        <label class="astrolabe_btn" title="Spark IV">
+                            <input type="radio" name="attr_spark" value="4" class="spark_tier_input" />
+                            <div class="astrolabe_frame">
+                                <span class="astrolabe_ring"></span>
+                                <span class="astrolabe_diamond_glyph">◆</span>
+                                <span class="astrolabe_star_glyph">✧</span>
+                            </div>
+                            <span class="brazier_rank">SPARK IV</span>
+                        </label>
+                        <div class="fragment_triad" title="Fragments for Spark IV">
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_10" checked /><span class="shard_mark"></span></label>
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_11" checked /><span class="shard_mark"></span></label>
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_12" checked /><span class="shard_mark"></span></label>
+                        </div>
+                    </div>
+
+                    <!-- Astrolabe 5 -->
+                    <div class="brazier_station brazier_5">
+                        <label class="astrolabe_btn" title="Spark V">
+                            <input type="radio" name="attr_spark" value="5" class="spark_tier_input" />
+                            <div class="astrolabe_frame">
+                                <span class="astrolabe_ring"></span>
+                                <span class="astrolabe_diamond_glyph">◆</span>
+                                <span class="astrolabe_star_glyph">✧</span>
+                            </div>
+                            <span class="brazier_rank">SPARK V</span>
+                        </label>
+                        <div class="fragment_triad" title="Fragments for Spark V">
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_13" checked /><span class="shard_mark"></span></label>
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_14" checked /><span class="shard_mark"></span></label>
+                            <label class="shard_box"><input type="checkbox" name="attr_frag_15" checked /><span class="shard_mark"></span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HEALTH, PSYCHE, AND CONDITIONS METERS -->
+            <div class="header_survival_row">
+                <!-- Health Track -->
+                <div class="track_block">
+                    <div class="track_header">
+                        <h2>HEALTH</h2>
+                    </div>
+                    <div class="track_row hp_track_row">
+                        <label class="strike_box box_1"><input type="checkbox" name="attr_health_1" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_2"><input type="checkbox" name="attr_health_2" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_3"><input type="checkbox" name="attr_health_3" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_4"><input type="checkbox" name="attr_health_4" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_5"><input type="checkbox" name="attr_health_5" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_6"><input type="checkbox" name="attr_health_6" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_7"><input type="checkbox" name="attr_health_7" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_8"><input type="checkbox" name="attr_health_8" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_9"><input type="checkbox" name="attr_health_9" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_10"><input type="checkbox" name="attr_health_10" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_11"><input type="checkbox" name="attr_health_11" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_12"><input type="checkbox" name="attr_health_12" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_13"><input type="checkbox" name="attr_health_13" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_14"><input type="checkbox" name="attr_health_14" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_15"><input type="checkbox" name="attr_health_15" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_16"><input type="checkbox" name="attr_health_16" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_17"><input type="checkbox" name="attr_health_17" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_18"><input type="checkbox" name="attr_health_18" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_19"><input type="checkbox" name="attr_health_19" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_20"><input type="checkbox" name="attr_health_20" /><span class="box_mark"></span></label>
+                    </div>
+                </div>
+
+                <!-- Psyche Track -->
+                <div class="track_block">
+                    <div class="track_header">
+                        <h2>PSYCHE</h2>
+                    </div>
+                    <div class="track_row psy_track_row">
+                        <label class="strike_box box_1"><input type="checkbox" name="attr_psyche_1" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_2"><input type="checkbox" name="attr_psyche_2" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_3"><input type="checkbox" name="attr_psyche_3" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_4"><input type="checkbox" name="attr_psyche_4" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_5"><input type="checkbox" name="attr_psyche_5" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_6"><input type="checkbox" name="attr_psyche_6" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_7"><input type="checkbox" name="attr_psyche_7" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_8"><input type="checkbox" name="attr_psyche_8" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_9"><input type="checkbox" name="attr_psyche_9" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_10"><input type="checkbox" name="attr_psyche_10" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_11"><input type="checkbox" name="attr_psyche_11" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_12"><input type="checkbox" name="attr_psyche_12" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_13"><input type="checkbox" name="attr_psyche_13" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_14"><input type="checkbox" name="attr_psyche_14" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_15"><input type="checkbox" name="attr_psyche_15" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_16"><input type="checkbox" name="attr_psyche_16" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_17"><input type="checkbox" name="attr_psyche_17" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_18"><input type="checkbox" name="attr_psyche_18" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_19"><input type="checkbox" name="attr_psyche_19" /><span class="box_mark"></span></label>
+                        <label class="strike_box box_20"><input type="checkbox" name="attr_psyche_20" /><span class="box_mark"></span></label>
+                    </div>
+                </div>
+
+                <!-- Conditions Dock -->
+                <div class="conditions_dock">
+                    <div class="conditions_header">
+                        <span class="dock_title">CONDITIONS</span>
+                    </div>
+                    <fieldset class="repeating_conditions">
+                        <div class="condition_pill_card">
+                            <input type="checkbox" name="attr_cond_expand" class="cond_expand_toggle_master" value="1" title="Expand Description" />
+                            <div class="cond_top_row">
+                                <div class="cond_expand_btn"></div>
+                                <input type="text" name="attr_condition_name" class="condition_name_input" placeholder="Condition Name" />
+                                <div class="cond_lvl_badge" title="Condition Level">
+                                    <span class="cond_lvl_tag">LVL</span>
+                                    <input type="number" name="attr_condition_level" class="condition_level_input no_spin_input" value="1" min="1" max="5" />
+                                </div>
+                            </div>
+                            <div class="cond_desc_body rep_desc_body">
+                                <div class="auto_expand_wrapper">
+                                    <span name="attr_condition_desc" class="auto_expand_mirror"></span>
+                                    <textarea name="attr_condition_desc" class="auto_expand_textarea cond_desc_textarea" placeholder="Effects, penalties, triggers..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </header>
+
+        <!-- ==================================================================
+            TAB 1: THE FRONTLINE
+            ================================================================== -->
+        <main class="page_canvas tab_frontline">
+            
+            <!-- EXERCISE POWER -->
+            <section class="stunt_console ink-box zine-shadow">
+                <input type="checkbox" name="attr_stunt_console_toggle" class="stunt_console_toggle" checked />
+                <div class="stunt_console_header">
+                    <h2 class="label-tape">EXERCISE POWER</h2>
+                    <div class="stunt_header_actions">
+                        <label class="modal_open_btn" title="Open Manifestation Measures Spending Guide">
+                            <input type="checkbox" name="attr_show_measures_modal" class="modal_toggle_input" />
+                            <span class="modal_open_label">✦ MEASURES GUIDE</span>
+                        </label>
+                        <span class="stunt_accordion_btn"></span>
+                    </div>
+                </div>
+
+                <div class="stunt_console_body">
+                    <!-- Row 1: Single Line Equation (Trait 1 on Left, Trait 2 on Right) -->
+                    <div class="stunt_row trait_picker_row">
+                        <!-- TRAIT 1 (LEFT) -->
+                        <div class="trait_select_box">
+                            <span class="stunt_field_tag">TRAIT 1</span>
+                            <select name="attr_stunt_trait_1" class="stunt_trait_select">
+                                <option value="none" selected>-- None --</option>
+                                <optgroup label="Skills">
+                                    <option value="athletics">Athletics</option><option value="crafts">Crafts</option><option value="deception">Deception</option>
+                                    <option value="discipline">Discipline</option><option value="empathy">Empathy</option><option value="fighting">Fighting</option>
+                                    <option value="fortitude">Fortitude</option><option value="influence">Influence</option><option value="intuition">Intuition</option>
+                                    <option value="knowledge">Knowledge</option><option value="marksman">Marksman</option><option value="medicine">Medicine</option>
+                                    <option value="might">Might</option><option value="perception">Perception</option><option value="perform">Perform</option>
+                                    <option value="speed">Speed</option><option value="stealth">Stealth</option><option value="survival">Survival</option>
+                                    <option value="tech">Tech</option><option value="travel">Travel</option>
+                                </optgroup>
+                                <optgroup label="Manifestations">
+                                    <option value="aegis">Aegis</option><option value="beckon">Beckon</option><option value="journey">Journey</option>
+                                    <option value="minion">Minion</option><option value="puppetry">Puppetry</option><option value="oracle">Oracle</option>
+                                    <option value="ruin">Ruin</option><option value="shaping">Shaping</option><option value="soul">Soul</option>
+                                </optgroup>
+                            </select>
+                            <input type="hidden" name="attr_stunt_trait_1_name" value="None" />
+                            <input type="number" name="attr_stunt_trait_1_val" class="trait_val_badge no_spin_input" value="0" readonly />
+                        </div>
+
+                        <span class="stunt_math_sym">+</span>
+
+                        <!-- TRAIT 2 (RIGHT) -->
+                        <div class="trait_select_box">
+                            <span class="stunt_field_tag">TRAIT 2</span>
+                            <select name="attr_stunt_trait_2" class="stunt_trait_select">
+                                <option value="none" selected>-- None --</option>
+                                <optgroup label="Skills">
+                                    <option value="athletics">Athletics</option><option value="crafts">Crafts</option><option value="deception">Deception</option>
+                                    <option value="discipline">Discipline</option><option value="empathy">Empathy</option><option value="fighting">Fighting</option>
+                                    <option value="fortitude">Fortitude</option><option value="influence">Influence</option><option value="intuition">Intuition</option>
+                                    <option value="knowledge">Knowledge</option><option value="marksman">Marksman</option><option value="medicine">Medicine</option>
+                                    <option value="might">Might</option><option value="perception">Perception</option><option value="perform">Perform</option>
+                                    <option value="speed">Speed</option><option value="stealth">Stealth</option><option value="survival">Survival</option>
+                                    <option value="tech">Tech</option><option value="travel">Travel</option>
+                                </optgroup>
+                                <optgroup label="Manifestations">
+                                    <option value="aegis">Aegis</option><option value="beckon">Beckon</option><option value="journey">Journey</option>
+                                    <option value="minion">Minion</option><option value="puppetry">Puppetry</option><option value="oracle">Oracle</option>
+                                    <option value="ruin">Ruin</option><option value="shaping">Shaping</option><option value="soul">Soul</option>
+                                </optgroup>
+                            </select>
+                            <input type="hidden" name="attr_stunt_trait_2_name" value="None" />
+                            <input type="number" name="attr_stunt_trait_2_val" class="trait_val_badge no_spin_input" value="0" readonly />
+                        </div>
+
+                        <span class="stunt_math_sym">=</span>
+
+                        <div class="base_pool_box">
+                            <span class="stunt_field_tag">BASE</span>
+                            <div class="pool_pill">
+                                <span class="pool_val" name="attr_stunt_base_pool">0</span>
+                                <span class="pool_unit">d10</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Detected Specialties & Blessings Prompts (Phantom None Removed) -->
+                    <div class="stunt_row detected_mods_row">
+                        <div class="detected_col">
+                            <span class="detected_group_title">DETECTED SPECIALTIES:</span>
+                            <div class="detected_pills_wrap">
+                                <input type="hidden" name="attr_stunt_has_spec_1" value="0" class="has_detected_watcher has_spec_1_watch" />
+                                <label class="detected_toggle_pill pill_spec_1">
+                                    <input type="checkbox" name="attr_stunt_use_spec_1" value="1" />
+                                    <span class="pill_marker"></span>
+                                    <span class="pill_label" name="attr_stunt_spec_1_label"></span>
+                                </label>
+
+                                <input type="hidden" name="attr_stunt_has_spec_2" value="0" class="has_detected_watcher has_spec_2_watch" />
+                                <label class="detected_toggle_pill pill_spec_2">
+                                    <input type="checkbox" name="attr_stunt_use_spec_2" value="1" />
+                                    <span class="pill_marker"></span>
+                                    <span class="pill_label" name="attr_stunt_spec_2_label"></span>
+                                </label>
+
+                                <input type="hidden" name="attr_stunt_any_spec" value="0" class="any_detected_watcher any_spec_watch" />
+                                <span class="none_detected_msg">No matching specialties found for chosen traits</span>
+                            </div>
+                        </div>
+
+                        <div class="detected_col">
+                            <span class="detected_group_title">DETECTED BLESSINGS:</span>
+                            <div class="detected_pills_wrap">
+                                <input type="hidden" name="attr_stunt_has_bless_1" value="0" class="has_detected_watcher has_bless_1_watch" />
+                                <label class="detected_toggle_pill pill_bless_1">
+                                    <input type="checkbox" name="attr_stunt_use_bless_1" value="1" />
+                                    <span class="pill_marker"></span>
+                                    <span class="pill_label" name="attr_stunt_bless_1_label"></span>
+                                </label>
+
+                                <input type="hidden" name="attr_stunt_has_bless_2" value="0" class="has_detected_watcher has_bless_2_watch" />
+                                <label class="detected_toggle_pill pill_bless_2">
+                                    <input type="checkbox" name="attr_stunt_use_bless_2" value="1" />
+                                    <span class="pill_marker"></span>
+                                    <span class="pill_label" name="attr_stunt_bless_2_label"></span>
+                                </label>
+
+                                <input type="hidden" name="attr_stunt_any_bless" value="0" class="any_detected_watcher any_bless_watch" />
+                                <span class="none_detected_msg">No matching blessings found for chosen traits</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Action Bar -->
+                    <div class="stunt_row action_bar_row">
+                        <div class="custom_mods_dock">
+                            <div class="custom_mod_pill">
+                                <span class="mod_tag">Tools / Gear:</span>
+                                <input type="number" name="attr_stunt_mod_tools" value="0" class="no_spin_input" />
+                            </div>
+                            <div class="custom_mod_pill">
+                                <span class="mod_tag">Territory:</span>
+                                <input type="number" name="attr_stunt_mod_territory" value="0" class="no_spin_input" />
+                            </div>
+                            <div class="custom_mod_pill">
+                                <span class="mod_tag">Circumstance:</span>
+                                <input type="number" name="attr_stunt_mod_circumstance" value="0" class="no_spin_input" />
+                            </div>
+                        </div>
+
+                        <div class="total_pool_roll_dock">
+                            <div class="total_pool_badge">
+                                <span class="total_pool_tag">POOL:</span>
+                                <span class="total_pool_val" name="attr_stunt_total_pool">0</span>
+                                <span class="total_pool_unit">d10</span>
+                            </div>
+                            <!-- ROLL20 ACTION BUTTON FOR ADVANCED DICE LOGIC -->
+                            <button type="action" name="act_roll_stunt" class="stunt_roll_btn">
+                                <span class="d10_icon">0</span> EXERCISE POWER
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills, Manifestations & Prominent Reserves Ledger -->
+            <section class="skills_manifest_traits_grid">
+                
+                <!-- Skills (20) -->
+                <div class="skills ink-box zine-shadow">
+                    <h2 class="label-tape">SKILLS</h2>
+
+                    <div class="skill_item"><span>Athletics</span><input type="number" name="attr_athletics" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Crafts</span><input type="number" name="attr_crafts" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Deception</span><input type="number" name="attr_deception" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Discipline</span><input type="number" name="attr_discipline" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Empathy</span><input type="number" name="attr_empathy" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Fighting</span><input type="number" name="attr_fighting" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Fortitude</span><input type="number" name="attr_fortitude" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Influence</span><input type="number" name="attr_influence" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Intuition</span><input type="number" name="attr_intuition" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Knowledge</span><input type="number" name="attr_knowledge" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Marksman</span><input type="number" name="attr_marksman" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Medicine</span><input type="number" name="attr_medicine" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Might</span><input type="number" name="attr_might" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Perception</span><input type="number" name="attr_perception" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Perform</span><input type="number" name="attr_perform" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Speed</span><input type="number" name="attr_speed" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Stealth</span><input type="number" name="attr_stealth" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Survival</span><input type="number" name="attr_survival" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Tech</span><input type="number" name="attr_tech" value="0" class="no_spin_input" /></div>
+                    <div class="skill_item"><span>Travel</span><input type="number" name="attr_travel" value="0" class="no_spin_input" /></div>
+                </div>
+
+                <!-- Tightened Manifestations (9) -->
+                <div class="manifest ink-box zine-shadow">
+                    <h2 class="label-tape">MANIFESTATIONS</h2>
+
+                    <div class="mani_list">
+                        <div class="mani_item"><span>Aegis</span><input type="number" name="attr_aegis" value="0" class="no_spin_input" /></div>
+                        <div class="mani_item"><span>Beckon</span><input type="number" name="attr_beckon" value="0" class="no_spin_input" /></div>
+                        <div class="mani_item"><span>Journey</span><input type="number" name="attr_journey" value="0" class="no_spin_input" /></div>
+                        <div class="mani_item"><span>Minion</span><input type="number" name="attr_minion" value="0" class="no_spin_input" /></div>
+                        <div class="mani_item"><span>Puppetry</span><input type="number" name="attr_puppetry" value="0" class="no_spin_input" /></div>
+                        <div class="mani_item"><span>Oracle</span><input type="number" name="attr_oracle" value="0" class="no_spin_input" /></div>
+                        <div class="mani_item"><span>Ruin</span><input type="number" name="attr_ruin" value="0" class="no_spin_input" /></div>
+                        <div class="mani_item"><span>Shaping</span><input type="number" name="attr_shaping" value="0" class="no_spin_input" /></div>
+                        <div class="mani_item"><span>Soul</span><input type="number" name="attr_soul" value="0" class="no_spin_input" /></div>
+                    </div>
+                </div>
+
+                <!-- Traits & Clean Reserves Ledger -->
+                <div class="stats ink-box-alt zine-shadow">
+                    <h2 class="label-tape">TRAITS &amp; RESERVES</h2>
+                    <div class="traits_grid">
+                        <button type="roll" class="trait_roll_btn" name="roll_initiative" value="&{template:ptg} {{title=Initiative}} {{name=@{character_name}}} {{desc=**Initiative:** [[1d10 + @{initiative} &{tracker}]]}}">Initiative:</button>
+                        <div class="init_box_wrap">
+                            <input type="number" name="attr_initiative" value="@{speed} + @{intuition}" disabled class="no_spin_input" />
+                            <button type="roll" class="init_overlay_btn" name="roll_initiative_box" value="&{template:ptg} {{title=Initiative}} {{name=@{character_name}}} {{desc=**Initiative:** [[1d10 + @{initiative} &{tracker}]]}}" title="Click to Roll Initiative"></button>
+                        </div>
+                        <span>Strength:</span><input type="number" name="attr_strength" value="@{athletics} + @{might}" disabled class="no_spin_input" />
+                        <span>Movement:</span><input type="number" name="attr_movement" value="@{athletics} + @{speed} + 5" disabled class="no_spin_input" />
+                        <span>Max Health:</span><input type="number" name="attr_max_health" value="5" readonly class="no_spin_input" />
+                        <span>Max Psyche:</span><input type="number" name="attr_max_psyche" value="5" readonly class="no_spin_input" />
+                    </div>
+                    
+                    <div class="section_divider"></div>
+                    
+                    <div class="reserves_container">
+                        <h3 class="reserves_title">Reserves Ledger</h3>
+                        <div class="reserves_table_grid">
+                            <span class="res_th">Pool</span>
+                            <span class="res_th" title="Current">Cur</span>
+                            <span class="res_th" title="Maximum Capacity">Max</span>
+                            <span class="res_th" title="Regained From Work Shift">+Work</span>
+
+                            <span class="res_lbl">Free Time:</span>
+                            <input type="number" name="attr_free_time" value="0" class="res_cell_inp no_spin_input" title="Current Free Time" />
+                            <input type="number" name="attr_max_free_time" value="0" class="res_cell_inp no_spin_input" title="Maximum Free Time" />
+                            <input type="number" name="attr_work_free_time_bonus" value="0" class="res_cell_inp res_work_bonus no_spin_input" title="Free Time gained per work shift" />
+
+                            <span class="res_lbl">Wealth:</span>
+                            <input type="number" name="attr_wealth" value="0" class="res_cell_inp no_spin_input" title="Current Wealth" />
+                            <input type="number" name="attr_max_wealth" value="0" class="res_cell_inp no_spin_input" title="Maximum Wealth" />
+                            <input type="number" name="attr_work_wealth_bonus" value="0" class="res_cell_inp res_work_bonus no_spin_input" title="Wealth gained per work shift" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Combat Deck: Specialties & Inventory (50/50 Split) -->
+            <section class="combat_deck_grid">
+                
+                <!-- Specialties -->
+                <div class="special ink-box zine-shadow">
+                    <h2 class="label-tape">SPECIALTIES</h2>
+                    <fieldset class="repeating_specialty">
+                        <div class="specialty_card">
+                            <input type="text" name="attr_specialty_name" class="spec_name_inp" placeholder="Specialty (e.g. Brawling)" />
+                            <div class="spec_sub_row">
+                                <select name="attr_specialty_target" class="spec_target_select">
+                                    <option value="" disabled selected>--Target Skill / Manifestation--</option>
+                                    <optgroup label="Skills">
+                                        <option value="athletics">Athletics</option><option value="crafts">Crafts</option><option value="deception">Deception</option>
+                                        <option value="discipline">Discipline</option><option value="empathy">Empathy</option><option value="fighting">Fighting</option>
+                                        <option value="fortitude">Fortitude</option><option value="influence">Influence</option><option value="intuition">Intuition</option>
+                                        <option value="knowledge">Knowledge</option><option value="marksman">Marksman</option><option value="medicine">Medicine</option>
+                                        <option value="might">Might</option><option value="perception">Perception</option><option value="perform">Perform</option>
+                                        <option value="speed">Speed</option><option value="stealth">Stealth</option><option value="survival">Survival</option>
+                                        <option value="tech">Tech</option><option value="travel">Travel</option>
+                                    </optgroup>
+                                    <optgroup label="Manifestations">
+                                        <option value="aegis">Aegis</option><option value="beckon">Beckon</option><option value="journey">Journey</option>
+                                        <option value="minion">Minion</option><option value="oracle">Oracle</option><option value="puppetry">Puppetry</option>
+                                        <option value="ruin">Ruin</option><option value="shaping">Shaping</option><option value="soul">Soul</option>
+                                    </optgroup>
+                                </select>
+                                <span class="spec_mod_lbl">+</span>
+                                <input type="number" name="attr_specialty_modifier" class="spec_mod_inp no_spin_input" value="1" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Inventory (Item vs Relic with Chat Output Button) -->
+                <div class="weapons ink-box-alt zine-shadow">
+                    <h2 class="label-tape">INVENTORY</h2>
+                    <fieldset class="repeating_weapons">
+                        <div class="inventory_card">
+                            <div class="inv_top_row">
+                                <button type="roll" class="weapon_chat_btn" name="roll_share_weapon"
+                                    value="&{template:ptg} {{title=Inventory}} {{name=@{weapon_name}}} {{desc=**Type:** @{inventory_type} | **Damage:** +@{weapon_dmg}
+                                    
+@{weapon_notes}}}">q</button>
+                                <select name="attr_inventory_type" class="inv_type_select">
+                                    <option value="item" selected>Item</option>
+                                    <option value="relic">Relic</option>
+                                </select>
+                                <input type="text" name="attr_weapon_name" class="weapon_name" placeholder="Item / Relic Name" />
+                                <span class="weapon_lbl">DMG</span>
+                                <input type="number" name="attr_weapon_dmg" class="weapon_num no_spin_input" value="1" />
+                            </div>
+                            <input type="text" name="attr_weapon_notes" class="weapon_notes" placeholder="Powers, Range, Concealment, Notes" />
+                        </div>
+                    </fieldset>
+                </div>
+            </section>
+        </main>
+
+        <!-- ==================================================================
+            TAB 2: HUMANITY & GODHOOD
+            ================================================================== -->
+        <main class="page_canvas tab_soul">
+
+            <!-- IDENTITY DOSSIER -->
+            <section class="bio_dossier ink-box zine-shadow">
+                <h2 class="label-tape">IDENTITY DOSSIER</h2>
+
+                <div class="bio_dossier_content">
+                    <div class="bio_avatar_frame">
+                        <img name="attr_character_avatar" alt="Character Portrait" />
+                    </div>
+
+                    <div class="bio_identity_stack">
+                        <div class="mortal_name_field">
+                            <span class="field_prefix">NAME:</span>
+                            <input type="text" name="attr_character_name" placeholder="Character Name" />
+                        </div>
+
+                        <div class="primary_domain_field">
+                            <span class="field_prefix">DIVINE TITLE:</span>
+                            <input type="text" name="attr_divine_title" class="divine_title_input" placeholder="Primary Title (e.g. Goddess of Darkness)" />
+                        </div>
+
+                        <div class="domain_titles">
+                            <span class="field_prefix">DOMAINS:</span>
+                            <fieldset class="repeating_domains">
+                                <div class="domain_row">
+                                    <span class="domain_bullet">✦</span>
+                                    <input type="text" name="attr_domain_title" class="domain_title_input" placeholder="Domain / Epithet" />
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="mortal_traits_grid">
+                            <div class="bio_trait">
+                                <span class="trait_lbl">Archetype:</span>
+                                <select name="attr_archetype">
+                                    <option value="" selected disabled>--Archetype--</option>
+                                    <option value="caregiver">The Caregiver</option><option value="companion">The Companion</option>
+                                    <option value="dreamer">The Dreamer</option><option value="fool">The Fool</option>
+                                    <option value="hero">The Hero</option><option value="innocent">The Innocent</option>
+                                    <option value="lover">The Lover</option><option value="rebel">The Rebel</option>
+                                    <option value="sage">The Sage</option><option value="tyrant">The Tyrant</option>
+                                    <option value="visionary">The Visionary</option><option value="wanderer">The Wanderer</option>
+                                </select>
+                            </div>
+                            <div class="bio_trait">
+                                <span class="trait_lbl">Theology:</span>
+                                <select name="attr_theology">
+                                    <option value="" selected disabled>--Theology--</option>
+                                    <option value="none">None</option><option value="ascendants">Ascendants</option>
+                                    <option value="cult_of_saints">Cult of the Saints</option><option value="drifting_kingdoms">Drifting Kingdoms</option>
+                                    <option value="kunitsukami">Kunitsukami</option><option value="masks_of_jana">Masks of Jana</option>
+                                    <option value="order_of_meskhenet">Order of Meskhenet</option><option value="phoenix_society">Phoenix Society</option>
+                                    <option value="puck_eaters">Puck-Eaters</option><option value="warlocks_fate">Warlock's Fate</option>
+                                </select>
+                            </div>
+                            <div class="bio_trait">
+                                <span class="trait_lbl">Occupation / Calling:</span>
+                                <input type="text" name="attr_occupation" placeholder="Occupation" />
+                            </div>
+                            <div class="bio_trait">
+                                <span class="trait_lbl">Age / Awakening:</span>
+                                <input type="number" name="attr_age" value="25" class="no_spin_input" />
+                            </div>
+                            <div class="bio_trait">
+                                <span class="trait_lbl">Gender:</span>
+                                <input type="text" name="attr_gender" placeholder="Gender" />
+                            </div>
+                            <div class="bio_trait">
+                                <span class="trait_lbl">Ethnicity / Lineage:</span>
+                                <input type="text" name="attr_ethnicity" placeholder="Ethnicity" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TRUTHS (AUTO-EXPANDING GRID MIRRORS) -->
+            <section class="truths ink-box zine-shadow">
+                <h2 class="label-tape">TRUTHS</h2>
+                <fieldset class="repeating_truths">
+                    <div class="truth_card">
+                        <input class="expand_toggle_master" type="checkbox" name="attr_truth_expand" value="1" />
+                        <div class="truth_header">
+                            <button type="roll" class="truth_chat_btn" name="roll_share_truth" value="&{template:ptg} {{title=Divine Truth}} {{name=@{truth_name}}} {{truth=@{truth_text}}}">q</button>
+                            <span class="quote_icon">“</span>
+                            <div class="auto_expand_wrapper truth_title_wrapper">
+                                <span name="attr_truth_name" class="auto_expand_mirror"></span>
+                                <textarea name="attr_truth_name" class="auto_expand_textarea truth_title_input" rows="1" placeholder="Aspect of Truth..."></textarea>
+                            </div>
+                            <span class="quote_icon_end">”</span>
+                            <span class="expand_button_overlay"></span>
+                        </div>
+                        <div class="truth_body rep_desc_body">
+                            <div class="auto_expand_wrapper">
+                                <span name="attr_truth_text" class="auto_expand_mirror"></span>
+                                <textarea name="attr_truth_text" class="auto_expand_textarea truth_quote_textarea" placeholder="State your divine decree..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+
+            <!-- BLESSINGS & CURSES (50/50 SPLIT) -->
+            <section class="blessings_curses_split">
+                <!-- Blessings -->
+                <div class="blessing ink-box zine-shadow">
+                    <h2 class="label-tape">BLESSINGS</h2>
+                    <fieldset class="repeating_blessing">
+                        <div class="blessing_item">
+                            <input class="expand_toggle_master" type="checkbox" name="attr_blessing_expand" value="1" />
+                            <div class="blessing_header">
+                                <button type="roll" class="blessing_chat_btn" name="roll_share_blessing" value="&{template:ptg} {{title=Blessing}} {{name=@{blessing_name}}} {{target=@{blessing_target}}} {{bonus=+@{blessing_bonus}}} {{desc=@{blessing_desc}}}">q</button>
+                                <input type="text" name="attr_blessing_name" placeholder="Blessing Name" />
+                                <span class="expand_button_overlay"></span>
+                            </div>
+                            <div class="blessing_desc rep_desc_body">
+                                <div class="blessing_inner_params">
+                                    <span class="bless_lbl">Target:</span>
+                                    <select name="attr_blessing_target" class="blessing_target_select">
+                                        <option value="General" selected>General</option>
+                                        <optgroup label="Skills">
+                                            <option value="athletics">Athletics</option><option value="crafts">Crafts</option><option value="deception">Deception</option>
+                                            <option value="discipline">Discipline</option><option value="empathy">Empathy</option><option value="fighting">Fighting</option>
+                                            <option value="fortitude">Fortitude</option><option value="influence">Influence</option><option value="intuition">Intuition</option>
+                                            <option value="knowledge">Knowledge</option><option value="marksman">Marksman</option><option value="medicine">Medicine</option>
+                                            <option value="might">Might</option><option value="perception">Perception</option><option value="perform">Perform</option>
+                                            <option value="speed">Speed</option><option value="stealth">Stealth</option><option value="survival">Survival</option>
+                                            <option value="tech">Tech</option><option value="travel">Travel</option>
+                                        </optgroup>
+                                        <optgroup label="Manifestations">
+                                            <option value="aegis">Aegis</option><option value="beckon">Beckon</option><option value="journey">Journey</option>
+                                            <option value="minion">Minion</option><option value="puppetry">Puppetry</option><option value="oracle">Oracle</option>
+                                            <option value="ruin">Ruin</option><option value="shaping">Shaping</option><option value="soul">Soul</option>
+                                        </optgroup>
+                                    </select>
+                                    <span class="bless_lbl">Bonus:</span>
+                                    <input type="number" name="attr_blessing_bonus" class="blessing_bonus no_spin_input" value="1" placeholder="+1" />
+                                </div>
+                                <div class="auto_expand_wrapper">
+                                    <span name="attr_blessing_desc" class="auto_expand_mirror"></span>
+                                    <textarea class="auto_expand_textarea blessing_desc_textarea" name="attr_blessing_desc" placeholder="Blessing description and mythic effect..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Curses -->
+                <div class="curse ink-box-alt zine-shadow">
+                    <h2 class="label-tape">CURSES</h2>
+                    <fieldset class="repeating_curses">
+                        <div class="curse_item">
+                            <input class="expand_toggle_master" type="checkbox" name="attr_curse_expand" value="1" />
+                            <div class="curse_header">
+                                <button type="roll" class="curse_chat_btn" name="roll_share_curse" value="&{template:ptg} {{title=Curse}} {{name=@{curse_name}}} {{backlash=@{curse_desc}}}">q</button>
+                                <input type="text" name="attr_curse_name" placeholder="Curse Name" />
+                                <span class="expand_button_overlay"></span>
+                            </div>
+                            <div class="curse_desc rep_desc_body">
+                                <div class="auto_expand_wrapper">
+                                    <span name="attr_curse_desc" class="auto_expand_mirror"></span>
+                                    <textarea class="auto_expand_textarea curse_desc_textarea" name="attr_curse_desc" placeholder="Curse description and divine backlash..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </section>
+
+            <!-- LEGENDARY ACTS -->
+            <section class="legendary_acts_dock ink-box zine-shadow">
+                <div class="legendary_acts_header_bar">
+                    <h2 class="label-tape">LEGENDARY ACTS</h2>
+                    
+                    <div class="act_communion_seals" title="You can perform a Legendary Act once per Spark rank. Check to burn/expend.">
+                        <span class="act_seals_tag">POTENTIAL ACTS:</span>
+                        
+                        <label class="act_seal_token act_seal_1" title="Act I: Check to Burn/Expend">
+                            <input type="checkbox" name="attr_act_expended_1" />
+                            <span class="seal_sigil">✦</span>
+                            <span class="seal_num">I</span>
+                        </label>
+                        <label class="act_seal_token act_seal_2" title="Act II: Check to Burn/Expend">
+                            <input type="checkbox" name="attr_act_expended_2" />
+                            <span class="seal_sigil">✦</span>
+                            <span class="seal_num">II</span>
+                        </label>
+                        <label class="act_seal_token act_seal_3" title="Act III: Check to Burn/Expend">
+                            <input type="checkbox" name="attr_act_expended_3" />
+                            <span class="seal_sigil">✦</span>
+                            <span class="seal_num">III</span>
+                        </label>
+                        <label class="act_seal_token act_seal_4" title="Act IV: Check to Burn/Expend">
+                            <input type="checkbox" name="attr_act_expended_4" />
+                            <span class="seal_sigil">✦</span>
+                            <span class="seal_num">IV</span>
+                        </label>
+                        <label class="act_seal_token act_seal_5" title="Act V: Check to Burn/Expend">
+                            <input type="checkbox" name="attr_act_expended_5" />
+                            <span class="seal_sigil">✦</span>
+                            <span class="seal_num">V</span>
+                        </label>
+                    </div>
+                </div>
+
+                <p class="panel_subtext">Milestones of myth and terrifying glory that carve your ascendance into history. Expended upon execution.</p>
+
+                <fieldset class="repeating_acts">
+                    <div class="act_card">
+                        <div class="act_headline_row">
+                            <input type="text" name="attr_act_title" class="act_title_input" placeholder="Saga Headline (e.g. Drowned the Scion of Nyx in the Thames)" />
+                            <input type="text" name="attr_act_domain" class="act_domain_input" placeholder="Domain Manifested" />
+                        </div>
+                        <div class="auto_expand_wrapper">
+                            <span name="attr_act_desc" class="auto_expand_mirror"></span>
+                            <textarea name="attr_act_desc" class="auto_expand_textarea saga_body_text" placeholder="State the saga, the divine cost, and the mortal aftermath..."></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+        </main>
+
+        <!-- ==================================================================
+            TAB 3: BONDS & DEVOTION (VASSALS, WORSHIPPERS & MORTAL BONDS)
+            ================================================================== -->
+        <main class="page_canvas tab_bonds">
+            
+            <!-- VASSALS & WORSHIPPERS -->
+            <section class="vassals ink-box-alt zine-shadow">
+                <h2 class="label-tape">VASSALS &amp; WORSHIPPERS</h2>
+                <p class="panel_subtext">Bound Outsiders, holy sanctuaries, and mortal flocks. If Strain exceeds Level, reduce Level by -1 and wipe Strain.</p>
+
+                <fieldset class="repeating_vassals">
+                    <div class="vassal_card">
+                        <span class="divine_seal">✦</span>
+                        <input class="expand_toggle_master" type="checkbox" name="attr_vassal_expand" value="1" />
+
+                        <div class="vassal_header">
+                            <div class="card_row top_row">
+                                <button type="roll" class="vassal_chat_btn" name="roll_share_vassal" 
+                                    value="&{template:ptg} {{title=Vassal / Worshippers}} {{name=@{vassal_name}}} {{desc=**Role:** @{vassal_relation} | **Devotion:** @{vassal_relationship}
+**Grid:** @{vassal_location} | **Level:** @{vassal_level}
+**Pool:** @{vassal_pool} Dice | **Strain:** @{vassal_strain}
+
+@{vassal_desc}}}">q</button>
+                                <input type="text" name="attr_vassal_name" class="vassal_name_input" placeholder="Vassal / Flock Name" />
+                                <div class="relation_field_wrap">
+                                    <span class="relation_label divine_label">Role:</span>
+                                    <input type="text" name="attr_vassal_relation" class="vassal_relation_input" placeholder="Bodyguard, Priest..." />
+                                </div>
+                                <select name="attr_vassal_scope" class="scope_select divine_scope">
+                                    <option value="Vassal" selected>Vassal</option>
+                                    <option value="Worshippers">Worshippers</option>
+                                    <option value="Chosen One">Chosen One</option>
+                                </select>
+                                <span class="expand_button_overlay"></span>
+                            </div>
+
+                            <div class="card_row sub_row">
+                                <input type="text" name="attr_vassal_relationship" class="relationship_input divine_rel" placeholder="Devotion / Classification (e.g. Sworn Champion)" />
+
+                                <div class="grid_badge divine_badge" title="Territory Grid Coordinates (X-Y)">
+                                    <span class="badge_label">GRID</span>
+                                    <input type="text" name="attr_vassal_location" class="location_input divine_loc" placeholder="10 - 10" />
+                                </div>
+
+                                <div class="score_badge divine_badge" title="Level (1-5)">
+                                    <span class="score_label">LVL</span>
+                                    <select name="attr_vassal_level" class="level_select">
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+
+                                <div class="score_badge divine_badge pool_badge" title="Click to Roll Vassal Pool (Level x 2 Dice)">
+                                    <button type="action" name="act_vassalpool" class="badge_overlay_btn"></button>
+                                    <span class="score_label">POOL</span>
+                                    <input type="number" name="attr_vassal_pool" class="level_input no_spin_input" value="@{vassal_level} * 2" disabled />
+                                </div>
+
+                                <!-- Celestial Gold Starburst Strain Tracker -->
+                                <div class="strain_tracker divine_strain" title="Strain Track (Clear &amp; -1 Level if exceeded)">
+                                    <span class="strain_label">STRAIN:</span>
+                                    <label class="strain_clear" title="Clear Strain (0)"><input type="radio" name="attr_vassal_strain" value="0" checked /><span class="clear_btn_cross">✕</span></label>
+                                    <label class="strain_star_pip pip_1" title="1 Strain"><input type="radio" name="attr_vassal_strain" value="1" /><span class="solar_pip_glyph">✧</span></label>
+                                    <label class="strain_star_pip pip_2" title="2 Strain"><input type="radio" name="attr_vassal_strain" value="2" /><span class="solar_pip_glyph">✧</span></label>
+                                    <label class="strain_star_pip pip_3" title="3 Strain"><input type="radio" name="attr_vassal_strain" value="3" /><span class="solar_pip_glyph">✧</span></label>
+                                    <label class="strain_star_pip pip_4" title="4 Strain"><input type="radio" name="attr_vassal_strain" value="4" /><span class="solar_pip_glyph">✧</span></label>
+                                    <label class="strain_star_pip pip_5" title="5 Strain"><input type="radio" name="attr_vassal_strain" value="5" /><span class="solar_pip_glyph">✧</span></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="vassal_body rep_desc_body">
+                            <div class="auto_expand_wrapper">
+                                <span name="attr_vassal_desc" class="auto_expand_mirror"></span>
+                                <textarea name="attr_vassal_desc" class="auto_expand_textarea vassal_desc_textarea" placeholder="Powers (Lv 2, 4, 5), tribute, commands, duties..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+
+            <!-- MORTAL BONDS (CRIMSON DROPLETS & SEVERED RUBBER STAMP) -->
+            <section class="bonds ink-box zine-shadow">
+                <div class="bonds_header_title">
+                    <h2 class="label-tape">MORTAL BONDS</h2>
+                    <div class="bonds_max_calc" title="Maximum Bonds = 6 - Spark">
+                        <span class="bonds_max_tag">MAX:</span>
+                        <input type="number" name="attr_max_bonds" value="6 - @{spark}" disabled class="no_spin_input bonds_max_display" />
+                    </div>
+                </div>
+                <p class="panel_subtext">The people, places, and anchors keeping you human. If Strain exceeds Level, reduce Level by -1 and wipe Strain.</p>
+
+                <datalist id="bond_role_options">
+                    <option value="Approval-Seeking">
+                    <option value="Devious">
+                    <option value="Fun">
+                    <option value="Hostile">
+                    <option value="Needy">
+                    <option value="Nurturing">
+                    <option value="Rival">
+                    <option value="Romantic">
+                    <option value="Troubled">
+                    <option value="Wise">
+                    <option value="Home">
+                    <option value="Safe House">
+                    <option value="Social">
+                    <option value="Store">
+                    <option value="Work">
+                </datalist>
+
+                <fieldset class="repeating_bonds">
+                    <div class="bond_card">
+                        <input class="expand_toggle_master" type="checkbox" name="attr_bond_expand" value="1" />
+
+                        <div class="bond_header">
+                            <div class="card_row top_row">
+                                <button type="roll" class="bond_chat_btn" name="roll_share_bond" 
+                                    value="&{template:ptg} {{title=Mortal Bond}} {{name=@{bond_name}}} {{desc=**Relationship:** @{bond_relation} (@{bond_relationship})
+**Grid:** @{bond_location} | **Level:** @{bond_level} | **Strain:** @{bond_strain}
+
+@{bond_desc}}}">q</button>
+                                
+                                <input type="text" name="attr_bond_name" class="bond_name_input" placeholder="Bond Name" />
+                                
+                                <div class="relation_field_wrap">
+                                    <span class="relation_label">Relationship:</span>
+                                    <input type="text" name="attr_bond_relation" class="bond_relation_input" placeholder="Landlord, Sister..." />
+                                </div>
+
+                                <select name="attr_bond_scope" class="scope_select">
+                                    <option value="Individual" selected>Individual</option>
+                                    <option value="Group">Group</option>
+                                    <option value="Landmark">Landmark</option>
+                                </select>
+                                <span class="expand_button_overlay"></span>
+                            </div>
+
+                            <div class="card_row sub_row">
+                                <input type="text" name="attr_bond_relationship" list="bond_role_options" class="relationship_input" placeholder="Role / Nature" />
+
+                                <div class="grid_badge" title="Territory Grid Coordinates (X-Y)">
+                                    <span class="badge_label">GRID</span>
+                                    <input type="text" name="attr_bond_location" class="location_input" placeholder="10 - 10" />
+                                </div>
+
+                                <div class="score_badge" title="Bond Level (1-5)">
+                                    <span class="score_label">LVL</span>
+                                    <select name="attr_bond_level" class="level_select">
+                                        <option value="1" selected>1</option>
+                                        <option value="2" selected>2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+
+                                <!-- Crimson Blood Droplet Strain Tracker -->
+                                <div class="strain_tracker bond_strain_tracker" title="Strain Track (Clear &amp; -1 Level if exceeded)">
+                                    <span class="strain_label">STRAIN:</span>
+                                    <label class="strain_clear" title="Clear Strain (0)"><input type="radio" name="attr_bond_strain" value="0" checked /><span class="clear_btn_cross">✕</span></label>
+                                    <label class="strain_drop_pip pip_1" title="1 Strain"><input type="radio" name="attr_bond_strain" value="1" /><span class="blood_pip_glyph"></span></label>
+                                    <label class="strain_drop_pip pip_2" title="2 Strain"><input type="radio" name="attr_bond_strain" value="2" /><span class="blood_pip_glyph"></span></label>
+                                    <label class="strain_drop_pip pip_3" title="3 Strain"><input type="radio" name="attr_bond_strain" value="3" /><span class="blood_pip_glyph"></span></label>
+                                    <label class="strain_drop_pip pip_4" title="4 Strain"><input type="radio" name="attr_bond_strain" value="4" /><span class="blood_pip_glyph"></span></label>
+                                    <label class="strain_drop_pip pip_5" title="5 Strain"><input type="radio" name="attr_bond_strain" value="5" /><span class="blood_pip_glyph"></span></label>
+                                </div>
+
+                                <!-- Sever / Restore Toggle in Sub Row -->
+                                <label class="sever_bond_toggle" title="Sever or Restore this mortal bond">
+                                    <input type="checkbox" name="attr_bond_severed" class="sever_toggle" />
+                                    <span class="sever_btn_label sever_active_text">✂ SEVER</span>
+                                    <span class="sever_btn_label sever_restore_text">↺ RESTORE</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bond_body rep_desc_body">
+                            <div class="auto_expand_wrapper">
+                                <span name="attr_bond_desc" class="auto_expand_mirror"></span>
+                                <textarea name="attr_bond_desc" class="auto_expand_textarea bond_desc_textarea" placeholder="Obligations, broken promises, tension, mortal details..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+        </main>
+
+    </div>
+
+    <!-- ==========================================================================
+     MANIFESTATION MEASURES MODAL DIALOG
+     ========================================================================== -->
+<div class="measures_modal_backdrop">
+    <div class="measures_modal_dialog ink-box zine-shadow">
+        
+        <div class="modal_header_bar">
+            <div class="modal_title_group">
+                <span class="modal_ornament">✦</span>
+                <h3>MANIFESTATION MEASURES</h3>
+                <span class="modal_ornament">✦</span>
+            </div>
+            <label class="modal_close_btn" title="Close Guide">
+                <input type="checkbox" name="attr_show_measures_modal" class="modal_toggle_input" />
+                <span>✕</span>
+            </label>
+        </div>
+
+        <p class="modal_explainer">Allocate your rolled successes across the Common Measures below to shape your divine intervention.</p>
+
+        <div class="measures_grid">
+            <!-- Range -->
+            <div class="measure_card">
+                <span class="measure_title">RANGE</span>
+                <select name="attr_measure_range" class="measure_select">
+                    <option value="0|Self / Touch (0)" selected>Self / Touch (0)</option>
+                    <option value="1|Close / Few Paces (1)">Close - 5m (1)</option>
+                    <option value="2|Medium / Across Room (2)">Medium - 20m (2)</option>
+                    <option value="3|Long / Street (3)">Long - 50m (3)</option>
+                    <option value="4|Extreme / Horizon (4)">Extreme - Sight (4)</option>
+                </select>
+            </div>
+
+            <!-- Duration -->
+            <div class="measure_card">
+                <span class="measure_title">DURATION</span>
+                <select name="attr_measure_duration" class="measure_select">
+                    <option value="0|Instantaneous (0)" selected>Instant (0)</option>
+                    <option value="1|1 Round / Brief (1)">1 Round (1)</option>
+                    <option value="2|One Scene / Encounter (2)">1 Scene (2)</option>
+                    <option value="3|One Day (3)">1 Day (3)</option>
+                    <option value="4|One Story / Permanent (4)">Story / Perm (4)</option>
+                </select>
+            </div>
+
+            <!-- Area / Targets -->
+            <div class="measure_card">
+                <span class="measure_title">AREA / TARGETS</span>
+                <select name="attr_measure_area" class="measure_select">
+                    <option value="0|Single Target (0)" selected>Single Target (0)</option>
+                    <option value="1|Small Group / Room (1)">2–3 Targets / Room (1)</option>
+                    <option value="2|Crowd / Building (2)">Crowd / House (2)</option>
+                    <option value="3|Block / Neighborhood (3)">Block / Park (3)</option>
+                    <option value="4|District / Citywide (4)">City District (4)</option>
+                </select>
+            </div>
+
+            <!-- Magnitude / Potency -->
+            <div class="measure_card">
+                <span class="measure_title">MAGNITUDE</span>
+                <select name="attr_measure_magnitude" class="measure_select">
+                    <option value="0|Minor / Aesthetic (0)" selected>Minor / Subtle (0)</option>
+                    <option value="1|Notable / Basic Impact (1)">Moderate (+1 Effect) (1)</option>
+                    <option value="2|Significant / Dangerous (2)">Heavy (+2 Effect) (2)</option>
+                    <option value="3|Devastating / Mythic (3)">Extreme (+3 Effect) (3)</option>
+                    <option value="4|Cataclysmic (4)">Cataclysmic (4)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Custom Notes -->
+        <div class="modal_notes_wrap">
+            <input type="text" name="attr_measure_description" class="measure_intent_input" placeholder="Intent / Effect Summary (e.g. Sculpting iron rebar into an impenetrable wall)" />
+        </div>
+
+        <!-- Modal Summary & Share Footer -->
+        <div class="modal_footer_bar">
+            <div class="cost_tally_pill">
+                <span class="cost_tag">TOTAL REQUIRED:</span>
+                <span class="cost_val" name="attr_measure_total_cost">0</span>
+                <span class="cost_unit">Successes</span>
+            </div>
+
+            <button type="roll" class="modal_share_btn" name="roll_share_manifestation"
+                value="&{template:ptg} {{title=Manifestation Measures}} {{name=@{character_name}}} {{traits=Total Cost: @{measure_total_cost} Successes}} {{desc=**Range:** @{measure_range_label}
+**Duration:** @{measure_duration_label}
+**Area:** @{measure_area_label}
+**Magnitude:** @{measure_magnitude_label}
+
+**Intent:** @{measure_description}}}">
+                ✦ SHARE ALLOCATION
+            </button>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+<!-- ==========================================================================
+   ROLL20 CUSTOM ROLL TEMPLATE (PTG THEMATIC CHAT CARDS)
+   ========================================================================== -->
+<rolltemplate class="sheet-rolltemplate-ptg">
+    <div class="sheet-ptg-card">
+        <div class="sheet-ptg-header">
+            <h3>{{name}}</h3>
+            {{#title}}<span class="sheet-ptg-subtitle">{{title}}</span>{{/title}}
+        </div>
+        <div class="sheet-ptg-body">
+            {{#traits}}
+            <div class="sheet-ptg-row"><span class="sheet-ptg-label">Traits:</span><span class="sheet-ptg-value">{{traits}}</span></div>
+            {{/traits}}
+            
+            {{#target}}
+            <div class="sheet-ptg-row"><span class="sheet-ptg-label">Target:</span><span class="sheet-ptg-value">{{target}}</span></div>
+            {{/target}}
+            
+            {{#bonus}}
+            <div class="sheet-ptg-row"><span class="sheet-ptg-label">Bonus:</span><span class="sheet-ptg-value">{{bonus}}</span></div>
+            {{/bonus}}
+            
+            {{#backlash}}
+            <div class="sheet-ptg-row"><span class="sheet-ptg-label">Backlash:</span><span class="sheet-ptg-value">{{backlash}}</span></div>
+            {{/backlash}}
+
+            {{#truth}}
+            <div class="sheet-ptg-quote">“{{truth}}”</div>
+            {{/truth}}
+            
+            {{#desc}}
+            <div class="sheet-ptg-desc">{{desc}}</div>
+            {{/desc}}
+
+            <!-- Native Roll20 Dice Output (Hover to inspect individual d10s) -->
+            {{#dice}}
+            <div class="sheet-ptg-row" style="margin-top: 6px; padding-top: 6px; border-top: 1px dashed #a8a29e;">
+                <span class="sheet-ptg-label">Dice Pool:</span>
+                <span class="sheet-ptg-value">{{dice}}</span>
+            </div>
+
+            <!-- Single State Gate: Only one result box can ever render -->
+            {{#rollTotal() computed::status 1}}
+            <div class="sheet-ptg-result sheet-ptg-success">
+                <span class="sheet-ptg-res-label">Successes:</span>
+                <span class="sheet-ptg-res-val">{{computed::successes}}</span>
+            </div>
+            {{/rollTotal() computed::status 1}}
+
+            {{#rollTotal() computed::status 2}}
+            <div class="sheet-ptg-result sheet-ptg-critfail">
+                <span class="sheet-ptg-res-label">CRITICAL FAILURE!</span>
+                <span class="sheet-ptg-res-sub">Backlash Level: {{computed::ones}}</span>
+            </div>
+            {{/rollTotal() computed::status 2}}
+
+            {{#rollTotal() computed::status 3}}
+            <div class="sheet-ptg-result sheet-ptg-fail">
+                <span class="sheet-ptg-res-label">Failure</span>
+                <span class="sheet-ptg-res-sub">No successes.</span>
+            </div>
+            {{/rollTotal() computed::status 3}}
+            {{/dice}}
+        </div>
+    </div>
+</rolltemplate>
+
+<!-- ==========================================================================
+   SHEET WORKERS
+   ========================================================================== -->
+<script type="text/worker">
+/* --- 1. HEALTH & PSYCHE CAP & TOKEN BAR SYNCHRONIZATION --- */
+const HP_BOX_EVENTS = [];
+const PSY_BOX_EVENTS = [];
+const HP_ATTRS = [];
+const PSY_ATTRS = [];
+for (let i = 1; i <= 20; i++) {
+    HP_BOX_EVENTS.push(`change:health_${i}`);
+    PSY_BOX_EVENTS.push(`change:psyche_${i}`);
+    HP_ATTRS.push(`health_${i}`);
+    PSY_ATTRS.push(`psyche_${i}`);
+}
+
+// Sync Max Caps when Fortitude / Discipline change or when the sheet opens
+on("change:fortitude change:discipline sheet:opened", function() {
+    getAttrs(["fortitude", "discipline", ...HP_ATTRS, ...PSY_ATTRS], function(v) {
+        var fort = parseInt(v.fortitude, 10) || 0;
+        var disc = parseInt(v.discipline, 10) || 0;
+        
+        var maxH = Math.min(20, Math.max(1, fort + 5));
+        var maxP = Math.min(20, Math.max(1, disc + 5));
+        
+        let hpDmg = 0;
+        let psyDmg = 0;
+        for (let i = 1; i <= 20; i++) {
+            if (v[`health_${i}`] === "on" || v[`health_${i}`] === "1" || v[`health_${i}`] == 1) hpDmg++;
+            if (v[`psyche_${i}`] === "on" || v[`psyche_${i}`] === "1" || v[`psyche_${i}`] == 1) psyDmg++;
+        }
+
+        setAttrs({
+            "max_health": maxH,
+            "max_psyche": maxP,
+            "health_cap": maxH,
+            "psyche_cap": maxP,
+            "health_max": maxH,
+            "psyche_max": maxP,
+            "health": Math.max(0, maxH - hpDmg),
+            "psyche": Math.max(0, maxP - psyDmg)
+        }, { silent: true });
+    });
+});
+
+// Sheet Checkboxes -> Token Bar Sync (Checking boxes reduces current health)
+on(HP_BOX_EVENTS.join(" "), function() {
+    getAttrs(["max_health", ...HP_ATTRS], function(v) {
+        let maxH = parseInt(v.max_health, 10) || 5;
+        let dmg = 0;
+        for (let i = 1; i <= 20; i++) {
+            if (v[`health_${i}`] === "on" || v[`health_${i}`] === "1" || v[`health_${i}`] == 1) dmg++;
+        }
+        setAttrs({ "health": Math.max(0, maxH - dmg) }, { silent: true });
+    });
+});
+
+on(PSY_BOX_EVENTS.join(" "), function() {
+    getAttrs(["max_psyche", ...PSY_ATTRS], function(v) {
+        let maxP = parseInt(v.max_psyche, 10) || 5;
+        let dmg = 0;
+        for (let i = 1; i <= 20; i++) {
+            if (v[`psyche_${i}`] === "on" || v[`psyche_${i}`] === "1" || v[`psyche_${i}`] == 1) dmg++;
+        }
+        setAttrs({ "psyche": Math.max(0, maxP - dmg) }, { silent: true });
+    });
+});
+
+// Token Bar -> Sheet Checkboxes Sync (Editing token bubble checks/unchecks boxes)
+on("change:health", function(eventInfo) {
+    if (eventInfo.sourceType !== "player") return;
+    getAttrs(["health", "max_health"], function(v) {
+        let maxH = parseInt(v.max_health, 10) || 5;
+        let curH = Math.min(maxH, Math.max(0, parseInt(v.health, 10) || 0));
+        let dmg = maxH - curH;
+        let updates = {};
+        for (let i = 1; i <= 20; i++) {
+            updates[`health_${i}`] = (i <= dmg) ? "1" : "0";
+        }
+        setAttrs(updates, { silent: true });
+    });
+});
+
+on("change:psyche", function(eventInfo) {
+    if (eventInfo.sourceType !== "player") return;
+    getAttrs(["psyche", "max_psyche"], function(v) {
+        let maxP = parseInt(v.max_psyche, 10) || 5;
+        let curP = Math.min(maxP, Math.max(0, parseInt(v.psyche, 10) || 0));
+        let dmg = maxP - curP;
+        let updates = {};
+        for (let i = 1; i <= 20; i++) {
+            updates[`psyche_${i}`] = (i <= dmg) ? "1" : "0";
+        }
+        setAttrs(updates, { silent: true });
+    });
+});
+/* --- 2. EXERCISE POWER & DYNAMIC DICE ENGINE (DETECTION) --- */
+const ALL_TRAITS = [
+    'athletics', 'crafts', 'deception', 'discipline', 'empathy',
+    'fighting', 'fortitude', 'influence', 'intuition', 'knowledge',
+    'marksman', 'medicine', 'might', 'perception', 'perform',
+    'speed', 'stealth', 'survival', 'tech', 'travel',
+    'aegis', 'beckon', 'journey', 'minion', 'puppetry',
+    'oracle', 'ruin', 'shaping', 'soul'
+];
+
+const STUNT_INPUT_EVENTS = [
+    "change:stunt_trait_1", "change:stunt_trait_2",
+    "change:stunt_use_spec_1", "change:stunt_use_spec_2",
+    "change:stunt_use_bless_1", "change:stunt_use_bless_2",
+    "change:stunt_mod_tools", "change:stunt_mod_territory", "change:stunt_mod_circumstance",
+    "change:repeating_specialty", "remove:repeating_specialty",
+    "change:repeating_blessing", "remove:repeating_blessing",
+    ...ALL_TRAITS.map(t => `change:${t}`),
+    "sheet:opened"
+].join(" ");
+
+on(STUNT_INPUT_EVENTS, function() {
+    getAttrs([
+        ...ALL_TRAITS,
+        "stunt_trait_1", "stunt_trait_2",
+        "stunt_use_spec_1", "stunt_use_spec_2",
+        "stunt_use_bless_1", "stunt_use_bless_2",
+        "stunt_mod_tools", "stunt_mod_territory", "stunt_mod_circumstance"
+    ], function(v) {
+        getSectionIDs("repeating_specialty", function(specIDs) {
+            getSectionIDs("repeating_blessing", function(blessIDs) {
+                
+                const specAttrs = [];
+                specIDs.forEach(id => {
+                    specAttrs.push(`repeating_specialty_${id}_specialty_name`);
+                    specAttrs.push(`repeating_specialty_${id}_specialty_target`);
+                    specAttrs.push(`repeating_specialty_${id}_specialty_modifier`);
+                });
+
+                const blessAttrs = [];
+                blessIDs.forEach(id => {
+                    blessAttrs.push(`repeating_blessing_${id}_blessing_name`);
+                    blessAttrs.push(`repeating_blessing_${id}_blessing_target`);
+                    blessAttrs.push(`repeating_blessing_${id}_blessing_bonus`);
+                });
+
+                getAttrs([...specAttrs, ...blessAttrs], function(repeatingValues) {
+                    const t1Key = (v.stunt_trait_1 || "").toLowerCase();
+                    const t2Key = (v.stunt_trait_2 || "").toLowerCase();
+
+                    const t1Val = t1Key && t1Key !== "none" ? (parseInt(v[t1Key], 10) || 0) : 0;
+                    const t2Val = t2Key && t2Key !== "none" ? (parseInt(v[t2Key], 10) || 0) : 0;
+
+                    const t1Name = t1Key && t1Key !== "none" ? (t1Key.charAt(0).toUpperCase() + t1Key.slice(1)) : "None";
+                    const t2Name = t2Key && t2Key !== "none" ? (t2Key.charAt(0).toUpperCase() + t2Key.slice(1)) : "None";
+
+                    const basePool = t1Val + t2Val;
+
+                    // Detect Matching Specialties
+                    const matchedSpecs = [];
+                    specIDs.forEach(id => {
+                        const sTarget = (repeatingValues[`repeating_specialty_${id}_specialty_target`] || "").toLowerCase();
+                        const sName = repeatingValues[`repeating_specialty_${id}_specialty_name`] || "Specialty";
+                        const sMod = parseInt(repeatingValues[`repeating_specialty_${id}_specialty_modifier`], 10) || 1;
+
+                        if (sTarget !== "none" && ((t1Key && sTarget === t1Key) || (t2Key && sTarget === t2Key))) {
+                            matchedSpecs.push({ name: sName, mod: sMod });
+                        }
+                    });
+
+                    // Detect Matching Blessings
+                    const matchedBless = [];
+                    blessIDs.forEach(id => {
+                        const bTarget = (repeatingValues[`repeating_blessing_${id}_blessing_target`] || "").toLowerCase();
+                        const bName = repeatingValues[`repeating_blessing_${id}_blessing_name`] || "Blessing";
+                        const bMod = parseInt(repeatingValues[`repeating_blessing_${id}_blessing_bonus`], 10) || 1;
+
+                        if (
+                            (t1Key && t1Key !== "none" && (bTarget.includes(t1Key) || t1Key.includes(bTarget))) ||
+                            (t2Key && t2Key !== "none" && (bTarget.includes(t2Key) || t2Key.includes(bTarget))) ||
+                            bTarget === "all" || bTarget === "general"
+                        ) {
+                            matchedBless.push({ name: bName, mod: bMod });
+                        }
+                    });
+
+                    // Explicit boolean flags (1 or 0) for CSS Watchers
+                    const hasSpec1 = matchedSpecs.length > 0 ? "1" : "0";
+                    const spec1Label = matchedSpecs.length > 0 ? `${matchedSpecs[0].name} (+${matchedSpecs[0].mod})` : "";
+                    const spec1Bonus = matchedSpecs.length > 0 ? matchedSpecs[0].mod : 0;
+
+                    const hasSpec2 = matchedSpecs.length > 1 ? "1" : "0";
+                    const spec2Label = matchedSpecs.length > 1 ? `${matchedSpecs[1].name} (+${matchedSpecs[1].mod})` : "";
+                    const spec2Bonus = matchedSpecs.length > 1 ? matchedSpecs[1].mod : 0;
+
+                    const hasBless1 = matchedBless.length > 0 ? "1" : "0";
+                    const bless1Label = matchedBless.length > 0 ? `${matchedBless[0].name} (+${matchedBless[0].mod})` : "";
+                    const bless1Bonus = matchedBless.length > 0 ? matchedBless[0].mod : 0;
+
+                    const hasBless2 = matchedBless.length > 1 ? "1" : "0";
+                    const bless2Label = matchedBless.length > 1 ? `${matchedBless[1].name} (+${matchedBless[1].mod})` : "";
+                    const bless2Bonus = matchedBless.length > 1 ? matchedBless[1].mod : 0;
+
+                    const useSpec1 = v.stunt_use_spec_1 === "1" && hasSpec1 === "1";
+                    const useSpec2 = v.stunt_use_spec_2 === "1" && hasSpec2 === "1";
+                    const useBless1 = v.stunt_use_bless_1 === "1" && hasBless1 === "1";
+                    const useBless2 = v.stunt_use_bless_2 === "1" && hasBless2 === "1";
+
+                    const toolsMod = parseInt(v.stunt_mod_tools, 10) || 0;
+                    const terrMod = parseInt(v.stunt_mod_territory, 10) || 0;
+                    const circMod = parseInt(v.stunt_mod_circumstance, 10) || 0;
+
+                    const totalPool = Math.max(1, 
+                        basePool + 
+                        (useSpec1 ? spec1Bonus : 0) + 
+                        (useSpec2 ? spec2Bonus : 0) + 
+                        (useBless1 ? bless1Bonus : 0) + 
+                        (useBless2 ? bless2Bonus : 0) + 
+                        toolsMod + terrMod + circMod
+                    );
+
+                    setAttrs({
+                        "stunt_trait_1_name": t1Name,
+                        "stunt_trait_2_name": t2Name,
+                        "stunt_trait_1_val": t1Val,
+                        "stunt_trait_2_val": t2Val,
+                        "stunt_base_pool": basePool,
+                        "stunt_has_spec_1": hasSpec1,
+                        "stunt_spec_1_label": spec1Label,
+                        "stunt_has_spec_2": hasSpec2,
+                        "stunt_spec_2_label": spec2Label,
+                        "stunt_any_spec": (matchedSpecs.length > 0 ? "1" : "0"),
+                        "stunt_has_bless_1": hasBless1,
+                        "stunt_bless_1_label": bless1Label,
+                        "stunt_has_bless_2": hasBless2,
+                        "stunt_bless_2_label": bless2Label,
+                        "stunt_any_bless": (matchedBless.length > 0 ? "1" : "0"),
+                        "stunt_total_pool": totalPool
+                    });
+                });
+            });
+        });
+    });
+});
+
+/* --- 3. EXERCISE POWER: NATIVE ENGINE & CRP REBUILD --- */
+on('clicked:roll_stunt', function(info) {
+    getAttrs(["character_name", "stunt_trait_1_name", "stunt_trait_2_name", "stunt_trait_1_val", "stunt_trait_2_val", "stunt_total_pool"], function(v) {
+        
+        let pool = Math.max(1, parseInt(v.stunt_total_pool, 10) || 1);
+        let charName = v.character_name || "Unknown Deity";
+        let t1 = v.stunt_trait_1_name || "None";
+        let t2 = v.stunt_trait_2_name || "None";
+        let t1Val = v.stunt_trait_1_val || "0";
+        let t2Val = v.stunt_trait_2_val || "0";
+
+        // Macro string with primed rolls (NO computed:: here)
+        let rollString = `&{template:ptg} {{title=Exercise Power}} {{name=${charName}}} {{traits=${t1} (${t1Val}) + ${t2} (${t2Val})}} {{dice=[[${pool}d10]]}} {{successes=[[0]]}} {{ones=[[0]]}} {{status=[[0]]}}`;
+
+        startRoll(rollString, function(roll) {
+            let diceValues = [];
+            
+            // Safely extract individual die results from Roll20's AST object
+            if (roll && roll.results && roll.results.dice) {
+                if (Array.isArray(roll.results.dice.dice)) {
+                    diceValues = roll.results.dice.dice;
+                } else if (Array.isArray(roll.results.dice.rolls)) {
+                    roll.results.dice.rolls.forEach(function(r) {
+                        if (r && Array.isArray(r.results)) {
+                            r.results.forEach(function(d) {
+                                diceValues.push(d.v);
+                            });
+                        }
+                    });
+                }
+            }
+
+            // Core PTG2e Rules Engine
+            let successes = 0;
+            let ones = 0;
+
+            diceValues.forEach(function(die) {
+                let val = parseInt(die, 10);
+                if (val === 10) {
+                    successes += 2;
+                } else if (val >= 7) {
+                    successes += 1;
+                } else if (val === 1) {
+                    ones += 1;
+                }
+            });
+
+            // Status State: 1 = Success, 2 = Critical Failure, 3 = Normal Failure
+            let status = 3;
+            if (successes > 0) {
+                status = 1;
+            } else if (ones > 0) {
+                status = 2;
+            }
+
+            // Inject the calculated numbers into the template placeholders
+            finishRoll(roll.rollId, {
+                successes: successes,
+                ones: ones,
+                status: status
+            });
+        });
+    });
+});
+
+/* --- 4. VASSAL ACTION POOL ROLL ENGINE --- */
+on('clicked:repeating_vassals:vassalpool', function(eventInfo) {
+    if (!eventInfo || !eventInfo.sourceAttribute) return;
+    
+    // In repeating_vassals_-RowID_vassalpool, splitting on '_' gives the row ID at index 2
+    const parts = eventInfo.sourceAttribute.split('_');
+    const rowId = parts[2];
+    if (!rowId) return;
+    const prefix = `repeating_vassals_${rowId}_`;
+
+    getAttrs([`${prefix}vassal_name`, `${prefix}vassal_level`, `${prefix}vassal_relation`, `${prefix}vassal_scope`], function(v) {
+        let vassalName = v[`${prefix}vassal_name`] || "Vassal";
+        let vassalLevel = parseInt(v[`${prefix}vassal_level`], 10) || 1;
+        let vassalRole = v[`${prefix}vassal_relation`] || "Independent Action";
+        let pool = Math.max(1, vassalLevel * 2);
+        let vassalScope = v[`${prefix}vassal_scope`] || "Vassal";
+
+        let rollString = `&{template:ptg} {{title=${vassalScope} Action Pool}} {{name=${vassalName}}} {{target=${vassalRole}}} {{dice=[[${pool}d10]]}} {{successes=[[0]]}} {{ones=[[0]]}} {{status=[[0]]}}`;
+        
+        startRoll(rollString, function(roll) {
+            let diceValues = [];
+            if (roll && roll.results && roll.results.dice) {
+                if (Array.isArray(roll.results.dice.dice)) {
+                    diceValues = roll.results.dice.dice;
+                } else if (Array.isArray(roll.results.dice.rolls)) {
+                    roll.results.dice.rolls.forEach(function(r) {
+                        if (r && Array.isArray(r.results)) {
+                            r.results.forEach(function(d) {
+                                diceValues.push(d.v);
+                            });
+                        }
+                    });
+                }
+            }
+
+            let successes = 0;
+            let ones = 0;
+
+            diceValues.forEach(function(die) {
+                let val = parseInt(die, 10);
+                if (val === 10) {
+                    successes += 2;
+                } else if (val >= 7) {
+                    successes += 1;
+                } else if (val === 1) {
+                    ones += 1;
+                }
+            });
+
+            let status = 3; // Failure
+            if (successes > 0) {
+                status = 1; // Success
+            } else if (ones > 0) {
+                status = 2; // Critical Failure
+            }
+
+            finishRoll(roll.rollId, {
+                successes: successes,
+                ones: ones,
+                status: status
+            });
+        });
+    });
+});
+
+/* --- 5. MANIFESTATION MEASURES COST CALCULATION --- */
+on("change:measure_range change:measure_duration change:measure_area change:measure_magnitude sheet:opened", function() {
+    getAttrs(["measure_range", "measure_duration", "measure_area", "measure_magnitude"], function(v) {
+        
+        function parseMeasure(val) {
+            if (!val) return { cost: 0, label: "None (0)" };
+            const split = val.split("|");
+            return {
+                cost: parseInt(split[0], 10) || 0,
+                label: split[1] || val
+            };
+        }
+
+        const r = parseMeasure(v.measure_range);
+        const d = parseMeasure(v.measure_duration);
+        const a = parseMeasure(v.measure_area);
+        const m = parseMeasure(v.measure_magnitude);
+
+        const totalCost = r.cost + d.cost + a.cost + m.cost;
+
+        setAttrs({
+            "measure_total_cost": totalCost,
+            "measure_range_label": r.label,
+            "measure_duration_label": d.label,
+            "measure_area_label": a.label,
+            "measure_magnitude_label": m.label
+        });
+    });
+});
+</script>
