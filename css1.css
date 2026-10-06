@@ -1385,218 +1385,229 @@ button[type="action"].badge_overlay_btn {
 }
 
 /* ==========================================================================
-   MANIFESTATION MEASURES MODAL DIALOG
+   CANONICAL MANIFESTATION MEASURES MODAL & DYNAMIC HIGHLIGHTS
    ========================================================================== */
-.stunt_header_actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+.stunt_header_actions { display: flex; align-items: center; gap: 12px; }
 
-.modal_open_btn {
-    position: relative;
-    cursor: pointer;
-    margin: 0;
-    user-select: none;
-}
+.modal_open_btn { position: relative; cursor: pointer; margin: 0; user-select: none; }
 .modal_open_btn input.modal_toggle_input,
 .modal_close_btn input.modal_toggle_input {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    z-index: 5;
-    margin: 0;
+    position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; z-index: 5; margin: 0;
 }
 .modal_open_label {
-    display: inline-flex;
-    align-items: center;
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 0.5px;
-    padding: 2px 8px;
-    background: var(--input-bg);
-    color: var(--text-color);
-    border: 1.5px solid var(--border-color);
-    border-radius: 3px;
-    transition: all 0.2s ease;
+    display: inline-flex; align-items: center; font-family: 'Cinzel Decorative', serif; font-size: 10px; font-weight: 900;
+    letter-spacing: 0.5px; padding: 2px 8px; background: var(--input-bg); color: var(--text-color); border: 1.5px solid var(--border-color); border-radius: 3px; transition: all 0.2s ease;
 }
-.modal_open_btn:hover .modal_open_label {
-    border-color: #ca8a04;
-    color: #ca8a04;
-}
+.modal_open_btn:hover .modal_open_label { border-color: #ca8a04; color: #ca8a04; }
 
-/* Modal Backdrop & State */
+/* Backdrop */
 .measures_modal_backdrop {
-    display: none;
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 5000;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    box-sizing: border-box;
+    display: none; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.75); z-index: 5000; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box;
 }
+.charsheet:has(input.modal_toggle_input:checked) .measures_modal_backdrop { display: flex !important; }
 
-.charsheet:has(input.modal_toggle_input:checked) .measures_modal_backdrop {
-    display: flex !important;
-}
-
+/* Dialog Box */
 .measures_modal_dialog {
-    background: var(--card-bg);
-    width: 100%;
-    max-width: 540px;
-    padding: 16px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    position: relative;
-    z-index: 5001;
+    background: var(--card-bg); width: 100%; max-width: 620px; max-height: 90vh; padding: 16px; box-sizing: border-box;
+    display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 5001;
 }
 
 .modal_header_bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 6px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border-bottom: 2px solid var(--border-color) !important;
+    padding-bottom: 6px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
+
 .modal_title_group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
 }
+
 .modal_title_group h3 {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 15px;
-    letter-spacing: 1px;
-    margin: 0;
-    color: var(--text-color);
-}
-.modal_ornament {
-    color: #ca8a04;
-    font-size: 14px;
-}
-.modal_close_btn {
-    position: relative;
-    cursor: pointer;
-    font-weight: 900;
-    font-size: 14px;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--border-color);
-    background: var(--input-bg);
-    border-radius: 3px;
-}
-.modal_close_btn:hover {
-    background: #dc2626;
-    color: #ffffff;
+    font-family: 'Cinzel Decorative', serif !important;
+    font-size: 15px !important;
+    letter-spacing: 1px !important;
+    margin: 0 !important;
+    color: var(--text-color) !important;
+    white-space: nowrap !important;
 }
 
-.modal_explainer {
-    font-family: 'Special Elite', monospace;
-    font-size: 11px;
-    margin: 0;
-    color: var(--text-color);
-    opacity: 0.85;
+/* Force Roll20's global .charsheet label rules to respect the 24x24px button */
+label.modal_close_btn {
+    position: relative !important;
+    cursor: pointer !important;
+    font-weight: 900 !important;
+    font-size: 14px !important;
+    width: 24px !important;
+    height: 24px !important;
+    flex: 0 0 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1px solid var(--border-color) !important;
+    background: var(--input-bg) !important;
+    border-radius: 3px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
 }
 
+label.modal_close_btn:hover {
+    background: #dc2626 !important;
+    color: #ffffff !important;
+}
+
+/* Filter Banner */
+.modal_filter_banner {
+    display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.04); border: 1.5px solid var(--border-color); border-radius: 3px; padding: 4px 8px; font-size: 11px;
+}
+.filter_badge_label { font-family: 'Special Elite', monospace; font-weight: 900; color: var(--text-color); }
+.filter_badge_name { font-weight: bold; color: #ca8a04; font-family: 'Cinzel Decorative', serif; }
+.filter_badge_sub { font-size: 10px; opacity: 0.75; font-style: italic; }
+
+/* Grid */
+.modal_scrollable_area {
+    display: flex; flex-direction: column; gap: 8px; overflow-y: auto; padding-right: 4px; max-height: 55vh;
+}
 .measures_grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
 }
 .measure_card {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    background: var(--input-bg);
-    border: 1.5px solid var(--border-color);
-    padding: 6px 8px;
-    border-radius: 3px;
+    display: flex; flex-direction: column; gap: 3px; background: var(--input-bg); border: 1.5px solid var(--border-color); padding: 6px 8px; border-radius: 3px; transition: all 0.2s ease;
 }
-.measure_title {
-    font-family: 'Special Elite', monospace;
-    font-size: 10px;
-    font-weight: 900;
-    color: var(--text-color);
-}
-.measure_select {
-    width: 100% !important;
-    font-size: 11px !important;
-    height: 24px !important;
+.measure_title { font-family: 'Special Elite', monospace; font-size: 10px; font-weight: 900; color: var(--text-color); }
+.measure_select { width: 100% !important; font-size: 11px !important; height: 24px !important; }
+.measure_intent_input { width: 100% !important; height: 28px !important; font-size: 11px !important; padding: 4px 6px !important; }
+
+/* ==========================================================================
+   CANONICAL COMMON MEASURES HIGHLIGHTING BY MANIFESTATION
+   ========================================================================== */
+/* Aegis: Duration, Magnitude, Range, Targets, Modifier */
+.measures_modal_backdrop:has(input.active_mani_watcher[value="aegis"]) .card_duration,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="aegis"]) .card_magnitude,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="aegis"]) .card_range,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="aegis"]) .card_targets,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="aegis"]) .card_modifier,
+
+/* Beckon: Area Affected, Duration, Magnitude, Range */
+.measures_modal_backdrop:has(input.active_mani_watcher[value="beckon"]) .card_area,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="beckon"]) .card_duration,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="beckon"]) .card_magnitude,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="beckon"]) .card_range,
+
+/* Journey: Area Affected, Duration, Range, Targets */
+.measures_modal_backdrop:has(input.active_mani_watcher[value="journey"]) .card_area,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="journey"]) .card_duration,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="journey"]) .card_range,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="journey"]) .card_targets,
+
+/* Minion: Duration, Magnitude, Targets */
+.measures_modal_backdrop:has(input.active_mani_watcher[value="minion"]) .card_duration,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="minion"]) .card_magnitude,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="minion"]) .card_targets,
+
+/* Oracle: Duration, Modifier, Range, Targets */
+.measures_modal_backdrop:has(input.active_mani_watcher[value="oracle"]) .card_duration,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="oracle"]) .card_modifier,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="oracle"]) .card_range,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="oracle"]) .card_targets,
+
+/* Puppetry: Duration, Modifier, Range, Targets */
+.measures_modal_backdrop:has(input.active_mani_watcher[value="puppetry"]) .card_duration,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="puppetry"]) .card_modifier,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="puppetry"]) .card_range,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="puppetry"]) .card_targets,
+
+/* Ruin: Area Affected, Damage, Magnitude, Range, Targets */
+.measures_modal_backdrop:has(input.active_mani_watcher[value="ruin"]) .card_area,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="ruin"]) .card_damage,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="ruin"]) .card_magnitude,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="ruin"]) .card_range,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="ruin"]) .card_targets,
+
+/* Shaping: Area Affected, Duration, Magnitude, Range */
+.measures_modal_backdrop:has(input.active_mani_watcher[value="shaping"]) .card_area,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="shaping"]) .card_duration,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="shaping"]) .card_magnitude,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="shaping"]) .card_range,
+
+/* Soul: Duration, Magnitude, Range, Targets, Modifier */
+.measures_modal_backdrop:has(input.active_mani_watcher[value="soul"]) .card_duration,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="soul"]) .card_magnitude,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="soul"]) .card_range,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="soul"]) .card_targets,
+.measures_modal_backdrop:has(input.active_mani_watcher[value="soul"]) .card_modifier {
+    border: 2px solid #ca8a04 !important;
+    background: #fefce8 !important;
+    box-shadow: 0 0 6px rgba(202, 138, 4, 0.4);
 }
 
-.measure_intent_input {
-    width: 100% !important;
-    height: 28px !important;
-    font-size: 11px !important;
-    padding: 4px 6px !important;
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher:not([value="none"])) .measure_card[style*="border"],
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="aegis"]) .card_duration,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="aegis"]) .card_magnitude,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="aegis"]) .card_range,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="aegis"]) .card_targets,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="aegis"]) .card_modifier,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="beckon"]) .card_area,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="beckon"]) .card_duration,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="beckon"]) .card_magnitude,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="beckon"]) .card_range,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="journey"]) .card_area,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="journey"]) .card_duration,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="journey"]) .card_range,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="journey"]) .card_targets,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="minion"]) .card_duration,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="minion"]) .card_magnitude,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="minion"]) .card_targets,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="oracle"]) .card_duration,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="oracle"]) .card_modifier,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="oracle"]) .card_range,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="oracle"]) .card_targets,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="puppetry"]) .card_duration,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="puppetry"]) .card_modifier,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="puppetry"]) .card_range,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="puppetry"]) .card_targets,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="ruin"]) .card_area,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="ruin"]) .card_damage,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="ruin"]) .card_magnitude,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="ruin"]) .card_range,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="ruin"]) .card_targets,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="shaping"]) .card_area,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="shaping"]) .card_duration,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="shaping"]) .card_magnitude,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="shaping"]) .card_range,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="soul"]) .card_duration,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="soul"]) .card_magnitude,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="soul"]) .card_range,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="soul"]) .card_targets,
+.sheet-darkmode .measures_modal_backdrop:has(input.active_mani_watcher[value="soul"]) .card_modifier {
+    background: #2a2215 !important;
+    border-color: #fde047 !important;
+    box-shadow: 0 0 8px rgba(253, 224, 71, 0.4);
 }
 
+/* Modal Footer & Buttons */
 .modal_footer_bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    border-top: 1.5px solid var(--border-color);
-    padding-top: 10px;
-    flex-wrap: wrap;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1.5px solid var(--border-color); padding-top: 8px; flex-wrap: wrap;
 }
 .cost_tally_pill {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 4px;
-    background: var(--input-bg);
-    border: 1.5px solid var(--border-color);
-    border-radius: 4px;
-    padding: 3px 8px;
+    display: inline-flex; align-items: baseline; gap: 4px; background: var(--input-bg); border: 1.5px solid var(--border-color); border-radius: 4px; padding: 3px 8px;
 }
-.cost_tag {
-    font-family: 'Special Elite', monospace;
-    font-size: 10px;
-    font-weight: 900;
-    color: var(--text-color);
-}
-.cost_val {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 18px;
-    font-weight: 900;
-    color: #ca8a04;
-}
-.cost_unit {
-    font-size: 10px;
-    font-weight: bold;
-    opacity: 0.8;
-}
+.cost_tag { font-family: 'Special Elite', monospace; font-size: 10px; font-weight: 900; color: var(--text-color); }
+.cost_val { font-family: 'Cinzel Decorative', serif; font-size: 18px; font-weight: 900; color: #ca8a04; }
+.cost_unit { font-size: 10px; font-weight: bold; opacity: 0.8; }
 
 .modal_share_btn {
-    background: linear-gradient(135deg, #1c1917 0%, #292524 100%) !important;
-    color: #fde047 !important;
-    border: 2px solid #ca8a04 !important;
-    border-radius: 4px !important;
-    font-family: 'Cinzel Decorative', serif !important;
-    font-size: 11px !important;
-    font-weight: 900 !important;
-    letter-spacing: 1px;
-    padding: 5px 12px !important;
-    cursor: pointer !important;
-    box-shadow: 2px 2px 0px rgba(0,0,0,0.3) !important;
-    display: inline-flex !important;
-    align-items: center !important;
+    background: linear-gradient(135deg, #1c1917 0%, #292524 100%) !important; color: #fde047 !important; border: 2px solid #ca8a04 !important;
+    border-radius: 4px !important; font-family: 'Cinzel Decorative', serif !important; font-size: 11px !important; font-weight: 900 !important;
+    letter-spacing: 1px; padding: 5px 12px !important; cursor: pointer !important; box-shadow: 2px 2px 0px rgba(0,0,0,0.3) !important;
 }
-.modal_share_btn:hover {
-    transform: translateY(-1px) !important;
-    border-color: #fde047 !important;
-}
-.modal_share_btn::before {
-    content: '' !important;
-    display: none !important;
+.modal_share_btn:hover { transform: translateY(-1px) !important; border-color: #fde047 !important; }
+.modal_share_btn::before { content: '' !important; display: none !important; }

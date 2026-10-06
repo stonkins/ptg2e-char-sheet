@@ -805,294 +805,166 @@
             </section>
         </main>
 
-        <!-- ==================================================================
-            TAB 3: BONDS & DEVOTION (VASSALS, WORSHIPPERS & MORTAL BONDS)
-            ================================================================== -->
-        <main class="page_canvas tab_bonds">
-            
-            <!-- VASSALS & WORSHIPPERS -->
-            <section class="vassals ink-box-alt zine-shadow">
-                <h2 class="label-tape">VASSALS &amp; WORSHIPPERS</h2>
-                <p class="panel_subtext">Bound Outsiders, holy sanctuaries, and mortal flocks. If Strain exceeds Level, reduce Level by -1 and wipe Strain.</p>
-
-                <fieldset class="repeating_vassals">
-                    <div class="vassal_card">
-                        <span class="divine_seal">✦</span>
-                        <input class="expand_toggle_master" type="checkbox" name="attr_vassal_expand" value="1" />
-
-                        <div class="vassal_header">
-                            <div class="card_row top_row">
-                                <button type="roll" class="vassal_chat_btn" name="roll_share_vassal" 
-                                    value="&{template:ptg} {{title=Vassal / Worshippers}} {{name=@{vassal_name}}} {{desc=**Role:** @{vassal_relation} | **Devotion:** @{vassal_relationship}
-**Grid:** @{vassal_location} | **Level:** @{vassal_level}
-**Pool:** @{vassal_pool} Dice | **Strain:** @{vassal_strain}
-
-@{vassal_desc}}}">q</button>
-                                <input type="text" name="attr_vassal_name" class="vassal_name_input" placeholder="Vassal / Flock Name" />
-                                <div class="relation_field_wrap">
-                                    <span class="relation_label divine_label">Role:</span>
-                                    <input type="text" name="attr_vassal_relation" class="vassal_relation_input" placeholder="Bodyguard, Priest..." />
-                                </div>
-                                <select name="attr_vassal_scope" class="scope_select divine_scope">
-                                    <option value="Vassal" selected>Vassal</option>
-                                    <option value="Worshippers">Worshippers</option>
-                                    <option value="Chosen One">Chosen One</option>
-                                </select>
-                                <span class="expand_button_overlay"></span>
-                            </div>
-
-                            <div class="card_row sub_row">
-                                <input type="text" name="attr_vassal_relationship" class="relationship_input divine_rel" placeholder="Devotion / Classification (e.g. Sworn Champion)" />
-
-                                <div class="grid_badge divine_badge" title="Territory Grid Coordinates (X-Y)">
-                                    <span class="badge_label">GRID</span>
-                                    <input type="text" name="attr_vassal_location" class="location_input divine_loc" placeholder="10 - 10" />
-                                </div>
-
-                                <div class="score_badge divine_badge" title="Level (1-5)">
-                                    <span class="score_label">LVL</span>
-                                    <select name="attr_vassal_level" class="level_select">
-                                        <option value="1" selected>1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </div>
-
-                                <div class="score_badge divine_badge pool_badge" title="Click to Roll Vassal Pool (Level x 2 Dice)">
-                                    <button type="action" name="act_vassalpool" class="badge_overlay_btn"></button>
-                                    <span class="score_label">POOL</span>
-                                    <input type="number" name="attr_vassal_pool" class="level_input no_spin_input" value="@{vassal_level} * 2" disabled />
-                                </div>
-
-                                <!-- Celestial Gold Starburst Strain Tracker -->
-                                <div class="strain_tracker divine_strain" title="Strain Track (Clear &amp; -1 Level if exceeded)">
-                                    <span class="strain_label">STRAIN:</span>
-                                    <label class="strain_clear" title="Clear Strain (0)"><input type="radio" name="attr_vassal_strain" value="0" checked /><span class="clear_btn_cross">✕</span></label>
-                                    <label class="strain_star_pip pip_1" title="1 Strain"><input type="radio" name="attr_vassal_strain" value="1" /><span class="solar_pip_glyph">✧</span></label>
-                                    <label class="strain_star_pip pip_2" title="2 Strain"><input type="radio" name="attr_vassal_strain" value="2" /><span class="solar_pip_glyph">✧</span></label>
-                                    <label class="strain_star_pip pip_3" title="3 Strain"><input type="radio" name="attr_vassal_strain" value="3" /><span class="solar_pip_glyph">✧</span></label>
-                                    <label class="strain_star_pip pip_4" title="4 Strain"><input type="radio" name="attr_vassal_strain" value="4" /><span class="solar_pip_glyph">✧</span></label>
-                                    <label class="strain_star_pip pip_5" title="5 Strain"><input type="radio" name="attr_vassal_strain" value="5" /><span class="solar_pip_glyph">✧</span></label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="vassal_body rep_desc_body">
-                            <div class="auto_expand_wrapper">
-                                <span name="attr_vassal_desc" class="auto_expand_mirror"></span>
-                                <textarea name="attr_vassal_desc" class="auto_expand_textarea vassal_desc_textarea" placeholder="Powers (Lv 2, 4, 5), tribute, commands, duties..."></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-            </section>
-
-            <!-- MORTAL BONDS (CRIMSON DROPLETS & SEVERED RUBBER STAMP) -->
-            <section class="bonds ink-box zine-shadow">
-                <div class="bonds_header_title">
-                    <h2 class="label-tape">MORTAL BONDS</h2>
-                    <div class="bonds_max_calc" title="Maximum Bonds = 6 - Spark">
-                        <span class="bonds_max_tag">MAX:</span>
-                        <input type="number" name="attr_max_bonds" value="6 - @{spark}" disabled class="no_spin_input bonds_max_display" />
-                    </div>
-                </div>
-                <p class="panel_subtext">The people, places, and anchors keeping you human. If Strain exceeds Level, reduce Level by -1 and wipe Strain.</p>
-
-                <datalist id="bond_role_options">
-                    <option value="Approval-Seeking">
-                    <option value="Devious">
-                    <option value="Fun">
-                    <option value="Hostile">
-                    <option value="Needy">
-                    <option value="Nurturing">
-                    <option value="Rival">
-                    <option value="Romantic">
-                    <option value="Troubled">
-                    <option value="Wise">
-                    <option value="Home">
-                    <option value="Safe House">
-                    <option value="Social">
-                    <option value="Store">
-                    <option value="Work">
-                </datalist>
-
-                <fieldset class="repeating_bonds">
-                    <div class="bond_card">
-                        <input class="expand_toggle_master" type="checkbox" name="attr_bond_expand" value="1" />
-
-                        <div class="bond_header">
-                            <div class="card_row top_row">
-                                <button type="roll" class="bond_chat_btn" name="roll_share_bond" 
-                                    value="&{template:ptg} {{title=Mortal Bond}} {{name=@{bond_name}}} {{desc=**Relationship:** @{bond_relation} (@{bond_relationship})
-**Grid:** @{bond_location} | **Level:** @{bond_level} | **Strain:** @{bond_strain}
-
-@{bond_desc}}}">q</button>
-                                
-                                <input type="text" name="attr_bond_name" class="bond_name_input" placeholder="Bond Name" />
-                                
-                                <div class="relation_field_wrap">
-                                    <span class="relation_label">Relationship:</span>
-                                    <input type="text" name="attr_bond_relation" class="bond_relation_input" placeholder="Landlord, Sister..." />
-                                </div>
-
-                                <select name="attr_bond_scope" class="scope_select">
-                                    <option value="Individual" selected>Individual</option>
-                                    <option value="Group">Group</option>
-                                    <option value="Landmark">Landmark</option>
-                                </select>
-                                <span class="expand_button_overlay"></span>
-                            </div>
-
-                            <div class="card_row sub_row">
-                                <input type="text" name="attr_bond_relationship" list="bond_role_options" class="relationship_input" placeholder="Role / Nature" />
-
-                                <div class="grid_badge" title="Territory Grid Coordinates (X-Y)">
-                                    <span class="badge_label">GRID</span>
-                                    <input type="text" name="attr_bond_location" class="location_input" placeholder="10 - 10" />
-                                </div>
-
-                                <div class="score_badge" title="Bond Level (1-5)">
-                                    <span class="score_label">LVL</span>
-                                    <select name="attr_bond_level" class="level_select">
-                                        <option value="1" selected>1</option>
-                                        <option value="2" selected>2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </div>
-
-                                <!-- Crimson Blood Droplet Strain Tracker -->
-                                <div class="strain_tracker bond_strain_tracker" title="Strain Track (Clear &amp; -1 Level if exceeded)">
-                                    <span class="strain_label">STRAIN:</span>
-                                    <label class="strain_clear" title="Clear Strain (0)"><input type="radio" name="attr_bond_strain" value="0" checked /><span class="clear_btn_cross">✕</span></label>
-                                    <label class="strain_drop_pip pip_1" title="1 Strain"><input type="radio" name="attr_bond_strain" value="1" /><span class="blood_pip_glyph"></span></label>
-                                    <label class="strain_drop_pip pip_2" title="2 Strain"><input type="radio" name="attr_bond_strain" value="2" /><span class="blood_pip_glyph"></span></label>
-                                    <label class="strain_drop_pip pip_3" title="3 Strain"><input type="radio" name="attr_bond_strain" value="3" /><span class="blood_pip_glyph"></span></label>
-                                    <label class="strain_drop_pip pip_4" title="4 Strain"><input type="radio" name="attr_bond_strain" value="4" /><span class="blood_pip_glyph"></span></label>
-                                    <label class="strain_drop_pip pip_5" title="5 Strain"><input type="radio" name="attr_bond_strain" value="5" /><span class="blood_pip_glyph"></span></label>
-                                </div>
-
-                                <!-- Sever / Restore Toggle in Sub Row -->
-                                <label class="sever_bond_toggle" title="Sever or Restore this mortal bond">
-                                    <input type="checkbox" name="attr_bond_severed" class="sever_toggle" />
-                                    <span class="sever_btn_label sever_active_text">✂ SEVER</span>
-                                    <span class="sever_btn_label sever_restore_text">↺ RESTORE</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="bond_body rep_desc_body">
-                            <div class="auto_expand_wrapper">
-                                <span name="attr_bond_desc" class="auto_expand_mirror"></span>
-                                <textarea name="attr_bond_desc" class="auto_expand_textarea bond_desc_textarea" placeholder="Obligations, broken promises, tension, mortal details..."></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-            </section>
-        </main>
-
-    </div>
-
-    <!-- ==========================================================================
-     MANIFESTATION MEASURES MODAL DIALOG
+        <!-- ==========================================================================
+     FULL CANONICAL MANIFESTATION MEASURES ARCHIVE
      ========================================================================== -->
-<div class="measures_modal_backdrop">
-    <div class="measures_modal_dialog ink-box zine-shadow">
-        
-        <div class="modal_header_bar">
-            <div class="modal_title_group">
-                <span class="modal_ornament">✦</span>
-                <h3>MANIFESTATION MEASURES</h3>
-                <span class="modal_ornament">✦</span>
+    <div class="measures_modal_backdrop">
+        <input type="hidden" name="attr_active_manifestation_watch" value="none" class="active_mani_watcher" />
+
+        <div class="measures_modal_dialog ink-box zine-shadow">
+            
+            <div class="modal_header_bar">
+                <div class="modal_title_group">
+                    <span class="modal_ornament">✦</span>
+                    <h3>MANIFESTATION MEASURES</h3>
+                    <span class="modal_ornament">✦</span>
+                </div>
+                <label class="modal_close_btn" title="Close Archive">
+                    <input type="checkbox" name="attr_show_measures_modal" class="modal_toggle_input" />
+                    <span>✕</span>
+                </label>
             </div>
-            <label class="modal_close_btn" title="Close Guide">
-                <input type="checkbox" name="attr_show_measures_modal" class="modal_toggle_input" />
-                <span>✕</span>
-            </label>
+
+            <div class="modal_filter_banner">
+                <span class="filter_badge_label">ACTIVE MANIFESTATION:</span>
+                <span class="filter_badge_name" name="attr_active_manifestation_label">None (General Mode)</span>
+                <span class="filter_badge_sub">• Recommended measures highlighted in radiant amber</span>
+            </div>
+
+            <div class="modal_scrollable_area">
+                <div class="measures_grid">
+                    
+                    <!-- 1. Area Affected -->
+                    <div class="measure_card card_area">
+                        <span class="measure_title">AREA AFFECTED</span>
+                        <select name="attr_measure_area" class="measure_select">
+                            <option value="0|Small Room / Area (0)" selected>0: Small Room / Area</option>
+                            <option value="1|One Building (1)">1: One Building</option>
+                            <option value="2|1-Mile Area (2)">2: 1-Mile Area</option>
+                            <option value="3|5-Mile Area (3)">3: 5-Mile Area</option>
+                            <option value="4|10-Mile Area (4)">4: 10-Mile Area</option>
+                            <option value="5|25-Mile Area (5)">5: 25-Mile Area</option>
+                            <option value="6|50-Mile Area (6)">6: 50-Mile Area</option>
+                        </select>
+                    </div>
+
+                    <!-- 2. Damage -->
+                    <div class="measure_card card_damage">
+                        <span class="measure_title">DAMAGE</span>
+                        <select name="attr_measure_damage" class="measure_select">
+                            <option value="0|No Damage (0)" selected>0: No Damage</option>
+                            <option value="1|1 Damage (1)">1: 1 Damage</option>
+                            <option value="2|2 Damage (2)">2: 2 Damage</option>
+                            <option value="3|3 Damage (3)">3: 3 Damage</option>
+                            <option value="4|4 Damage (4)">4: 4 Damage</option>
+                            <option value="5|5 Damage (+1/success) (5)">5: 5 Damage (+1/succ)</option>
+                        </select>
+                    </div>
+
+                    <!-- 3. Duration -->
+                    <div class="measure_card card_duration">
+                        <span class="measure_title">DURATION</span>
+                        <select name="attr_measure_duration" class="measure_select">
+                            <option value="0|Instant; fades (0)" selected>0: Instant (Happens & Fades)</option>
+                            <option value="1|1 Scene (1)">1: 1 Scene</option>
+                            <option value="2|1 Day (2)">2: 1 Day</option>
+                            <option value="3|1 Week (3)">3: 1 Week</option>
+                            <option value="4|1 Month (4)">4: 1 Month</option>
+                            <option value="5|1 Year (5)">5: 1 Year</option>
+                            <option value="6|Permanent (6)">6: Permanent</option>
+                        </select>
+                    </div>
+
+                    <!-- 4. Magnitude -->
+                    <div class="measure_card card_magnitude">
+                        <span class="measure_title">MAGNITUDE</span>
+                        <select name="attr_measure_magnitude" class="measure_select">
+                            <option value="0|No Change (0)" selected>0: No Change</option>
+                            <option value="1|Slight Change (1)">1: Slight Change</option>
+                            <option value="2|Small Change (2)">2: Small Change</option>
+                            <option value="3|Moderate Change (3)">3: Moderate Change</option>
+                            <option value="4|Large Change (4)">4: Large Change</option>
+                            <option value="5|Colossal Change (5)">5: Colossal Change</option>
+                        </select>
+                    </div>
+
+                    <!-- 5. Modifier -->
+                    <div class="measure_card card_modifier">
+                        <span class="measure_title">MODIFIER (DICE)</span>
+                        <select name="attr_measure_modifier" class="measure_select">
+                            <option value="0|No Dice (0)" selected>0: No Dice</option>
+                            <option value="1|1 Roll / 2 Skill Dice (1)">1: 1 General / 2 Skill Dice</option>
+                            <option value="2|2 Roll / 4 Skill Dice (2)">2: 2 General / 4 Skill Dice</option>
+                            <option value="3|3 Roll / 6 Skill Dice (3)">3: 3 General / 6 Skill Dice</option>
+                            <option value="4|4 Roll / 8 Skill Dice (4)">4: 4 General / 8 Skill Dice</option>
+                            <option value="5|5 Roll / 10 Skill Dice (+1/+2) (5)">5: 5 General / 10 Skill Dice (+1/+2)</option>
+                        </select>
+                    </div>
+
+                    <!-- 6. Range -->
+                    <div class="measure_card card_range">
+                        <span class="measure_title">RANGE</span>
+                        <select name="attr_measure_range" class="measure_select">
+                            <option value="0|Touch (0)" selected>0: Touch</option>
+                            <option value="1|Near Range (1)">1: Near Range</option>
+                            <option value="2|Far Range (2)">2: Far Range</option>
+                            <option value="3|Distant Range (3)">3: Distant Range</option>
+                            <option value="4|Within the City (4)">4: Within the City</option>
+                            <option value="5|Within the State (5)">5: Within the State</option>
+                            <option value="6|Within the Country (6)">6: Within the Country</option>
+                        </select>
+                    </div>
+
+                    <!-- 7. Targets -->
+                    <div class="measure_card card_targets">
+                        <span class="measure_title">TARGETS</span>
+                        <select name="attr_measure_targets" class="measure_select">
+                            <option value="0|Self / 1 Target (0)" selected>0: Self / 1 Target</option>
+                            <option value="1|Up to 3 Targets (1)">1: Up to 3 Targets</option>
+                            <option value="2|Up to 10 Targets (2)">2: Up to 10 Targets</option>
+                            <option value="3|Up to 25 Targets (3)">3: Up to 25 Targets</option>
+                            <option value="4|Up to 50 Targets (4)">4: Up to 50 Targets</option>
+                            <option value="5|Up to 100 Targets (5)">5: Up to 100 Targets</option>
+                            <option value="6|Up to 250 Targets (6)">6: Up to 250 Targets</option>
+                        </select>
+                    </div>
+
+                    <!-- 8. Trigger -->
+                    <div class="measure_card card_trigger">
+                        <span class="measure_title">TRIGGER (CONDITIONAL)</span>
+                        <select name="attr_measure_trigger" class="measure_select">
+                            <option value="0|Happens Instantly (0)" selected>0: Happens Instantly</option>
+                            <option value="1|Common - Broad Category (1)">1: Common (Men/Women, Day/Night)</option>
+                            <option value="2|Uncommon - Specific Group (2)">2: Uncommon (Faction, 19:00)</option>
+                            <option value="3|Unique - Specific Entity (3)">3: Unique (Specific Individual/Object)</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal_notes_wrap">
+                <input type="text" name="attr_measure_description" class="measure_intent_input" placeholder="Divine Intent (e.g. Blasting through the security vault door with a shockwave of thunder)" />
+            </div>
+
+            <div class="modal_footer_bar">
+                <div class="cost_tally_pill">
+                    <span class="cost_tag">DEVOTED SUCCESSES:</span>
+                    <span class="cost_val" name="attr_measure_total_cost">0</span>
+                    <span class="cost_unit">Required</span>
+                </div>
+
+                <button type="roll" class="modal_share_btn" name="roll_share_manifestation"
+                    value="&{template:ptg} {{title=Manifestation Allocation}} {{name=@{character_name}}} {{traits=Total Cost: @{measure_total_cost} Successes}} {{desc=**Allocation Breakdown:**
+    @{measure_chat_summary}
+
+    **Intent:** @{measure_description}}}">
+                    ✦ SHARE ALLOCATION
+                </button>
+            </div>
+
         </div>
-
-        <p class="modal_explainer">Allocate your rolled successes across the Common Measures below to shape your divine intervention.</p>
-
-        <div class="measures_grid">
-            <!-- Range -->
-            <div class="measure_card">
-                <span class="measure_title">RANGE</span>
-                <select name="attr_measure_range" class="measure_select">
-                    <option value="0|Self / Touch (0)" selected>Self / Touch (0)</option>
-                    <option value="1|Close / Few Paces (1)">Close - 5m (1)</option>
-                    <option value="2|Medium / Across Room (2)">Medium - 20m (2)</option>
-                    <option value="3|Long / Street (3)">Long - 50m (3)</option>
-                    <option value="4|Extreme / Horizon (4)">Extreme - Sight (4)</option>
-                </select>
-            </div>
-
-            <!-- Duration -->
-            <div class="measure_card">
-                <span class="measure_title">DURATION</span>
-                <select name="attr_measure_duration" class="measure_select">
-                    <option value="0|Instantaneous (0)" selected>Instant (0)</option>
-                    <option value="1|1 Round / Brief (1)">1 Round (1)</option>
-                    <option value="2|One Scene / Encounter (2)">1 Scene (2)</option>
-                    <option value="3|One Day (3)">1 Day (3)</option>
-                    <option value="4|One Story / Permanent (4)">Story / Perm (4)</option>
-                </select>
-            </div>
-
-            <!-- Area / Targets -->
-            <div class="measure_card">
-                <span class="measure_title">AREA / TARGETS</span>
-                <select name="attr_measure_area" class="measure_select">
-                    <option value="0|Single Target (0)" selected>Single Target (0)</option>
-                    <option value="1|Small Group / Room (1)">2–3 Targets / Room (1)</option>
-                    <option value="2|Crowd / Building (2)">Crowd / House (2)</option>
-                    <option value="3|Block / Neighborhood (3)">Block / Park (3)</option>
-                    <option value="4|District / Citywide (4)">City District (4)</option>
-                </select>
-            </div>
-
-            <!-- Magnitude / Potency -->
-            <div class="measure_card">
-                <span class="measure_title">MAGNITUDE</span>
-                <select name="attr_measure_magnitude" class="measure_select">
-                    <option value="0|Minor / Aesthetic (0)" selected>Minor / Subtle (0)</option>
-                    <option value="1|Notable / Basic Impact (1)">Moderate (+1 Effect) (1)</option>
-                    <option value="2|Significant / Dangerous (2)">Heavy (+2 Effect) (2)</option>
-                    <option value="3|Devastating / Mythic (3)">Extreme (+3 Effect) (3)</option>
-                    <option value="4|Cataclysmic (4)">Cataclysmic (4)</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Custom Notes -->
-        <div class="modal_notes_wrap">
-            <input type="text" name="attr_measure_description" class="measure_intent_input" placeholder="Intent / Effect Summary (e.g. Sculpting iron rebar into an impenetrable wall)" />
-        </div>
-
-        <!-- Modal Summary & Share Footer -->
-        <div class="modal_footer_bar">
-            <div class="cost_tally_pill">
-                <span class="cost_tag">TOTAL REQUIRED:</span>
-                <span class="cost_val" name="attr_measure_total_cost">0</span>
-                <span class="cost_unit">Successes</span>
-            </div>
-
-            <button type="roll" class="modal_share_btn" name="roll_share_manifestation"
-                value="&{template:ptg} {{title=Manifestation Measures}} {{name=@{character_name}}} {{traits=Total Cost: @{measure_total_cost} Successes}} {{desc=**Range:** @{measure_range_label}
-**Duration:** @{measure_duration_label}
-**Area:** @{measure_area_label}
-**Magnitude:** @{measure_magnitude_label}
-
-**Intent:** @{measure_description}}}">
-                ✦ SHARE ALLOCATION
-            </button>
-        </div>
-
     </div>
-</div>
 
 </div>
 
@@ -1534,32 +1406,58 @@ on('clicked:repeating_vassals:vassalpool', function(eventInfo) {
     });
 });
 
-/* --- 5. MANIFESTATION MEASURES COST CALCULATION --- */
-on("change:measure_range change:measure_duration change:measure_area change:measure_magnitude sheet:opened", function() {
-    getAttrs(["measure_range", "measure_duration", "measure_area", "measure_magnitude"], function(v) {
+/* --- 5. CANONICAL MANIFESTATION MEASURES ENGINE --- */
+const CANONICAL_MEASURES = [
+    "measure_area", "measure_damage", "measure_duration", "measure_magnitude",
+    "measure_modifier", "measure_range", "measure_targets", "measure_trigger"
+];
+
+const MANIFESTATION_LIST = ['aegis', 'beckon', 'journey', 'minion', 'puppetry', 'oracle', 'ruin', 'shaping', 'soul'];
+
+on([...CANONICAL_MEASURES.map(m => `change:${m}`), "change:stunt_trait_1", "change:stunt_trait_2", "sheet:opened"].join(" "), function() {
+    getAttrs([...CANONICAL_MEASURES, "stunt_trait_1", "stunt_trait_2"], function(v) {
         
-        function parseMeasure(val) {
-            if (!val) return { cost: 0, label: "None (0)" };
-            const split = val.split("|");
-            return {
-                cost: parseInt(split[0], 10) || 0,
-                label: split[1] || val
-            };
+        // 1. Detect if Trait 1 or Trait 2 is a Manifestation
+        const t1 = (v.stunt_trait_1 || "").toLowerCase();
+        const t2 = (v.stunt_trait_2 || "").toLowerCase();
+        let activeMani = "none";
+        
+        if (MANIFESTATION_LIST.includes(t1)) activeMani = t1;
+        else if (MANIFESTATION_LIST.includes(t2)) activeMani = t2;
+
+        const activeManiLabel = activeMani !== "none" ? (activeMani.charAt(0).toUpperCase() + activeMani.slice(1)) : "None (General Mode)";
+
+        // 2. Parse every measure's cost and build the chat string
+        let totalCost = 0;
+        let activeLines = [];
+
+        function parseItem(val, name) {
+            if (!val) return;
+            const parts = val.split("|");
+            const cost = parseInt(parts[0], 10) || 0;
+            const label = parts[1] || val;
+            if (cost > 0) {
+                totalCost += cost;
+                activeLines.push(`• **${name}:** ${label}`);
+            }
         }
 
-        const r = parseMeasure(v.measure_range);
-        const d = parseMeasure(v.measure_duration);
-        const a = parseMeasure(v.measure_area);
-        const m = parseMeasure(v.measure_magnitude);
+        parseItem(v.measure_area, "Area Affected");
+        parseItem(v.measure_damage, "Damage");
+        parseItem(v.measure_duration, "Duration");
+        parseItem(v.measure_magnitude, "Magnitude");
+        parseItem(v.measure_modifier, "Modifier");
+        parseItem(v.measure_range, "Range");
+        parseItem(v.measure_targets, "Targets");
+        parseItem(v.measure_trigger, "Trigger");
 
-        const totalCost = r.cost + d.cost + a.cost + m.cost;
+        const summaryText = activeLines.length > 0 ? activeLines.join("\n") : "• Baseline activation (0 devoted successes).";
 
         setAttrs({
+            "active_manifestation_watch": activeMani,
+            "active_manifestation_label": activeManiLabel,
             "measure_total_cost": totalCost,
-            "measure_range_label": r.label,
-            "measure_duration_label": d.label,
-            "measure_area_label": a.label,
-            "measure_magnitude_label": m.label
+            "measure_chat_summary": summaryText
         });
     });
 });
