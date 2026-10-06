@@ -334,6 +334,34 @@ button[type="roll"].weapon_chat_btn {
     display: block; width: 100%; font-family: 'Special Elite', monospace; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; text-align: center; margin-top: 4px; color: var(--text-color);
 }
 
+/* Fragments Row Label (Zero-Width Absolute Offset) */
+.brazier_1 .fragment_triad {
+    position: relative !important;
+}
+
+.brazier_1 .fragment_triad::before {
+    content: 'FRAGMENTS:';
+    position: absolute;
+    right: 100%;
+    
+    /* 1. VERTICAL CENTERING NUDGE */
+    top: 50%;
+    transform: translateY(-62%);  /* Changed from -50%: lifts the text ~1.5px to align font cap-height with the pip centers */
+    line-height: 1 !important;    /* Removes invisible font-leading below the letters */
+    
+    /* 2. SPACING AWAY FROM THE FIRST PIP */
+    margin-right: 16px;          /* Changed from 8px: pushes the label further left */
+    
+    font-family: 'Special Elite', monospace;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: var(--text-color);
+    opacity: 0.75;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
 .fragment_triad {
     display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: center !important;
     gap: 8px !important; width: 100% !important; height: 16px !important; background: transparent !important;
@@ -415,6 +443,18 @@ button[type="roll"].weapon_chat_btn {
 .charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_4 .astrolabe_btn,
 .charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_5 .astrolabe_btn {
     opacity: 0.35; filter: grayscale(100%); cursor: pointer;
+}
+
+/* Offset the dim next brazier so only lit sparks determine the center */
+.brazier_station {
+    transition: margin 0.3s ease;
+}
+
+.charsheet:has(input[name="attr_spark"][value="1"]:checked) .brazier_2,
+.charsheet:has(input[name="attr_spark"][value="2"]:checked) .brazier_3,
+.charsheet:has(input[name="attr_spark"][value="3"]:checked) .brazier_4,
+.charsheet:has(input[name="attr_spark"][value="4"]:checked) .brazier_5 {
+    margin-right: -96px !important;
 }
 
 
@@ -996,29 +1036,29 @@ label.strike_box input[type="checkbox"]:checked + .box_mark::after { transform: 
 /* ==========================================================================
    STRAIN LEVEL CAPPING (BOUND TO BOND & VASSAL LEVEL)
    ========================================================================== */
-.bond_card:has(select[name="attr_bond_level"] option[value="1"]:checked) .pip_2,
-.bond_card:has(select[name="attr_bond_level"] option[value="1"]:checked) .pip_3,
-.bond_card:has(select[name="attr_bond_level"] option[value="1"]:checked) .pip_4,
-.bond_card:has(select[name="attr_bond_level"] option[value="1"]:checked) .pip_5,
-.vassal_card:has(select[name="attr_vassal_level"] option[value="1"]:checked) .pip_2,
-.vassal_card:has(select[name="attr_vassal_level"] option[value="1"]:checked) .pip_3,
-.vassal_card:has(select[name="attr_vassal_level"] option[value="1"]:checked) .pip_4,
-.vassal_card:has(select[name="attr_vassal_level"] option[value="1"]:checked) .pip_5 { display: none !important; }
+.bond_card:has(.level_select option[value="1"]:checked) .pip_2,
+.bond_card:has(.level_select option[value="1"]:checked) .pip_3,
+.bond_card:has(.level_select option[value="1"]:checked) .pip_4,
+.bond_card:has(.level_select option[value="1"]:checked) .pip_5,
+.vassal_card:has(.level_select option[value="1"]:checked) .pip_2,
+.vassal_card:has(.level_select option[value="1"]:checked) .pip_3,
+.vassal_card:has(.level_select option[value="1"]:checked) .pip_4,
+.vassal_card:has(.level_select option[value="1"]:checked) .pip_5 { display: none !important; }
 
-.bond_card:has(select[name="attr_bond_level"] option[value="2"]:checked) .pip_3,
-.bond_card:has(select[name="attr_bond_level"] option[value="2"]:checked) .pip_4,
-.bond_card:has(select[name="attr_bond_level"] option[value="2"]:checked) .pip_5,
-.vassal_card:has(select[name="attr_vassal_level"] option[value="2"]:checked) .pip_3,
-.vassal_card:has(select[name="attr_vassal_level"] option[value="2"]:checked) .pip_4,
-.vassal_card:has(select[name="attr_vassal_level"] option[value="2"]:checked) .pip_5 { display: none !important; }
+.bond_card:has(.level_select option[value="2"]:checked) .pip_3,
+.bond_card:has(.level_select option[value="2"]:checked) .pip_4,
+.bond_card:has(.level_select option[value="2"]:checked) .pip_5,
+.vassal_card:has(.level_select option[value="2"]:checked) .pip_3,
+.vassal_card:has(.level_select option[value="2"]:checked) .pip_4,
+.vassal_card:has(.level_select option[value="2"]:checked) .pip_5 { display: none !important; }
 
-.bond_card:has(select[name="attr_bond_level"] option[value="3"]:checked) .pip_4,
-.bond_card:has(select[name="attr_bond_level"] option[value="3"]:checked) .pip_5,
-.vassal_card:has(select[name="attr_vassal_level"] option[value="3"]:checked) .pip_4,
-.vassal_card:has(select[name="attr_vassal_level"] option[value="3"]:checked) .pip_5 { display: none !important; }
+.bond_card:has(.level_select option[value="3"]:checked) .pip_4,
+.bond_card:has(.level_select option[value="3"]:checked) .pip_5,
+.vassal_card:has(.level_select option[value="3"]:checked) .pip_4,
+.vassal_card:has(.level_select option[value="3"]:checked) .pip_5 { display: none !important; }
 
-.bond_card:has(select[name="attr_bond_level"] option[value="4"]:checked) .pip_5,
-.vassal_card:has(select[name="attr_vassal_level"] option[value="4"]:checked) .pip_5 { display: none !important; }
+.bond_card:has(.level_select option[value="4"]:checked) .pip_5,
+.vassal_card:has(.level_select option[value="4"]:checked) .pip_5 { display: none !important; }
 
 /* Fill Preceding Vassal Star Pips */
 .divine_strain:has(input[value="1"]:checked) .pip_1 .solar_pip_glyph,
@@ -1281,20 +1321,73 @@ input.expand_toggle_master:checked ~ .truth_body { display: block !important; }
 .sheet-rolltemplate-ptg .sheet-ptg-res-val { font-family: 'Cinzel Decorative', serif; font-size: 24px; font-weight: 900; line-height: 1; margin-top: 2px; }
 .sheet-rolltemplate-ptg .sheet-ptg-res-sub { font-size: 11px; font-weight: bold; margin-top: 2px; }
 
-/* Inline Roll Dice Resets */
-.sheet-rolltemplate-ptg .inlinerollresult { 
-    background: transparent; 
-    border: none; 
-    padding: 0; 
-    font-weight: 900; 
-    color: inherit; 
+/* ==========================================================================
+   INLINE ROLL RESETS (KILLS PURPLE DARKMODE BOXES)
+   ========================================================================== */
+.sheet-rolltemplate-ptg .inlinerollresult,
+.sheet-rolltemplate-ptg .inlinerollresult.fullcrit,
+.sheet-rolltemplate-ptg .inlinerollresult.fullfail,
+.sheet-rolltemplate-ptg .inlinerollresult.importanteroll,
+body.sheet-darkmode .message .sheet-rolltemplate-ptg .inlinerollresult,
+body.sheet-darkmode .sheet-rolltemplate-ptg .inlinerollresult { 
+    background: transparent !important; 
+    background-color: transparent !important;
+    border: none !important; 
+    padding: 0 !important; 
+    font-weight: 900 !important; 
+    color: inherit !important; 
+    box-shadow: none !important;
 }
-.sheet-rolltemplate-ptg .inlinerollresult.fullcrit, 
-.sheet-rolltemplate-ptg .inlinerollresult.fullfail, 
-.sheet-rolltemplate-ptg .inlinerollresult.importanteroll { 
-    border: none; 
-    background: transparent; 
-    color: inherit; 
+
+/* ==========================================================================
+   ROLL20 DARK MODE CHAT CARD THEME
+   ========================================================================== */
+body.sheet-darkmode .sheet-rolltemplate-ptg .sheet-ptg-card {
+    background: #1c1a19 !important;
+    border: 2.5px solid #57534e !important;
+    box-shadow: 4px 4px 0px #000000 !important;
+}
+
+body.sheet-darkmode .sheet-rolltemplate-ptg .sheet-ptg-header {
+    background: #11100f !important;
+    border-bottom: 1.5px solid #57534e !important;
+}
+
+body.sheet-darkmode .sheet-rolltemplate-ptg .sheet-ptg-header h3 {
+    color: #f5f5f4 !important;
+}
+
+body.sheet-darkmode .sheet-rolltemplate-ptg .sheet-ptg-body {
+    color: #f5f5f4 !important;
+}
+
+body.sheet-darkmode .sheet-rolltemplate-ptg .sheet-ptg-label {
+    color: #fde047 !important;
+}
+
+body.sheet-darkmode .sheet-rolltemplate-ptg .sheet-ptg-desc,
+body.sheet-darkmode .sheet-rolltemplate-ptg .sheet-ptg-quote {
+    border-top: 1px dashed #57534e !important;
+    color: #d6d3d1 !important;
+}
+
+/* Result Banners in Dark Mode */
+body.sheet-darkmode .sheet-rolltemplate-ptg .sheet-ptg-success {
+    background: #052e16 !important;
+    border-color: #16a34a !important;
+    color: #86efac !important;
+}
+
+body.sheet-darkmode .sheet-rolltemplate-ptg .sheet-ptg-fail {
+    background: #1c1917 !important;
+    border-color: #78716c !important;
+    color: #a8a29e !important;
+}
+
+body.sheet-darkmode .sheet-rolltemplate-ptg .sheet-ptg-critfail {
+    background: #450a0a !important;
+    border-color: #dc2626 !important;
+    color: #fca5a5 !important;
 }
 
 /* ==========================================================================
@@ -1611,3 +1704,406 @@ label.modal_close_btn:hover {
 }
 .modal_share_btn:hover { transform: translateY(-1px) !important; border-color: #fde047 !important; }
 .modal_share_btn::before { content: '' !important; display: none !important; }
+
+/* ==========================================================================
+   MAX STRAIN THREAT INDICATORS (CLASS-BASED FOR ROLL20 REPEATING ROWS)
+   ========================================================================== */
+
+/* Keyframe Animations */
+@keyframes mortalStrainPulse {
+    0%, 100% {
+        border-color: #dc2626 !important;
+        box-shadow: 3px 3px 0 var(--border-color), 0 0 6px rgba(220, 38, 38, 0.4) !important;
+    }
+    50% {
+        border-color: #ef4444 !important;
+        box-shadow: 3px 3px 0 #991b1b, 0 0 16px rgba(239, 68, 68, 0.8) !important;
+    }
+}
+
+@keyframes divineStrainPulse {
+    0%, 100% {
+        border-color: #ea580c !important;
+        box-shadow: 3px 3px 0 var(--border-color), 0 0 6px rgba(234, 88, 12, 0.4) !important;
+    }
+    50% {
+        border-color: #f59e0b !important;
+        box-shadow: 3px 3px 0 #c2410c, 0 0 18px rgba(249, 115, 22, 0.85) !important;
+    }
+}
+
+/* 1. MORTAL BONDS: CARD BACKGROUND & PULSE */
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="1"]:checked):has(.bond_strain_tracker input[value="1"]:checked),
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="2"]:checked):has(.bond_strain_tracker input[value="2"]:checked),
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="3"]:checked):has(.bond_strain_tracker input[value="3"]:checked),
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="4"]:checked):has(.bond_strain_tracker input[value="4"]:checked),
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="5"]:checked):has(.bond_strain_tracker input[value="5"]:checked) {
+    animation: mortalStrainPulse 1.6s infinite ease-in-out !important;
+    background: #fff5f5 !important;
+}
+
+.sheet-darkmode .bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="1"]:checked):has(.bond_strain_tracker input[value="1"]:checked),
+.sheet-darkmode .bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="2"]:checked):has(.bond_strain_tracker input[value="2"]:checked),
+.sheet-darkmode .bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="3"]:checked):has(.bond_strain_tracker input[value="3"]:checked),
+.sheet-darkmode .bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="4"]:checked):has(.bond_strain_tracker input[value="4"]:checked),
+.sheet-darkmode .bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="5"]:checked):has(.bond_strain_tracker input[value="5"]:checked) {
+    background: #201111 !important;
+}
+
+/* Mortal Bond Tracker Flare */
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="1"]:checked):has(.bond_strain_tracker input[value="1"]:checked) .bond_strain_tracker,
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="2"]:checked):has(.bond_strain_tracker input[value="2"]:checked) .bond_strain_tracker,
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="3"]:checked):has(.bond_strain_tracker input[value="3"]:checked) .bond_strain_tracker,
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="4"]:checked):has(.bond_strain_tracker input[value="4"]:checked) .bond_strain_tracker,
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="5"]:checked):has(.bond_strain_tracker input[value="5"]:checked) .bond_strain_tracker {
+    border-color: #dc2626 !important;
+    background: rgba(220, 38, 38, 0.15) !important;
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.5) !important;
+}
+
+/* Mortal Bond [CRITICAL] Tag */
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="1"]:checked):has(.bond_strain_tracker input[value="1"]:checked) .strain_label,
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="2"]:checked):has(.bond_strain_tracker input[value="2"]:checked) .strain_label,
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="3"]:checked):has(.bond_strain_tracker input[value="3"]:checked) .strain_label,
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="4"]:checked):has(.bond_strain_tracker input[value="4"]:checked) .strain_label,
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="5"]:checked):has(.bond_strain_tracker input[value="5"]:checked) .strain_label {
+    color: #dc2626 !important;
+    font-weight: 900 !important;
+}
+
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="1"]:checked):has(.bond_strain_tracker input[value="1"]:checked) .strain_label::after,
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="2"]:checked):has(.bond_strain_tracker input[value="2"]:checked) .strain_label::after,
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="3"]:checked):has(.bond_strain_tracker input[value="3"]:checked) .strain_label::after,
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="4"]:checked):has(.bond_strain_tracker input[value="4"]:checked) .strain_label::after,
+.bond_card:not(:has(.sever_toggle:checked)):has(.level_select option[value="5"]:checked):has(.bond_strain_tracker input[value="5"]:checked) .strain_label::after {
+    content: ' [CRITICAL]';
+    color: #dc2626;
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+
+/* 2. VASSALS & WORSHIPPERS: CARD BACKGROUND & PULSE */
+.vassal_card:has(.level_select option[value="1"]:checked):has(.divine_strain input[value="1"]:checked),
+.vassal_card:has(.level_select option[value="2"]:checked):has(.divine_strain input[value="2"]:checked),
+.vassal_card:has(.level_select option[value="3"]:checked):has(.divine_strain input[value="3"]:checked),
+.vassal_card:has(.level_select option[value="4"]:checked):has(.divine_strain input[value="4"]:checked),
+.vassal_card:has(.level_select option[value="5"]:checked):has(.divine_strain input[value="5"]:checked) {
+    animation: divineStrainPulse 1.6s infinite ease-in-out !important;
+    background: #fff8eb !important;
+}
+
+.sheet-darkmode .vassal_card:has(.level_select option[value="1"]:checked):has(.divine_strain input[value="1"]:checked),
+.sheet-darkmode .vassal_card:has(.level_select option[value="2"]:checked):has(.divine_strain input[value="2"]:checked),
+.sheet-darkmode .vassal_card:has(.level_select option[value="3"]:checked):has(.divine_strain input[value="3"]:checked),
+.sheet-darkmode .vassal_card:has(.level_select option[value="4"]:checked):has(.divine_strain input[value="4"]:checked),
+.sheet-darkmode .vassal_card:has(.level_select option[value="5"]:checked):has(.divine_strain input[value="5"]:checked) {
+    background: #23180f !important;
+}
+
+/* Vassal Tracker Flare */
+.vassal_card:has(.level_select option[value="1"]:checked):has(.divine_strain input[value="1"]:checked) .divine_strain,
+.vassal_card:has(.level_select option[value="2"]:checked):has(.divine_strain input[value="2"]:checked) .divine_strain,
+.vassal_card:has(.level_select option[value="3"]:checked):has(.divine_strain input[value="3"]:checked) .divine_strain,
+.vassal_card:has(.level_select option[value="4"]:checked):has(.divine_strain input[value="4"]:checked) .divine_strain,
+.vassal_card:has(.level_select option[value="5"]:checked):has(.divine_strain input[value="5"]:checked) .divine_strain {
+    border-color: #ea580c !important;
+    background: rgba(234, 88, 12, 0.15) !important;
+    box-shadow: 0 0 8px rgba(234, 88, 12, 0.6) !important;
+}
+
+/* Vassal [OVERLOAD] Tag */
+.vassal_card:has(.level_select option[value="1"]:checked):has(.divine_strain input[value="1"]:checked) .strain_label,
+.vassal_card:has(.level_select option[value="2"]:checked):has(.divine_strain input[value="2"]:checked) .strain_label,
+.vassal_card:has(.level_select option[value="3"]:checked):has(.divine_strain input[value="3"]:checked) .strain_label,
+.vassal_card:has(.level_select option[value="4"]:checked):has(.divine_strain input[value="4"]:checked) .strain_label,
+.vassal_card:has(.level_select option[value="5"]:checked):has(.divine_strain input[value="5"]:checked) .strain_label {
+    color: #ea580c !important;
+    font-weight: 900 !important;
+}
+
+.vassal_card:has(.level_select option[value="1"]:checked):has(.divine_strain input[value="1"]:checked) .strain_label::after,
+.vassal_card:has(.level_select option[value="2"]:checked):has(.divine_strain input[value="2"]:checked) .strain_label::after,
+.vassal_card:has(.level_select option[value="3"]:checked):has(.divine_strain input[value="3"]:checked) .strain_label::after,
+.vassal_card:has(.level_select option[value="4"]:checked):has(.divine_strain input[value="4"]:checked) .strain_label::after,
+.vassal_card:has(.level_select option[value="5"]:checked):has(.divine_strain input[value="5"]:checked) .strain_label::after {
+    content: ' [OVERLOAD]';
+    color: #ea580c;
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   EXPERIENCE & ADVANCEMENT LEDGER (TAB 2)
+   ========================================================================== */
+.xp_ledger {
+    padding: 10px 14px;
+    background: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.xp_header_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 1.5px solid var(--border-color);
+    padding-bottom: 6px;
+}
+
+.xp_tally_deck {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.xp_stat_pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--input-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 4px;
+    padding: 2px 8px;
+    box-sizing: border-box;
+    height: 28px;
+}
+
+.xp_tag {
+    font-family: 'Special Elite', monospace;
+    font-size: 10px;
+    font-weight: 900;
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+.xp_num_input {
+    width: 32px !important;
+    height: 20px !important;
+    border: none !important;
+    background: transparent !important;
+    text-align: center;
+    font-weight: 900;
+    font-size: 13px !important;
+    color: var(--text-color) !important;
+    padding: 0 !important;
+}
+
+/* Radiant Banked Badge */
+.xp_banked_pill {
+    border-color: #ca8a04 !important;
+    background: rgba(202, 138, 4, 0.08) !important;
+}
+.sheet-darkmode .xp_banked_pill {
+    border-color: #fde047 !important;
+    background: rgba(253, 224, 71, 0.1) !important;
+}
+.xp_banked_pill .xp_tag {
+    color: #ca8a04 !important;
+}
+.sheet-darkmode .xp_banked_pill .xp_tag {
+    color: #fde047 !important;
+}
+.xp_banked_val {
+    color: #ca8a04 !important;
+    font-size: 15px !important;
+}
+.sheet-darkmode .xp_banked_val {
+    color: #fde047 !important;
+}
+
+/* Content Grid & Reference Bar */
+.xp_content_grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+/* Collapsible XP Spending Drawer */
+.xp_guide_drawer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+}
+
+label.xp_guide_toggle_btn {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background: var(--input-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 3px !important;
+    padding: 3px 8px !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s ease !important;
+    width: 100% !important;
+}
+
+label.xp_guide_toggle_btn:hover {
+    border-color: #ca8a04 !important;
+}
+.sheet-darkmode label.xp_guide_toggle_btn:hover {
+    border-color: #fde047 !important;
+}
+
+.xp_chart_toggle_inp {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0 !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+    z-index: 5 !important;
+}
+
+.xp_guide_btn_text {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: var(--text-color);
+}
+
+.xp_guide_arrow {
+    font-size: 9px;
+    color: var(--text-color);
+    transition: transform 0.2s ease;
+}
+
+/* Hidden by default */
+.xp_guide_drawer .xp_spending_table_wrap {
+    display: none !important;
+}
+
+/* Open state on click */
+.xp_guide_drawer:has(input.xp_chart_toggle_inp:checked) .xp_spending_table_wrap {
+    display: grid !important;
+}
+
+.xp_guide_drawer:has(input.xp_chart_toggle_inp:checked) .xp_guide_arrow {
+    transform: rotate(180deg);
+    color: #ca8a04;
+}
+.sheet-darkmode .xp_guide_drawer:has(input.xp_chart_toggle_inp:checked) .xp_guide_arrow {
+    color: #fde047;
+}
+
+/* Canonical XP Spending Table Grid */
+.xp_spending_table_wrap {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px dashed var(--border-color);
+    border-radius: 4px;
+    padding: 6px 8px;
+}
+.sheet-darkmode .xp_spending_table_wrap {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.xp_chart_col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.xp_chart_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1px 4px;
+    font-size: 10px;
+    border-bottom: 1px dotted rgba(120, 113, 108, 0.3);
+}
+
+.xp_item_lbl {
+    font-family: 'Special Elite', monospace;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.xp_cost_val {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    color: #ca8a04;
+    white-space: nowrap;
+}
+.sheet-darkmode .xp_cost_val {
+    color: #fde047;
+}
+
+/* Repeating Advancement Entries */
+.advance_entry_card {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    padding: 3px 6px;
+    margin-bottom: 4px;
+    box-sizing: border-box;
+}
+
+.advance_name_inp {
+    flex: 1 1 0;
+    min-width: 0;
+    border: none !important;
+    background: transparent !important;
+    font-size: 11px !important;
+    font-weight: bold;
+    color: var(--text-color) !important;
+    height: 22px !important;
+}
+
+.advance_cost_badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    padding: 0 4px;
+    background: rgba(0,0,0,0.03);
+    flex-shrink: 0;
+    height: 20px;
+}
+.sheet-darkmode .advance_cost_badge {
+    background: rgba(255,255,255,0.06);
+}
+
+.advance_cost_tag {
+    font-family: 'Special Elite', monospace;
+    font-size: 9px;
+    font-weight: 900;
+    color: var(--text-color);
+}
+
+.advance_cost_inp {
+    width: 24px !important;
+    height: 18px !important;
+    border: none !important;
+    background: transparent !important;
+    text-align: center;
+    font-weight: 900;
+    font-size: 11px !important;
+    color: var(--text-color) !important;
+    padding: 0 !important;
+}

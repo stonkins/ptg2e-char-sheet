@@ -492,6 +492,7 @@
                         </div>
                         <span>Strength:</span><input type="number" name="attr_strength" value="@{athletics} + @{might}" disabled class="no_spin_input" />
                         <span>Movement:</span><input type="number" name="attr_movement" value="@{athletics} + @{speed} + 5" disabled class="no_spin_input" />
+                        <span>Armour:</span><input type="number" name="attr_armour" value="0" class="no_spin_input" />
                         <span>Max Health:</span><input type="number" name="attr_max_health" value="5" readonly class="no_spin_input" />
                         <span>Max Psyche:</span><input type="number" name="attr_max_psyche" value="5" readonly class="no_spin_input" />
                     </div>
@@ -586,7 +587,7 @@
 
             <!-- IDENTITY DOSSIER -->
             <section class="bio_dossier ink-box zine-shadow">
-                <h2 class="label-tape">IDENTITY DOSSIER</h2>
+                <h2 class="label-tape">IDENTITY</h2>
 
                 <div class="bio_dossier_content">
                     <div class="bio_avatar_frame">
@@ -643,7 +644,7 @@
                                 <input type="text" name="attr_occupation" placeholder="Occupation" />
                             </div>
                             <div class="bio_trait">
-                                <span class="trait_lbl">Age / Awakening:</span>
+                                <span class="trait_lbl">Age:</span>
                                 <input type="number" name="attr_age" value="25" class="no_spin_input" />
                             </div>
                             <div class="bio_trait">
@@ -655,6 +656,78 @@
                                 <input type="text" name="attr_ethnicity" placeholder="Ethnicity" />
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================================================================
+                 EXPERIENCE & ADVANCEMENT LEDGER
+                 ================================================================== -->
+            <section class="xp_ledger ink-box zine-shadow">
+                <div class="xp_header_row">
+                    <h2 class="label-tape">EXPERIENCE &amp; ADVANCEMENT</h2>
+
+                    <div class="xp_tally_deck">
+                        <div class="xp_stat_pill" title="Total XP earned across the campaign">
+                            <span class="xp_tag">EARNED:</span>
+                            <input type="number" name="attr_xp_earned" value="0" class="xp_num_input no_spin_input" />
+                        </div>
+
+                        <div class="xp_stat_pill" title="Total XP spent on upgrades">
+                            <span class="xp_tag">SPENT:</span>
+                            <input type="number" name="attr_xp_spent" value="0" class="xp_num_input no_spin_input" />
+                        </div>
+
+                        <div class="xp_stat_pill xp_banked_pill" title="Unspent XP currently available">
+                            <span class="xp_tag">Available:</span>
+                            <input type="number" name="attr_xp" value="0" readonly class="xp_num_input xp_banked_val no_spin_input" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Strip & Optional Log -->
+                <div class="xp_content_grid">
+                    <!-- Collapsible XP Spending Drawer -->
+                    <div class="xp_guide_drawer">
+                        <label class="xp_guide_toggle_btn" title="Toggle XP Spending Reference">
+                            <input type="checkbox" name="attr_show_xp_chart" class="xp_chart_toggle_inp" />
+                            <span class="xp_guide_btn_text">✦ XP SPENDING REFERENCE</span>
+                            <span class="xp_guide_arrow">▼</span>
+                        </label>
+
+                        <div class="xp_spending_table_wrap">
+                            <div class="xp_chart_col">
+                                <div class="xp_chart_row"><span class="xp_item_lbl">Skills (Lv 1–4)</span><span class="xp_cost_val">4 XP</span></div>
+                                <div class="xp_chart_row"><span class="xp_item_lbl">Skills (Lv 5)</span><span class="xp_cost_val">8 XP</span></div>
+                                <div class="xp_chart_row"><span class="xp_item_lbl">Manifestation (Lv 1–4)</span><span class="xp_cost_val">8 XP</span></div>
+                                <div class="xp_chart_row"><span class="xp_item_lbl">Manifestation (Lv 5)</span><span class="xp_cost_val">15 XP</span></div>
+                                <div class="xp_chart_row"><span class="xp_item_lbl">New Specialty</span><span class="xp_cost_val">3 XP</span></div>
+                                <div class="xp_chart_row"><span class="xp_item_lbl">+1 Blessing / Curse</span><span class="xp_cost_val">5 XP</span></div>
+                                <div class="xp_chart_row"><span class="xp_item_lbl">Free Time / Wealth</span><span class="xp_cost_val">New Lv + 3 XP</span></div>
+                            </div>
+
+                            <div class="xp_chart_col">
+                                <div class="xp_chart_row"><span class="xp_item_lbl">Bonds (Lv 1–4)</span><span class="xp_cost_val">5 XP</span></div>
+                                <div class="xp_chart_row"><span class="xp_item_lbl">Bonds (Lv 5)</span><span class="xp_cost_val">10 XP</span></div>
+                                <div class="xp_chart_row"><span class="xp_item_lbl">New Dominion</span><span class="xp_cost_val">25 XP</span></div>
+                                <div class="xp_chart_row"><span class="xp_item_lbl">Relic (Lv 1–5)</span><span class="xp_cost_val">7 XP</span></div>
+                                <div class="xp_chart_row"><span class="xp_item_lbl">New Truth</span><span class="xp_cost_val">10 XP</span></div>
+                                <div class="xp_chart_row"><span class="xp_item_lbl">Vassal / Flock (Lv 1–4)</span><span class="xp_cost_val">7 XP</span></div>
+                                <div class="xp_chart_row"><span class="xp_item_lbl">Vassal / Flock (Lv 5)</span><span class="xp_cost_val">13 XP</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="xp_log_dock">
+                        <fieldset class="repeating_advancements">
+                            <div class="advance_entry_card">
+                                <input type="text" name="attr_advance_name" class="advance_name_inp" placeholder="Advancement Log (e.g. Athletics 2 → 3, Street Fighting Specialty)" />
+                                <div class="advance_cost_badge" title="XP Cost">
+                                    <span class="advance_cost_tag">XP</span>
+                                    <input type="number" name="attr_advance_cost" class="advance_cost_inp no_spin_input" value="0" />
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
                 </div>
             </section>
@@ -799,6 +872,196 @@
                         <div class="auto_expand_wrapper">
                             <span name="attr_act_desc" class="auto_expand_mirror"></span>
                             <textarea name="attr_act_desc" class="auto_expand_textarea saga_body_text" placeholder="State the saga, the divine cost, and the mortal aftermath..."></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+        </main>
+
+        <!-- ==================================================================
+            TAB 3: BONDS & DEVOTION (VASSALS, WORSHIPPERS & MORTAL BONDS)
+            ================================================================== -->
+        <main class="page_canvas tab_bonds">
+            
+            <!-- VASSALS & WORSHIPPERS -->
+            <section class="vassals ink-box-alt zine-shadow">
+                <h2 class="label-tape">VASSALS &amp; WORSHIPPERS</h2>
+                <p class="panel_subtext">Bound Outsiders, holy sanctuaries, and mortal flocks. If Strain exceeds Level, reduce Level by -1 and wipe Strain.</p>
+
+                <fieldset class="repeating_vassals">
+                    <div class="vassal_card">
+                        <span class="divine_seal">✦</span>
+                        <input class="expand_toggle_master" type="checkbox" name="attr_vassal_expand" value="1" />
+
+                        <div class="vassal_header">
+                            <div class="card_row top_row">
+                                <button type="roll" class="vassal_chat_btn" name="roll_share_vassal" 
+                                    value="&{template:ptg} {{title=Vassal / Worshippers}} {{name=@{vassal_name}}} {{desc=**Role:** @{vassal_relation} | **Devotion:** @{vassal_relationship}
+**Grid:** @{vassal_location} | **Level:** @{vassal_level}
+**Pool:** @{vassal_pool} Dice | **Strain:** @{vassal_strain}
+
+@{vassal_desc}}}">q</button>
+                                <input type="text" name="attr_vassal_name" class="vassal_name_input" placeholder="Vassal / Flock Name" />
+                                <div class="relation_field_wrap">
+                                    <span class="relation_label divine_label">Role:</span>
+                                    <input type="text" name="attr_vassal_relation" class="vassal_relation_input" placeholder="Bodyguard, Priest..." />
+                                </div>
+                                <select name="attr_vassal_scope" class="scope_select divine_scope">
+                                    <option value="Vassal" selected>Vassal</option>
+                                    <option value="Worshippers">Worshippers</option>
+                                    <option value="Chosen One">Chosen One</option>
+                                </select>
+                                <span class="expand_button_overlay"></span>
+                            </div>
+
+                            <div class="card_row sub_row">
+                                <input type="text" name="attr_vassal_relationship" class="relationship_input divine_rel" placeholder="Devotion / Classification (e.g. Sworn Champion)" />
+
+                                <div class="grid_badge divine_badge" title="Territory Grid Coordinates (X-Y)">
+                                    <span class="badge_label">GRID</span>
+                                    <input type="text" name="attr_vassal_location" class="location_input divine_loc" placeholder="10 - 10" />
+                                </div>
+
+                                <div class="score_badge divine_badge" title="Level (1-5)">
+                                    <span class="score_label">LVL</span>
+                                    <select name="attr_vassal_level" class="level_select">
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+
+                                <div class="score_badge divine_badge pool_badge" title="Click to Roll Vassal Pool (Level x 2 Dice)">
+                                    <button type="action" name="act_vassalpool" class="badge_overlay_btn"></button>
+                                    <span class="score_label">POOL</span>
+                                    <input type="number" name="attr_vassal_pool" class="level_input no_spin_input" value="@{vassal_level} * 2" disabled />
+                                </div>
+
+                                <!-- Celestial Gold Starburst Strain Tracker -->
+                                <div class="strain_tracker divine_strain" title="Strain Track (Clear &amp; -1 Level if exceeded)">
+                                    <span class="strain_label">STRAIN:</span>
+                                    <label class="strain_clear" title="Clear Strain (0)"><input type="radio" name="attr_vassal_strain" value="0" checked /><span class="clear_btn_cross">✕</span></label>
+                                    <label class="strain_star_pip pip_1" title="1 Strain"><input type="radio" name="attr_vassal_strain" value="1" /><span class="solar_pip_glyph">✧</span></label>
+                                    <label class="strain_star_pip pip_2" title="2 Strain"><input type="radio" name="attr_vassal_strain" value="2" /><span class="solar_pip_glyph">✧</span></label>
+                                    <label class="strain_star_pip pip_3" title="3 Strain"><input type="radio" name="attr_vassal_strain" value="3" /><span class="solar_pip_glyph">✧</span></label>
+                                    <label class="strain_star_pip pip_4" title="4 Strain"><input type="radio" name="attr_vassal_strain" value="4" /><span class="solar_pip_glyph">✧</span></label>
+                                    <label class="strain_star_pip pip_5" title="5 Strain"><input type="radio" name="attr_vassal_strain" value="5" /><span class="solar_pip_glyph">✧</span></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="vassal_body rep_desc_body">
+                            <div class="auto_expand_wrapper">
+                                <span name="attr_vassal_desc" class="auto_expand_mirror"></span>
+                                <textarea name="attr_vassal_desc" class="auto_expand_textarea vassal_desc_textarea" placeholder="Powers (Lv 2, 4, 5), tribute, commands, duties..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+
+            <!-- MORTAL BONDS (CRIMSON DROPLETS & SEVERED RUBBER STAMP) -->
+            <section class="bonds ink-box zine-shadow">
+                <div class="bonds_header_title">
+                    <h2 class="label-tape">MORTAL BONDS</h2>
+                    <div class="bonds_max_calc" title="Maximum Bonds = 6 - Spark">
+                        <span class="bonds_max_tag">MAX:</span>
+                        <input type="number" name="attr_max_bonds" value="6 - @{spark}" disabled class="no_spin_input bonds_max_display" />
+                    </div>
+                </div>
+                <p class="panel_subtext">The people, places, and anchors keeping you human. If Strain exceeds Level, reduce Level by -1 and wipe Strain.</p>
+
+                <datalist id="bond_role_options">
+                    <option value="Approval-Seeking">
+                    <option value="Devious">
+                    <option value="Fun">
+                    <option value="Hostile">
+                    <option value="Needy">
+                    <option value="Nurturing">
+                    <option value="Rival">
+                    <option value="Romantic">
+                    <option value="Troubled">
+                    <option value="Wise">
+                    <option value="Home">
+                    <option value="Safe House">
+                    <option value="Social">
+                    <option value="Store">
+                    <option value="Work">
+                </datalist>
+
+                <fieldset class="repeating_bonds">
+                    <div class="bond_card">
+                        <input class="expand_toggle_master" type="checkbox" name="attr_bond_expand" value="1" />
+
+                        <div class="bond_header">
+                            <div class="card_row top_row">
+                                <button type="roll" class="bond_chat_btn" name="roll_share_bond" 
+                                    value="&{template:ptg} {{title=Mortal Bond}} {{name=@{bond_name}}} {{desc=**Relationship:** @{bond_relation} (@{bond_relationship})
+**Grid:** @{bond_location} | **Level:** @{bond_level} | **Strain:** @{bond_strain}
+
+@{bond_desc}}}">q</button>
+                                
+                                <input type="text" name="attr_bond_name" class="bond_name_input" placeholder="Bond Name" />
+                                
+                                <div class="relation_field_wrap">
+                                    <span class="relation_label">Relationship:</span>
+                                    <input type="text" name="attr_bond_relation" class="bond_relation_input" placeholder="Landlord, Sister..." />
+                                </div>
+
+                                <select name="attr_bond_scope" class="scope_select">
+                                    <option value="Individual" selected>Individual</option>
+                                    <option value="Group">Group</option>
+                                    <option value="Landmark">Landmark</option>
+                                </select>
+                                <span class="expand_button_overlay"></span>
+                            </div>
+
+                            <div class="card_row sub_row">
+                                <input type="text" name="attr_bond_relationship" list="bond_role_options" class="relationship_input" placeholder="Role / Nature" />
+
+                                <div class="grid_badge" title="Territory Grid Coordinates (X-Y)">
+                                    <span class="badge_label">GRID</span>
+                                    <input type="text" name="attr_bond_location" class="location_input" placeholder="10 - 10" />
+                                </div>
+
+                                <div class="score_badge" title="Bond Level (1-5)">
+                                    <span class="score_label">LVL</span>
+                                    <select name="attr_bond_level" class="level_select">
+                                        <option value="1" selected>1</option>
+                                        <option value="2" selected>2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+
+                                <!-- Crimson Blood Droplet Strain Tracker -->
+                                <div class="strain_tracker bond_strain_tracker" title="Strain Track (Clear &amp; -1 Level if exceeded)">
+                                    <span class="strain_label">STRAIN:</span>
+                                    <label class="strain_clear" title="Clear Strain (0)"><input type="radio" name="attr_bond_strain" value="0" checked /><span class="clear_btn_cross">✕</span></label>
+                                    <label class="strain_drop_pip pip_1" title="1 Strain"><input type="radio" name="attr_bond_strain" value="1" /><span class="blood_pip_glyph"></span></label>
+                                    <label class="strain_drop_pip pip_2" title="2 Strain"><input type="radio" name="attr_bond_strain" value="2" /><span class="blood_pip_glyph"></span></label>
+                                    <label class="strain_drop_pip pip_3" title="3 Strain"><input type="radio" name="attr_bond_strain" value="3" /><span class="blood_pip_glyph"></span></label>
+                                    <label class="strain_drop_pip pip_4" title="4 Strain"><input type="radio" name="attr_bond_strain" value="4" /><span class="blood_pip_glyph"></span></label>
+                                    <label class="strain_drop_pip pip_5" title="5 Strain"><input type="radio" name="attr_bond_strain" value="5" /><span class="blood_pip_glyph"></span></label>
+                                </div>
+
+                                <!-- Sever / Restore Toggle in Sub Row -->
+                                <label class="sever_bond_toggle" title="Sever or Restore this mortal bond">
+                                    <input type="checkbox" name="attr_bond_severed" class="sever_toggle" />
+                                    <span class="sever_btn_label sever_active_text">✂ SEVER</span>
+                                    <span class="sever_btn_label sever_restore_text">↺ RESTORE</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bond_body rep_desc_body">
+                            <div class="auto_expand_wrapper">
+                                <span name="attr_bond_desc" class="auto_expand_mirror"></span>
+                                <textarea name="attr_bond_desc" class="auto_expand_textarea bond_desc_textarea" placeholder="Obligations, broken promises, tension, mortal details..."></textarea>
+                            </div>
                         </div>
                     </div>
                 </fieldset>
@@ -1458,6 +1721,34 @@ on([...CANONICAL_MEASURES.map(m => `change:${m}`), "change:stunt_trait_1", "chan
             "active_manifestation_label": activeManiLabel,
             "measure_total_cost": totalCost,
             "measure_chat_summary": summaryText
+        });
+    });
+});
+
+/* --- 6. EXPERIENCE & ADVANCEMENT ENGINE --- */
+on("change:xp_earned change:xp_spent change:repeating_advancements remove:repeating_advancements sheet:opened", function() {
+    getSectionIDs("repeating_advancements", function(ids) {
+        const costAttrs = ids.map(id => `repeating_advancements_${id}_advance_cost`);
+        getAttrs(["xp_earned", "xp_spent", ...costAttrs], function(v) {
+            const earned = parseInt(v.xp_earned, 10) || 0;
+            let spent = 0;
+
+            if (ids.length > 0) {
+                // If rows exist in the log, calculate spent from entries
+                ids.forEach(id => {
+                    spent += parseInt(v[`repeating_advancements_${id}_advance_cost`], 10) || 0;
+                });
+                setAttrs({
+                    "xp_spent": spent,
+                    "xp": Math.max(0, earned - spent)
+                });
+            } else {
+                // If log is empty, use the manual xp_spent input
+                spent = parseInt(v.xp_spent, 10) || 0;
+                setAttrs({
+                    "xp": Math.max(0, earned - spent)
+                });
+            }
         });
     });
 });
