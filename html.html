@@ -356,8 +356,9 @@
                         </div>
                     </div>
 
-                    <!-- Row 2: Detected Specialties & Blessings Prompts (Phantom None Removed) -->
+                    <!-- Row 2: Detected Modifiers (3 Distinct Columns: Specialties, Blessings, Truths) -->
                     <div class="stunt_row detected_mods_row">
+                        <!-- COLUMN 1: SPECIALTIES -->
                         <div class="detected_col">
                             <span class="detected_group_title">DETECTED SPECIALTIES:</span>
                             <div class="detected_pills_wrap">
@@ -376,10 +377,11 @@
                                 </label>
 
                                 <input type="hidden" name="attr_stunt_any_spec" value="0" class="any_detected_watcher any_spec_watch" />
-                                <span class="none_detected_msg">No matching specialties found for chosen traits</span>
+                                <span class="none_detected_msg">No matching specialties found</span>
                             </div>
                         </div>
 
+                        <!-- COLUMN 2: BLESSINGS -->
                         <div class="detected_col">
                             <span class="detected_group_title">DETECTED BLESSINGS:</span>
                             <div class="detected_pills_wrap">
@@ -398,7 +400,30 @@
                                 </label>
 
                                 <input type="hidden" name="attr_stunt_any_bless" value="0" class="any_detected_watcher any_bless_watch" />
-                                <span class="none_detected_msg">No matching blessings found for chosen traits</span>
+                                <span class="none_detected_msg">No matching blessings found</span>
+                            </div>
+                        </div>
+
+                        <!-- COLUMN 3: TRUTHS -->
+                        <div class="detected_col">
+                            <span class="detected_group_title">DETECTED TRUTHS:</span>
+                            <div class="detected_pills_wrap">
+                                <input type="hidden" name="attr_stunt_has_truth_1" value="0" class="has_detected_watcher has_truth_1_watch" />
+                                <label class="detected_toggle_pill pill_truth_1">
+                                    <input type="checkbox" name="attr_stunt_use_truth_1" value="1" />
+                                    <span class="pill_marker"></span>
+                                    <span class="pill_label" name="attr_stunt_truth_1_label"></span>
+                                </label>
+
+                                <input type="hidden" name="attr_stunt_has_truth_2" value="0" class="has_detected_watcher has_truth_2_watch" />
+                                <label class="detected_toggle_pill pill_truth_2">
+                                    <input type="checkbox" name="attr_stunt_use_truth_2" value="1" />
+                                    <span class="pill_marker"></span>
+                                    <span class="pill_label" name="attr_stunt_truth_2_label"></span>
+                                </label>
+
+                                <input type="hidden" name="attr_stunt_any_truth" value="0" class="any_detected_watcher any_truth_watch" />
+                                <span class="none_detected_msg">No matching truths found</span>
                             </div>
                         </div>
                     </div>
@@ -739,7 +764,7 @@
                     <div class="truth_card">
                         <input class="expand_toggle_master" type="checkbox" name="attr_truth_expand" value="1" />
                         <div class="truth_header">
-                            <button type="roll" class="truth_chat_btn" name="roll_share_truth" value="&{template:ptg} {{title=Divine Truth}} {{name=@{truth_name}}} {{truth=@{truth_text}}}">q</button>
+                            <button type="roll" class="truth_chat_btn" name="roll_share_truth" value="&{template:ptg} {{title=Divine Truth}} {{name=@{truth_name}}} {{target=@{truth_target}}} {{bonus=+@{truth_bonus}}} {{truth=@{truth_text}}}">q</button>
                             <span class="quote_icon">“</span>
                             <div class="auto_expand_wrapper truth_title_wrapper">
                                 <span name="attr_truth_name" class="auto_expand_mirror"></span>
@@ -749,6 +774,31 @@
                             <span class="expand_button_overlay"></span>
                         </div>
                         <div class="truth_body rep_desc_body">
+                            <!-- Target & Bonus Strip (Mirrors Blessings) -->
+                            <div class="blessing_inner_params truth_inner_params">
+                                <span class="bless_lbl">Target:</span>
+                                <select name="attr_truth_target" class="blessing_target_select">
+                                    <option value="none" selected>-- None (Narrative) --</option>
+                                    <option value="General">General</option>
+                                    <optgroup label="Skills">
+                                        <option value="athletics">Athletics</option><option value="crafts">Crafts</option><option value="deception">Deception</option>
+                                        <option value="discipline">Discipline</option><option value="empathy">Empathy</option><option value="fighting">Fighting</option>
+                                        <option value="fortitude">Fortitude</option><option value="influence">Influence</option><option value="intuition">Intuition</option>
+                                        <option value="knowledge">Knowledge</option><option value="marksman">Marksman</option><option value="medicine">Medicine</option>
+                                        <option value="might">Might</option><option value="perception">Perception</option><option value="perform">Perform</option>
+                                        <option value="speed">Speed</option><option value="stealth">Stealth</option><option value="survival">Survival</option>
+                                        <option value="tech">Tech</option><option value="travel">Travel</option>
+                                    </optgroup>
+                                    <optgroup label="Manifestations">
+                                        <option value="aegis">Aegis</option><option value="beckon">Beckon</option><option value="journey">Journey</option>
+                                        <option value="minion">Minion</option><option value="puppetry">Puppetry</option><option value="oracle">Oracle</option>
+                                        <option value="ruin">Ruin</option><option value="shaping">Shaping</option><option value="soul">Soul</option>
+                                    </optgroup>
+                                </select>
+                                <span class="bless_lbl">Bonus:</span>
+                                <input type="number" name="attr_truth_bonus" class="blessing_bonus no_spin_input" value="0" placeholder="+0" />
+                            </div>
+
                             <div class="auto_expand_wrapper">
                                 <span name="attr_truth_text" class="auto_expand_mirror"></span>
                                 <textarea name="attr_truth_text" class="auto_expand_textarea truth_quote_textarea" placeholder="State your divine decree..."></textarea>
@@ -1394,7 +1444,7 @@ on("change:psyche", function(eventInfo) {
         setAttrs(updates, { silent: true });
     });
 });
-/* --- 2. EXERCISE POWER & DYNAMIC DICE ENGINE (DETECTION) --- */
+/* --- 2. EXERCISE POWER & DYNAMIC DICE ENGINE (3-COLUMN DETECTION) --- */
 const ALL_TRAITS = [
     'athletics', 'crafts', 'deception', 'discipline', 'empathy',
     'fighting', 'fortitude', 'influence', 'intuition', 'knowledge',
@@ -1408,9 +1458,20 @@ const STUNT_INPUT_EVENTS = [
     "change:stunt_trait_1", "change:stunt_trait_2",
     "change:stunt_use_spec_1", "change:stunt_use_spec_2",
     "change:stunt_use_bless_1", "change:stunt_use_bless_2",
+    "change:stunt_use_truth_1", "change:stunt_use_truth_2",
     "change:stunt_mod_tools", "change:stunt_mod_territory", "change:stunt_mod_circumstance",
-    "change:repeating_specialty", "remove:repeating_specialty",
-    "change:repeating_blessing", "remove:repeating_blessing",
+    "change:repeating_specialty:specialty_name",
+    "change:repeating_specialty:specialty_target",
+    "change:repeating_specialty:specialty_modifier",
+    "remove:repeating_specialty",
+    "change:repeating_blessing:blessing_name",
+    "change:repeating_blessing:blessing_target",
+    "change:repeating_blessing:blessing_bonus",
+    "remove:repeating_blessing",
+    "change:repeating_truths:truth_name",
+    "change:repeating_truths:truth_target",
+    "change:repeating_truths:truth_bonus",
+    "remove:repeating_truths",
     ...ALL_TRAITS.map(t => `change:${t}`),
     "sheet:opened"
 ].join(" ");
@@ -1421,117 +1482,171 @@ on(STUNT_INPUT_EVENTS, function() {
         "stunt_trait_1", "stunt_trait_2",
         "stunt_use_spec_1", "stunt_use_spec_2",
         "stunt_use_bless_1", "stunt_use_bless_2",
+        "stunt_use_truth_1", "stunt_use_truth_2",
         "stunt_mod_tools", "stunt_mod_territory", "stunt_mod_circumstance"
     ], function(v) {
         getSectionIDs("repeating_specialty", function(specIDs) {
             getSectionIDs("repeating_blessing", function(blessIDs) {
-                
-                const specAttrs = [];
-                specIDs.forEach(id => {
-                    specAttrs.push(`repeating_specialty_${id}_specialty_name`);
-                    specAttrs.push(`repeating_specialty_${id}_specialty_target`);
-                    specAttrs.push(`repeating_specialty_${id}_specialty_modifier`);
-                });
-
-                const blessAttrs = [];
-                blessIDs.forEach(id => {
-                    blessAttrs.push(`repeating_blessing_${id}_blessing_name`);
-                    blessAttrs.push(`repeating_blessing_${id}_blessing_target`);
-                    blessAttrs.push(`repeating_blessing_${id}_blessing_bonus`);
-                });
-
-                getAttrs([...specAttrs, ...blessAttrs], function(repeatingValues) {
-                    const t1Key = (v.stunt_trait_1 || "").toLowerCase();
-                    const t2Key = (v.stunt_trait_2 || "").toLowerCase();
-
-                    const t1Val = t1Key && t1Key !== "none" ? (parseInt(v[t1Key], 10) || 0) : 0;
-                    const t2Val = t2Key && t2Key !== "none" ? (parseInt(v[t2Key], 10) || 0) : 0;
-
-                    const t1Name = t1Key && t1Key !== "none" ? (t1Key.charAt(0).toUpperCase() + t1Key.slice(1)) : "None";
-                    const t2Name = t2Key && t2Key !== "none" ? (t2Key.charAt(0).toUpperCase() + t2Key.slice(1)) : "None";
-
-                    const basePool = t1Val + t2Val;
-
-                    // Detect Matching Specialties
-                    const matchedSpecs = [];
+                getSectionIDs("repeating_truths", function(truthIDs) {
+                    
+                    const specAttrs = [];
                     specIDs.forEach(id => {
-                        const sTarget = (repeatingValues[`repeating_specialty_${id}_specialty_target`] || "").toLowerCase();
-                        const sName = repeatingValues[`repeating_specialty_${id}_specialty_name`] || "Specialty";
-                        const sMod = parseInt(repeatingValues[`repeating_specialty_${id}_specialty_modifier`], 10) || 1;
-
-                        if (sTarget !== "none" && ((t1Key && sTarget === t1Key) || (t2Key && sTarget === t2Key))) {
-                            matchedSpecs.push({ name: sName, mod: sMod });
-                        }
+                        specAttrs.push(`repeating_specialty_${id}_specialty_name`);
+                        specAttrs.push(`repeating_specialty_${id}_specialty_target`);
+                        specAttrs.push(`repeating_specialty_${id}_specialty_modifier`);
                     });
 
-                    // Detect Matching Blessings
-                    const matchedBless = [];
+                    const blessAttrs = [];
                     blessIDs.forEach(id => {
-                        const bTarget = (repeatingValues[`repeating_blessing_${id}_blessing_target`] || "").toLowerCase();
-                        const bName = repeatingValues[`repeating_blessing_${id}_blessing_name`] || "Blessing";
-                        const bMod = parseInt(repeatingValues[`repeating_blessing_${id}_blessing_bonus`], 10) || 1;
-
-                        if (
-                            (t1Key && t1Key !== "none" && (bTarget.includes(t1Key) || t1Key.includes(bTarget))) ||
-                            (t2Key && t2Key !== "none" && (bTarget.includes(t2Key) || t2Key.includes(bTarget))) ||
-                            bTarget === "all" || bTarget === "general"
-                        ) {
-                            matchedBless.push({ name: bName, mod: bMod });
-                        }
+                        blessAttrs.push(`repeating_blessing_${id}_blessing_name`);
+                        blessAttrs.push(`repeating_blessing_${id}_blessing_target`);
+                        blessAttrs.push(`repeating_blessing_${id}_blessing_bonus`);
                     });
 
-                    // Explicit boolean flags (1 or 0) for CSS Watchers
-                    const hasSpec1 = matchedSpecs.length > 0 ? "1" : "0";
-                    const spec1Label = matchedSpecs.length > 0 ? `${matchedSpecs[0].name} (+${matchedSpecs[0].mod})` : "";
-                    const spec1Bonus = matchedSpecs.length > 0 ? matchedSpecs[0].mod : 0;
+                    const truthAttrs = [];
+                    truthIDs.forEach(id => {
+                        truthAttrs.push(`repeating_truths_${id}_truth_name`);
+                        truthAttrs.push(`repeating_truths_${id}_truth_target`);
+                        truthAttrs.push(`repeating_truths_${id}_truth_bonus`);
+                    });
 
-                    const hasSpec2 = matchedSpecs.length > 1 ? "1" : "0";
-                    const spec2Label = matchedSpecs.length > 1 ? `${matchedSpecs[1].name} (+${matchedSpecs[1].mod})` : "";
-                    const spec2Bonus = matchedSpecs.length > 1 ? matchedSpecs[1].mod : 0;
+                    getAttrs([...specAttrs, ...blessAttrs, ...truthAttrs], function(repVals) {
+                        const rawT1 = (v.stunt_trait_1 || "").toLowerCase();
+                        const rawT2 = (v.stunt_trait_2 || "").toLowerCase();
+                        const t1Key = (rawT1 && rawT1 !== "none") ? rawT1 : "";
+                        const t2Key = (rawT2 && rawT2 !== "none") ? rawT2 : "";
 
-                    const hasBless1 = matchedBless.length > 0 ? "1" : "0";
-                    const bless1Label = matchedBless.length > 0 ? `${matchedBless[0].name} (+${matchedBless[0].mod})` : "";
-                    const bless1Bonus = matchedBless.length > 0 ? matchedBless[0].mod : 0;
+                        const t1Val = t1Key ? (parseInt(v[t1Key], 10) || 0) : 0;
+                        const t2Val = t2Key ? (parseInt(v[t2Key], 10) || 0) : 0;
 
-                    const hasBless2 = matchedBless.length > 1 ? "1" : "0";
-                    const bless2Label = matchedBless.length > 1 ? `${matchedBless[1].name} (+${matchedBless[1].mod})` : "";
-                    const bless2Bonus = matchedBless.length > 1 ? matchedBless[1].mod : 0;
+                        const t1Name = t1Key ? (t1Key.charAt(0).toUpperCase() + t1Key.slice(1)) : "None";
+                        const t2Name = t2Key ? (t2Key.charAt(0).toUpperCase() + t2Key.slice(1)) : "None";
 
-                    const useSpec1 = v.stunt_use_spec_1 === "1" && hasSpec1 === "1";
-                    const useSpec2 = v.stunt_use_spec_2 === "1" && hasSpec2 === "1";
-                    const useBless1 = v.stunt_use_bless_1 === "1" && hasBless1 === "1";
-                    const useBless2 = v.stunt_use_bless_2 === "1" && hasBless2 === "1";
+                        const basePool = t1Val + t2Val;
 
-                    const toolsMod = parseInt(v.stunt_mod_tools, 10) || 0;
-                    const terrMod = parseInt(v.stunt_mod_territory, 10) || 0;
-                    const circMod = parseInt(v.stunt_mod_circumstance, 10) || 0;
+                        // 1. Detect Matching Specialties
+                        const matchedSpecs = [];
+                        specIDs.forEach(id => {
+                            const sTarget = (repVals[`repeating_specialty_${id}_specialty_target`] || "").toLowerCase();
+                            const sName = repVals[`repeating_specialty_${id}_specialty_name`] || "Specialty";
+                            const sMod = parseInt(repVals[`repeating_specialty_${id}_specialty_modifier`], 10) || 1;
 
-                    const totalPool = Math.max(1, 
-                        basePool + 
-                        (useSpec1 ? spec1Bonus : 0) + 
-                        (useSpec2 ? spec2Bonus : 0) + 
-                        (useBless1 ? bless1Bonus : 0) + 
-                        (useBless2 ? bless2Bonus : 0) + 
-                        toolsMod + terrMod + circMod
-                    );
+                            if (sTarget && sTarget !== "none" && ((t1Key && sTarget === t1Key) || (t2Key && sTarget === t2Key))) {
+                                matchedSpecs.push({ name: sName, mod: sMod });
+                            }
+                        });
 
-                    setAttrs({
-                        "stunt_trait_1_name": t1Name,
-                        "stunt_trait_2_name": t2Name,
-                        "stunt_trait_1_val": t1Val,
-                        "stunt_trait_2_val": t2Val,
-                        "stunt_base_pool": basePool,
-                        "stunt_has_spec_1": hasSpec1,
-                        "stunt_spec_1_label": spec1Label,
-                        "stunt_has_spec_2": hasSpec2,
-                        "stunt_spec_2_label": spec2Label,
-                        "stunt_any_spec": (matchedSpecs.length > 0 ? "1" : "0"),
-                        "stunt_has_bless_1": hasBless1,
-                        "stunt_bless_1_label": bless1Label,
-                        "stunt_has_bless_2": hasBless2,
-                        "stunt_bless_2_label": bless2Label,
-                        "stunt_any_bless": (matchedBless.length > 0 ? "1" : "0"),
-                        "stunt_total_pool": totalPool
+                        // 2. Detect Matching Blessings
+                        const matchedBless = [];
+                        blessIDs.forEach(id => {
+                            const bTarget = (repVals[`repeating_blessing_${id}_blessing_target`] || "").toLowerCase();
+                            const bName = repVals[`repeating_blessing_${id}_blessing_name`] || "Blessing";
+                            const bMod = parseInt(repVals[`repeating_blessing_${id}_blessing_bonus`], 10) || 1;
+
+                            if (
+                                (t1Key && (bTarget.includes(t1Key) || t1Key.includes(bTarget))) ||
+                                (t2Key && (bTarget.includes(t2Key) || t2Key.includes(bTarget))) ||
+                                ((t1Key || t2Key) && (bTarget === "all" || bTarget === "general"))
+                            ) {
+                                matchedBless.push({ name: bName, mod: bMod });
+                            }
+                        });
+
+                        // 3. Detect Matching Truths
+                        const matchedTruths = [];
+                        truthIDs.forEach(id => {
+                            const trTarget = (repVals[`repeating_truths_${id}_truth_target`] || "none").toLowerCase();
+                            const trName = repVals[`repeating_truths_${id}_truth_name`] || "Truth";
+                            const trMod = parseInt(repVals[`repeating_truths_${id}_truth_bonus`], 10) || 0;
+
+                            if (trMod > 0 && trTarget !== "none") {
+                                if (
+                                    (t1Key && (bTarget.includes(t1Key) || t1Key.includes(bTarget))) ||
+                                    (t2Key && (bTarget.includes(t2Key) || t2Key.includes(bTarget))) ||
+                                    ((t1Key || t2Key) && (bTarget === "all" || bTarget === "general"))
+                                ) {
+                                    matchedTruths.push({ name: trName, mod: trMod });
+                                }
+                            }
+                        });
+
+                        // Specialties Watchers & Labels
+                        const hasSpec1 = matchedSpecs.length > 0 ? "1" : "0";
+                        const spec1Label = matchedSpecs.length > 0 ? `${matchedSpecs[0].name} (+${matchedSpecs[0].mod})` : "";
+                        const spec1Bonus = matchedSpecs.length > 0 ? matchedSpecs[0].mod : 0;
+
+                        const hasSpec2 = matchedSpecs.length > 1 ? "1" : "0";
+                        const spec2Label = matchedSpecs.length > 1 ? `${matchedSpecs[1].name} (+${matchedSpecs[1].mod})` : "";
+                        const spec2Bonus = matchedSpecs.length > 1 ? matchedSpecs[1].mod : 0;
+
+                        // Blessings Watchers & Labels
+                        const hasBless1 = matchedBless.length > 0 ? "1" : "0";
+                        const bless1Label = matchedBless.length > 0 ? `${matchedBless[0].name} (+${matchedBless[0].mod})` : "";
+                        const bless1Bonus = matchedBless.length > 0 ? matchedBless[0].mod : 0;
+
+                        const hasBless2 = matchedBless.length > 1 ? "1" : "0";
+                        const bless2Label = matchedBless.length > 1 ? `${matchedBless[1].name} (+${matchedBless[1].mod})` : "";
+                        const bless2Bonus = matchedBless.length > 1 ? matchedBless[1].mod : 0;
+
+                        // Truths Watchers & Labels
+                        const hasTruth1 = matchedTruths.length > 0 ? "1" : "0";
+                        const truth1Label = matchedTruths.length > 0 ? `${matchedTruths[0].name} (+${matchedTruths[0].mod})` : "";
+                        const truth1Bonus = matchedTruths.length > 0 ? matchedTruths[0].mod : 0;
+
+                        const hasTruth2 = matchedTruths.length > 1 ? "1" : "0";
+                        const truth2Label = matchedTruths.length > 1 ? `${matchedTruths[1].name} (+${matchedTruths[1].mod})` : "";
+                        const truth2Bonus = matchedTruths.length > 1 ? matchedTruths[1].mod : 0;
+
+                        // Checkbox Toggles
+                        const useSpec1 = v.stunt_use_spec_1 === "1" && hasSpec1 === "1";
+                        const useSpec2 = v.stunt_use_spec_2 === "1" && hasSpec2 === "1";
+                        const useBless1 = v.stunt_use_bless_1 === "1" && hasBless1 === "1";
+                        const useBless2 = v.stunt_use_bless_2 === "1" && hasBless2 === "1";
+                        const useTruth1 = v.stunt_use_truth_1 === "1" && hasTruth1 === "1";
+                        const useTruth2 = v.stunt_use_truth_2 === "1" && hasTruth2 === "1";
+
+                        const toolsMod = parseInt(v.stunt_mod_tools, 10) || 0;
+                        const terrMod = parseInt(v.stunt_mod_territory, 10) || 0;
+                        const circMod = parseInt(v.stunt_mod_circumstance, 10) || 0;
+
+                        const totalPool = Math.max(1, 
+                            basePool + 
+                            (useSpec1 ? spec1Bonus : 0) + 
+                            (useSpec2 ? spec2Bonus : 0) + 
+                            (useBless1 ? bless1Bonus : 0) + 
+                            (useBless2 ? bless2Bonus : 0) + 
+                            (useTruth1 ? truth1Bonus : 0) + 
+                            (useTruth2 ? truth2Bonus : 0) + 
+                            toolsMod + terrMod + circMod
+                        );
+
+                        setAttrs({
+                            "stunt_trait_1_name": t1Name,
+                            "stunt_trait_2_name": t2Name,
+                            "stunt_trait_1_val": t1Val,
+                            "stunt_trait_2_val": t2Val,
+                            "stunt_base_pool": basePool,
+                            
+                            "stunt_has_spec_1": hasSpec1,
+                            "stunt_spec_1_label": spec1Label,
+                            "stunt_has_spec_2": hasSpec2,
+                            "stunt_spec_2_label": spec2Label,
+                            "stunt_any_spec": (matchedSpecs.length > 0 ? "1" : "0"),
+
+                            "stunt_has_bless_1": hasBless1,
+                            "stunt_bless_1_label": bless1Label,
+                            "stunt_has_bless_2": hasBless2,
+                            "stunt_bless_2_label": bless2Label,
+                            "stunt_any_bless": (matchedBless.length > 0 ? "1" : "0"),
+
+                            "stunt_has_truth_1": hasTruth1,
+                            "stunt_truth_1_label": truth1Label,
+                            "stunt_has_truth_2": hasTruth2,
+                            "stunt_truth_2_label": truth2Label,
+                            "stunt_any_truth": (matchedTruths.length > 0 ? "1" : "0"),
+
+                            "stunt_total_pool": totalPool
+                        });
                     });
                 });
             });
