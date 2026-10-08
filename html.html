@@ -1561,9 +1561,9 @@ on(STUNT_INPUT_EVENTS, function() {
 
                             if (trMod > 0 && trTarget !== "none") {
                                 if (
-                                    (t1Key && (bTarget.includes(t1Key) || t1Key.includes(bTarget))) ||
-                                    (t2Key && (bTarget.includes(t2Key) || t2Key.includes(bTarget))) ||
-                                    ((t1Key || t2Key) && (bTarget === "all" || bTarget === "general"))
+                                    (t1Key && (trTarget.includes(t1Key) || t1Key.includes(trTarget))) ||
+                                    (t2Key && (trTarget.includes(t2Key) || t2Key.includes(trTarget))) ||
+                                    ((t1Key || t2Key) && (trTarget === "all" || trTarget === "general"))
                                 ) {
                                     matchedTruths.push({ name: trName, mod: trMod });
                                 }

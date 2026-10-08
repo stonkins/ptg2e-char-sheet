@@ -1409,7 +1409,7 @@ label.sever_bond_toggle:has(input.sever_toggle:checked) .sever_restore_text {
     --border-color: #ca8a04;
     --font-active-inputs: 'Cinzel Decorative', serif;
 }
-.sheet-darkmode.charsheet:has(input[name="attr_spark"][value="4"]:checked) {
+.sheet-darkmode .charsheet:has(input[name="attr_spark"][value="4"]:checked) {
     --bg-color: #12100e;
     --border-color: #eab308;
     --card-bg: #1a1714;
@@ -1420,7 +1420,7 @@ label.sever_bond_toggle:has(input.sever_toggle:checked) .sever_restore_text {
 .charsheet:has(input[name="attr_spark"][value="4"]:checked) .header_name_divine {
     display: inline-block !important; font-family: 'Cinzel Decorative', serif !important; color: var(--text-color) !important;
 }
-.sheet-darkmode.charsheet:has(input[name="attr_spark"][value="4"]:checked) .header_name_divine {
+.sheet-darkmode .charsheet:has(input[name="attr_spark"][value="4"]:checked) .header_name_divine {
     color: #fde047 !important;
 }
 
@@ -1448,7 +1448,7 @@ label.sever_bond_toggle:has(input.sever_toggle:checked) .sever_restore_text {
 .charsheet:has(input[name="attr_spark"][value="5"]:checked) .header_name_divine {
     display: inline-block !important; font-family: 'Cinzel Decorative', serif !important; color: var(--text-color) !important; letter-spacing: 2px;
 }
-.sheet-darkmode.charsheet:has(input[name="attr_spark"][value="5"]:checked) .header_name_divine {
+.sheet-darkmode .charsheet:has(input[name="attr_spark"][value="5"]:checked) .header_name_divine {
     color: #fde047 !important;
 }
 .charsheet:has(input[name="attr_spark"][value="5"]:checked) .altar_shrine {
